@@ -21,6 +21,10 @@
 \begin{document}
 
 \maketitle
+
+% Line numbers in the manuscript body for reviewer reference (revision only).
+\ifdefined\revisionmode\linenumbers\fi
+
 \begin{abstract}
 Population size is a key factor underlying the mode and tempo of evolution,
 particularly as it relates to the strength of selection and drift.
@@ -79,5 +83,29 @@ evolutionary theory across a wide variety of empirical systems.
 \clearpage
 
 \input{sections/supplement_figures}
+
+% === Review Responses (extracted to a separate PDF by the Makefile) ===
+% Revision build only. Records the absolute page number where the
+% responses begin into review-responses-pagenum.txt so the Makefile can
+% split main_revision.pdf into the manuscript and the response document.
+\ifdefined\revisionmode
+  \clearpage
+  \newwrite\pageinfo
+  \immediate\openout\pageinfo=review-responses-pagenum.txt
+  \immediate\write\pageinfo{\thepage}
+  \immediate\closeout\pageinfo
+  \setcounter{page}{1}
+  \label{review-responses-start}
+  \nolinenumbers
+  \pagestyle{plain}
+  \fancyhead[L]{}
+  \fancyhead[R]{}
+  \begin{center}
+  {\LARGE \textbf{Response to Reviewers}}\\[1em]
+  {\large Large population sizes shape genome evolution in barnacles}
+  \end{center}
+  \vskip 2em
+  \input{genetics_rev1/review-responses}
+\fi
 
 \end{document}
