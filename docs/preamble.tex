@@ -83,3 +83,22 @@
 \newcommand{\wrightenc}{$\text{ENC}_{exp} = 2 + s + 29/[s^{2} + (1-s)^{2}]$\xspace}
 \newcommand{\comment}[1]{{\color{PineGreen} #1}}
 \newcommand{\commentauth}[2]{{\color{RedViolet} \underline{#1:} #2}}
+
+% --- Revision-mode infrastructure ------------------------------------
+% Normal builds (`make`, `make submission`) leave \revisionmode undefined
+% and are completely unaffected: the \revpoint / \revref / \llabel /
+% \llname tags sprinkled into the sections expand to nothing.
+% The revision build (`make revision`) compiles main.tex with
+%   pdflatex -jobname=main_revision "\def\revisionmode{}\input{main}"
+% which turns on line numbers and appends the point-by-point response
+% document (genetics_rev1/review-responses.tex) after the supplement.
+\ifdefined\revisionmode
+  \input{genetics_rev1/review-response-commands}
+\else
+  \providecommand{\revpoint}[2]{}%
+  \providecommand{\revref}{}%
+  \providecommand{\revreffull}[2]{}%
+  \providecommand{\llabel}[1]{}%
+  \providecommand{\llname}[1]{}%
+\fi
+% ---------------------------------------------------------------------
