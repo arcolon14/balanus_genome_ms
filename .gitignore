@@ -48,3 +48,9 @@ Thumbs.db
 # PDF output
 docs/*.pdf
 docs/%OUTDIR%/main.bcf-SAVE-ERROR
+
+# Revision/diff generated artifacts
+docs/review-responses-pagenum.txt
+docs/review-diff.tex
+docs/main-for-diff.tex
+docs/.diff-orig/
