@@ -46,7 +46,7 @@ REVISION_LATEX = pdflatex -interaction=nonstopmode -jobname=$(REVISION_JOB) \
 
 # DIFF_BASE_REF is the pre-revision (submitted) state of the manuscript.
 # Override on the command line if needed (make diff DIFF_BASE_REF=<ref>).
-DIFF_BASE_REF ?= c58ea26
+DIFF_BASE_REF ?= 3d61a73
 DIFF_TMP_DIR  := .diff-orig
 
 .PHONY: all clean submission revision diff all-revision
@@ -105,15 +105,20 @@ diff:
 	  echo "Override with: make diff DIFF_BASE_REF=<ref>"; exit 1; }
 	rm -rf $(DIFF_TMP_DIR); mkdir -p $(DIFF_TMP_DIR)
 	git archive $(DIFF_BASE_REF) $(TEX).tex sections | tar -x -C $(DIFF_TMP_DIR)
-	@# Strip the response block from the current main.tex so the diff shows
-	@# only manuscript content changes. The \revpoint etc. tags in the
-	@# sections fall back to the no-op definitions in preamble.tex.
+	@# Strip the response block from both sides so the diff shows only
+	@# manuscript content changes. The base needs this too because the
+	@# submitted main.tex already contains the response block. The
+	@# \revpoint etc. tags in the sections fall back to the no-op
+	@# definitions in preamble.tex.
 	sed -e '/^% === Review Responses/,/^\\fi$$/d' \
 	    -e '/\\ifdefined\\revisionmode\\linenumbers\\fi/d' \
 	    $(TEX).tex > main-for-diff.tex
+	sed -e '/^% === Review Responses/,/^\\fi$$/d' \
+	    -e '/\\ifdefined\\revisionmode\\linenumbers\\fi/d' \
+	    $(DIFF_TMP_DIR)/$(TEX).tex > $(DIFF_TMP_DIR)/base-for-diff.tex
 	@# --type=CFONT marks changes with color + font rather than ulem
 	@# underlining, which breaks around line-breakable citations.
-	latexdiff --flatten --type=CFONT $(DIFF_TMP_DIR)/$(TEX).tex main-for-diff.tex > review-diff.tex.tmp
+	latexdiff --flatten --type=CFONT $(DIFF_TMP_DIR)/base-for-diff.tex main-for-diff.tex > review-diff.tex.tmp
 	grep -v '^WARNING:' review-diff.tex.tmp > review-diff.tex
 	rm -f main-for-diff.tex review-diff.tex.tmp
 	rm -rf $(DIFF_TMP_DIR)
