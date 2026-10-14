@@ -253,7 +253,7 @@ they are evolving under positive directional selection when compared to the outg
 Moreover, the near absence of genes displaying a significant excess in non-synonymous
 polymorphism (NI $>1$) reflect a reduction the proportion of slightly deleterious
 variants segregating in the population, suggesting the presence of highly efficacious
-\revpoint{E}{2}\revpoint{1}{1}purifying selection.
+\llabel{purifying_results}purifying selection.
 \vspace{0.1cm}
 
 In addition to NI and DoS, we calculated $\alpha$, a measure of the proportion
@@ -466,7 +466,7 @@ corresponding to a mean of 18.93 non-synonymous variants per transcript
 Overall, these represent a substantial proportion of coding variation segregating in
 central Oregon.
 This \bgla{} population displayed a mean genome-wide nucleotide
-diversity ($\pi$) of 0.0506 (median: 0.0531, standard deviation: 0.0188;
+diversity ($\pi$) of 0.0506 (median: 0.0531, standard deviation: 0.0188;\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled genome-wide $\pi$ = 0.0231; recompute the window mean, median and SD from the \texttt{pg\_gpu\_stats} 10 kb tables. Update.]}
 Figure~\ref{fig:genome_pi}; Table~\ref{tab:sup_feature_pi}).
 For context, this magnitude of $\pi$ is approximately $4\times$ higher than that
 observed in \textit{Anopheles gambiae} mosquitos, a species known for their high
@@ -543,11 +543,11 @@ substitution, and 4-fold degenerate sites ($\pi_{4}$), in which any mutation res
 in a synonymous change.
 This comparison allows us to compare diversity at constrained versus neutral (or
 putatively neutral) sites.
-In this central Oregon population of \bgla{}, the mean $\pi_{0}$, was 0.0107 (median:
+In this central Oregon population of \bgla{}, the mean $\pi_{0}$, was 0.0107\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled 0-fold $\pi$ = 0.0067 (\texttt{pg\_gpu\_stats}, codon tables). Update.]} (median:
 0.00292, standard deviation: 0.0178).
 This is the lowest diversity among the studied categories in the genome, not a
 surprising result given the higher functional constraint expected at these sites.
-In contrast, mean $\pi_{4}$ was 0.0790 (median: 0.0750, standard deviation: 0.0483),
+In contrast, mean $\pi_{4}$ was 0.0790\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled 4-fold $\pi$ = 0.0423; $\pi_0/\pi_4$ = 0.16, not 0.21. Update.]} (median: 0.0750, standard deviation: 0.0483),
 $\approx1.6\times$ higher than the genome-wide average and the highest in the genome.
 The nearly 8-fold difference between $\pi_{0}$ and $\pi_{4}$ highlights the
 strong constraint on non-synonymous sites and suggests that purifying selection is
@@ -575,7 +575,7 @@ We estimated the effective population size (\Ne{}) for a central
 Oregon \textit{B. glandula} population sample using the whole-genome genotypes.
 As a simple estimate of the long-term \Ne{} of this population, we first
 calculated \Ne{} using Watterson's estimator of genetic diversity ($\theta_\text{W}$),
-observing a mean genome-wide $\theta_\text{W}$ of 0.0617 (median: 0.0635, standard
+observing a mean genome-wide $\theta_\text{W}$ of 0.0617\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled $\theta_W$ = 0.0282, which gives $N_e \approx 2.3\times10^{6}$ with $\mu = 3\times10^{-9}$. Update.]} (median: 0.0635, standard
 deviation: 0.0224; Figure~\ref{fig:sup_theta_ne}). Assuming a per-base,
 per-generation mutation rate ($\mu$) of $3\times10^{-9}$ (as estimated by
 \cite{nunez_footprints_2020} for the northern acorn barnacle \textit{S. balanoides})
