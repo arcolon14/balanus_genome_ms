@@ -32,7 +32,8 @@ SUBMISSION_PDFS = $(addsuffix .pdf,$(SUBMISSION_DOCS))
 #                       the current revised content)
 #   make all-revision - revision + diff (full resubmission package)
 #
-# Requires pdfjam and latexdiff (both ship with TeX Live / MacTeX).
+# Requires latexdiff, and pdfjam or pdftk to split the revision PDF
+# (pdfjam ships with TeX Live / MacTeX; pdftk is used when pdfjam is absent).
 REV_DIR       = genetics_rev1
 REVISION_JOB  = main_revision
 REVISION_PDF  = main_revision_only.pdf
@@ -88,8 +89,15 @@ revision:
 	RESP_PREV=`expr $$RESP_START - 1`; \
 	echo "Splitting revision: manuscript 1-$$RESP_PREV, responses $$RESP_START-last"; \
 	rm -f $(REVISION_PDF) $(RESPONSES_PDF); \
-	pdfjam $(REVISION_JOB).pdf 1-$$RESP_PREV -o $(REVISION_PDF) --quiet && \
-	pdfjam $(REVISION_JOB).pdf $$RESP_START-last -o $(RESPONSES_PDF) --quiet
+	if command -v pdfjam >/dev/null 2>&1; then \
+	  pdfjam $(REVISION_JOB).pdf 1-$$RESP_PREV -o $(REVISION_PDF) --quiet && \
+	  pdfjam $(REVISION_JOB).pdf $$RESP_START-last -o $(RESPONSES_PDF) --quiet; \
+	elif command -v pdftk >/dev/null 2>&1; then \
+	  pdftk $(REVISION_JOB).pdf cat 1-$$RESP_PREV output $(REVISION_PDF) && \
+	  pdftk $(REVISION_JOB).pdf cat $$RESP_START-end output $(RESPONSES_PDF); \
+	else \
+	  echo "ERROR: pdfjam or pdftk is required to split $(REVISION_JOB).pdf."; exit 1; \
+	fi
 	rm -f $(REVISION_INTERMEDIATES) review-responses-pagenum.txt
 
 # latexdiff between the pre-revision manuscript (git ref DIFF_BASE_REF) and
