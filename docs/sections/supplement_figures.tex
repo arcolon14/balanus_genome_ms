@@ -158,7 +158,7 @@
             gambiae}; \texttt{AnoGam}),
         and human populations of Yoruba ancestry (\textit{Homo sapiens}; \texttt{HomSap}).
         Consistent with the large \Ne{} expected for \bgla{}, this barnacle population
-        exhibits an average nucleotide diversity (mean = 0.0506, median = 0.0532, standard
+        exhibits an average nucleotide diversity\protect\comment{[Old pixy values; recompute from the corrected \texttt{pg\_gpu\_stats} 10 kb tables (pooled $\pi$ = 0.0242). Update the figure and the ratios.]} (mean = 0.0506, median = 0.0532, standard
         deviation = 0.0188) an order of magnitude higher than \textit{Drosophila} (mean = 0.0076,
         median = 0.0078, standard deviation = 0.0035), $\approx4\times$ higher than
         \textit{An. gambiae} (mean = 0.0123, median = 0.0130, standard deviation = 0.0047), and
@@ -218,5 +218,32 @@
         individuals; however, we do not obtain enough resolution to resolve
         \Ne{} at recent ($<10^{5}$) time intervals.}
     \label{fig:sup_mcmc_ne}
+\end{figure}
+
+% B. glandula against published comparative data (Romiguier 2014, Galtier 2016)
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=0.95\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_comparative.pdf}
+    \supfigurecaption{\textbf{\bgla{} in the context of published animal data.}
+        Synonymous diversity ($\pi_S$) against (A, F) the ratio of non-synonymous to
+        synonymous diversity ($\pi_N/\pi_S$), (B, G) \dnds{}, (C, H) the rate of
+        non-adaptive amino-acid substitution ($\omega_{na}$), (D, I) the rate of
+        adaptive amino-acid substitution ($\omega_{a}$), and (E, J) the proportion of
+        adaptive amino-acid substitutions ($\alpha$). Top row (A--E): all species;
+        bottom row (F--J): marine invertebrates only. Points are species from
+        \citet{romiguier_comparative_2014} and \citet{galtier_adaptive_2016} (86 species
+        for $\pi_N/\pi_S$, 44 for the other panels; 33 and 13 marine invertebrates).
+        For ten primates present only in \citet{galtier_adaptive_2016}, $\pi_N/\pi_S$ was
+        rescaled to the site convention of \citet{romiguier_comparative_2014} (open
+        circles). $\omega_{a}$ and $\omega_{na}$ were computed per site as
+        $\alpha \cdot$\dnds{} and $(1-\alpha) \cdot$\dnds{}. Dashed lines are
+        least-squares fits of each variable on $\log_{10}\pi_S$; $r$ is the Pearson
+        correlation. The star shows \bgla{} (all genes; $\pi_S$, $\pi_N/\pi_S$ and \dnds{}
+        from the McDonald-Kreitman alignments; $\alpha$, $\omega_{a}$ and $\omega_{na}$
+        from a gamma-exponential distribution of fitness effects fitted to the unfolded
+        site frequency spectrum, as in \citet{galtier_adaptive_2016}; bars show 95\%
+        bootstrap intervals).}
+    \label{fig:sup_comparative}
 \end{figure}
 

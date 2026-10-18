@@ -146,22 +146,25 @@ efficacy of both modes of selection.
 \subsection*{Barnacles as models for evolution at biological extremes}
 
 Our work shows that a Pacific acorn barnacle population from central Oregon exhibits
-genetic diversity of over 5\% (mean genome-wide $\pi$ of 0.0506).
+genetic diversity of over 5\% (mean genome-wide $\pi$ of 0.0506).\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected genome-wide $\pi$ = 0.024 (\texttt{pg\_gpu\_stats}). Update.]}
 These levels of genetic diversity are higher than those observed for other model
 systems known for their relatively large population sizes.
 For example, the genome-wide $\pi$ we observe in this population is approximately
-seven-fold higher than that observed in sub-Saharan populations of
+seven-fold\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. With the corrected $\pi$ this ratio is about 3-fold. Update.]} higher than that observed in sub-Saharan populations of
 \textit{D. melanogaster} (Figure~\ref{fig:sup_pi_comp})
 \citep{nunez_footprints_2025,li_comparative_2025,pool_population_2012,
 langley_genomic_2012}.
 Indeed, even the $\pi$ observed at 0-fold degenerate sites, the least diverse and
 among the most constrained sites in the genome, exceeds the genome-wide diversity
-observed in these \textit{Drosophila} populations.
+observed in these \textit{Drosophila} populations.\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. The corrected 0-fold $\pi$ (0.0068) no longer exceeds the \textit{Drosophila} genome-wide mean (0.0076, Figure~\ref{fig:sup_pi_comp}); remove or reword this sentence. Update.]}
 While elevated, this level of diversity is not unique to barnacles.
 Similar magnitudes of genome-wide $\pi$ ($\approx10^{-2}$) have been observed
 in other metazoan taxa, including corals \citep{meziere_corals_2025}, bivalves
 \citep{liu_bivalves_2025}, mosquitoes \citep{kent_aedes_2025,ag1000g}, nematodes
 \citep{teterina_nematodes_2023}, and lancelets \citep{braso-vives_highly_2026}.
+The bivalve values, however, were computed from variant sites only, after the removal
+of sites with a minor allele frequency below 5\% \citep{liu_bivalves_2025}; they are
+therefore not per-site diversities and are not directly comparable to ours.
 Moreover, as with other marine invertebrates, barnacle life history traits are likely
 direct drivers of the elevated polymorphism observed, as factors such as large census
 sizes, small propagule size, large brood size, long larval dispersal, and broad geographic
@@ -170,7 +173,7 @@ organisms \citep{leffler_revisiting_2012,romiguier_comparative_2014}.
 \vspace{0.1cm}
 
 The magnitude of diversity observed in \bgla{} solidly places them among
-hyperpolymorphic populations, those exhibiting diversity above 5\%
+hyperpolymorphic populations, those exhibiting diversity above 5\%\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. With corrected values, 4-fold $\pi$ = 4.3\% and genome-wide $\pi$ = 2.4\%; reword. Update.]}
 \citep{cutter_molecular_2013}. This adds barnacles to a growing list of emerging
 hyperpolymorphic model systems, which are key to studying the limits of biological
 variation and molecular evolution in natural populations. Moreover, our observations
@@ -180,7 +183,7 @@ of polymorphism above 1\% neutral diversity in eukaryotes likely serve as biolog
 for the definition of species. Barnacles and other hyperpolymorphic populations put these
 putative cutoffs into question. We observe levels of genome-wide diversity of over 5\%
 in just a very small portion of the biological range of the Pacific acorn barnacle.
-Nucleotide diversity is even higher ($\approx8\%$) at 4-fold degenerate, and putatively
+Nucleotide diversity is even higher ($\approx8\%$\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected 4-fold $\pi$ = 4.3\%. Update.]}) at 4-fold degenerate, and putatively
 neutral, sites (Figure~\ref{fig:feature_pi}; Table~\ref{tab:sup_feature_pi}).
 Given the species' broader geographical and ecological distribution, genetic
 diversity is likely to increase when looking across a larger spatial sampling.
@@ -193,7 +196,7 @@ of extreme genetic diversity.
 Beyond species boundaries, the extreme diversity observed in barnacles also speaks to
 a long-standing question in population genetics: the relationship between effective
 and census population sizes. From our results on diversity, we
-observe that this barnacle population has an effective size of approximately $10^{6}$.
+observe that this barnacle population has an effective size of approximately $10^{6}$.\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Recompute with the corrected $\theta_W$ (0.0294); see also the sea star rate below. Update.]}
 However, these populations also show densities of $10^{4}$ individuals per square meter
 \citep{menge_recruitment_2000}. Based on this estimate, the census size of the Pacific
 acorn barnacle population in central Oregon should be, conservatively, in the billions of
@@ -204,3 +207,83 @@ the mechanisms underlying the differences have been long debated
 kimura_neutral_1983} and are still the subjects of study \citep{buffalo_quantifying_2021}.
 Our work on the Pacific acorn barnacle provides a unique opportunity to empirically
 study this disparity and the biological processes that maintain it.
+\vspace{0.1cm}
+
+\subsection*{Barnacles among highly fecund marine invertebrates}
+
+\llabel{marine_sweepstakes}\revpoint{2}{5}With census sizes in the billions and high fecundity,
+\bgla{} belongs to the group of marine invertebrates in which the relationship between
+census size, effective size, and diversity has been debated for decades.
+High fecundity combined with high early mortality can produce a very large variance in
+reproductive success, such that a small fraction of adults produces most of the recruits
+in each generation.
+This sweepstakes reproductive success predicts ratios of effective to census size far
+below one and genetic differences among cohorts and sites at small spatial scales
+(chaotic genetic patchiness) \citep{hedgecock_does_1994}, and, when the variance is
+extreme, genealogies with multiple mergers rather than the Kingman coalescent
+\citep{eldon_coalescent_2006}.
+Multiple-merger genealogies give an excess of rare variants and can bias estimates of
+effective size and demographic history made under the Kingman coalescent.
+The negative genome-wide Tajima's $D$ we observe is consistent with population growth,
+with linked selection, and with sweepstakes reproduction, and our sample of six
+individuals cannot separate these processes.
+Our estimates of \Ne{} should therefore be read as the effective size of an equivalent
+Kingman population.
+\vspace{0.1cm}
+
+\llabel{marine_oysters}Bivalves provide the closest precedent for the patterns in coding sequences that we
+report.
+In the Pacific oyster, \citet{sauvage_single_2007} found among the highest densities of
+synonymous polymorphism then known in animals and studied their relation to codon
+usage.
+In the European flat oyster, \citet{harrang_high_2013} found a high load of non-neutral
+amino-acid polymorphisms: the ratio of non-synonymous to silent diversity was 0.38, at
+a synonymous diversity of only 0.006, and the authors related this load to sweepstakes
+reproduction.
+\bgla{} does not follow this pattern.
+Its synonymous diversity is about seven times higher ($\pi_S = 0.042$) and its
+$\pi_N/\pi_S$ is about one third as high (0.11).\comment{[Corrected values, from the MK
+alignments with all invariant sites counted (revision\_analysis
+\texttt{results/comparative}); they replace the pixy values used elsewhere in the
+manuscript.]}
+This value is inside the range predicted from the synonymous diversity of 86 animal
+species, and inside the range of the marine invertebrates among them
+\citep{romiguier_comparative_2014,galtier_adaptive_2016}
+(Figure~\ref{fig:sup_comparative}).
+A high load of amino-acid polymorphism is thus not a general property of highly fecund
+marine invertebrates, and in \bgla{} purifying selection on amino-acid variation is as
+efficient as its synonymous diversity predicts.
+\vspace{0.1cm}
+
+\llabel{marine_sv}Marine invertebrate genomes also carry extensive structural variation.
+Gene presence-absence variation is widespread in the Mediterranean mussel
+\citep{gerdol_massive_2020}; duplications cover 16.5\% of the eastern oyster genome
+across 60 individuals \citep{modak_extensive_2021}; sequences present in only one
+haplotype make up about 69\% of each haplotype of a \textit{Crassostrea sikamea}
+genome \citep{liu_bivalves_2025}; inversion polymorphisms segregate in \textit{Ciona}
+\citep{satou_chromosomal_2021}; and copy number variants make up about one fifth of
+sequenced loci in the American lobster, where they, and not SNPs, are associated with
+sea temperature \citep{dorant_copy_2020}.
+The \bgla{} genome shows signs of the same complexity: a $k$-mer heterozygosity above
+3\% (Figure~\ref{fig:sup_kmers}), about 240\,Mbp of haplotig sequence removed during
+assembly (Table~\ref{tab:sup_asm_stats}), and a repeat content above 60\%.
+Our SNP-based analyses do not capture this variation.
+Population samples sequenced with long reads will be necessary to measure the total
+genetic variation in \bgla{} and to test whether, as in the lobster, structural
+variants carry a large part of its adaptive variation.
+\vspace{0.1cm}
+
+\llabel{marine_mutation_rate}Direct estimates of the germline mutation rate now exist for highly
+fecund marine invertebrates.
+In the crown-of-thorns sea star, $\mu = 9.13 \times 10^{-9}$ per site per generation
+(95\% CI $6.5 \times 10^{-9}$ to $1.2 \times 10^{-8}$), from 14 parent-offspring trios
+\citep{popovic_high_2024}, three times the rate we used here.
+With this rate, our genome-wide diversity gives a long-term \Ne{} of about
+$7 \times 10^{5}$ (about $1.2 \times 10^{6}$ from 4-fold degenerate sites), which makes
+the gap to census size even larger.\comment{[From corrected $\pi$: genome-wide 0.0242,
+4-fold 0.0428.]}
+In tunicates, the estimates are indirect, and they suggest a per-generation rate no
+higher than in vertebrates \citep{tsagkogeorga_population_2012}.
+A high mutation rate thus does not appear to explain the high diversity of these
+species, and the gap between effective and census size must come from other processes,
+such as linked selection or sweepstakes reproduction.

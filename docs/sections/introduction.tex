@@ -25,11 +25,24 @@ such as clonal-interference effects driven by soft sweeps and recurrent mutation
 diversity through the hitchhiking effect \citep{smith_hitch-hiking_1974}.
 In sufficiently large populations, this process is predicted to be a primary driver
 of stochastic diversity loss \citep{gillespie_genetic_2000,gillespie_role_1999}.
-Yet, while there have been empirical studies characterizing genetic diversity and the
-mechanisms of evolution in large populations (e.g.,~\citealp{dey_molecular_2013,ag1000g,
-teterina_pervasive_2025,anderson_population_2017, braso-vives_highly_2026}),
-they remain comparatively rare.
-Empirical work on this subject has mainly focused on eukaryotic species with
+\revpoint{2}{2}Highly fecund marine invertebrates have long been central to this question.
+Since the allozyme era they have been among the most polymorphic animals known,
+and the links between their diversity and their
+reproductive biology have been studied for decades \citep{hedgecock_does_1994}.
+Hyperdiverse species are also part of broad comparative studies of diversity and
+molecular evolution \citep{romiguier_comparative_2014,galtier_adaptive_2016,
+galtier_codon_2018}, and several have been studied in detail, including the sea squirt
+\textit{Ciona savignyi} \citep{small_extreme_2007}, the nematodes
+\textit{Caenorhabditis remanei} and \textit{C. brenneri}
+\citep{cutter_high_2006,dey_molecular_2013}, and the fungus \textit{Schizophyllum commune}
+\citep{baranova_extraordinary_2015}; other studies of genetic diversity and the
+mechanisms of evolution in large populations include
+\citet{ag1000g,teterina_pervasive_2025,anderson_population_2017,braso-vives_highly_2026}.
+However, most of this work, particularly that focused on marine organisms,
+ used tens of loci, transcriptomes, or a single genome, and
+chromosome-level analyses of population samples in highly fecund marine invertebrates
+remain few.
+Instead, empirical work on this subject has mainly focused on eukaryotic species with
 small-to-moderate historical population sizes \citep{cutter_molecular_2013,
 leffler_revisiting_2012,buffalo_quantifying_2021}, limiting our capacity to observe
 these evolutionary dynamics at demographic extremes.
@@ -120,7 +133,7 @@ We additionally generate a draft assembly for its congener, the wrinkled barnacl
 We use these assemblies to perform whole-genome comparative analyses, revealing conservation
 in genome architecture across 165 million years of barnacle evolution.
 We further conduct the first genome-wide assessment of genetic variation in this system,
-uncovering extreme levels ($>5\%$) of nucleotide diversity, with over 20 million SNPs
+uncovering extreme levels ($>5\%$)\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected: genome-wide $\pi$ = 0.024, 4-fold $\pi$ = 0.043 (\texttt{pg\_gpu\_stats}). Update.]} of nucleotide diversity, with over 20 million SNPs
 observed in just six individuals.
 Consistent with theoretical expectations, we observe reduced diversity in protein-coding
 sequences, reflecting strong \revpoint{E}{2}\revpoint{1}{1}purifying selection and functional
