@@ -627,7 +627,7 @@ differ significantly between the two classes (Mann-Whitney $P=0.15$).
 Thus, the low-diversity segments have a smaller $N_{e}$, and they possibly also have
 less recombination per mutation or additional LD from selection.
 
-\subsection*{Nucleotide diversity increases with the population recombination rate}\label{sec:results_pi_rho}
+\subsection*{Diversity, but not divergence, increases with the population recombination rate}\label{sec:results_pi_rho}
 
 \llabel{pi_rho_results}Linked selection, either background selection or recurrent
 selective sweeps, removes more neutral diversity where recombination is low
@@ -651,18 +651,39 @@ Within the low-diversity segments alone, we found no clear relationship
 from the windows with $\pi < 0.008$.
 \vspace{0.1cm}
 
+\llabel{div_rho_results}A positive correlation between diversity and recombination
+has two possible causes.
+Under linked selection, $N_{e}$ is lower where recombination is low, and this reduces
+diversity but not divergence between species.
+If recombination is mutagenic, the mutation rate is higher where recombination is
+high, and this increases both diversity and divergence
+\citep{begun_levels_1992}.
+To separate these causes, we compared $4N_{e}r$ with divergence between \bgla{} and
+\textit{B. crenatus} at 4-fold degenerate sites ($d_{4}$) in the exons of the same
+1\,Mbp windows.
+In these windows, $\pi$ at 4-fold degenerate sites ($\pi_{4}$) increased with
+$4N_{e}r$ (Spearman's $\rho$: 0.42, 0.29--0.52, in 633 normal-diversity windows; 0.43,
+0.30--0.54, in all 795 windows).
+However, $d_{4}$ did not increase with $4N_{e}r$ (normal-diversity: $-0.07$,
+$-0.23$--0.08; all: $-0.06$, $-0.19$--0.07).
+The upper limits of these confidence intervals are much lower than the correlation of
+$\pi_{4}$ with $4N_{e}r$, so this result is not due to a lack of statistical power.
+Also, $d_{4}$ was not correlated with $\pi$ (normal-diversity: 0.06, $-0.12$--0.23;
+all: 0.12, $-0.02$--0.26).
+The ratio $\pi_{4}/d_{4}$, which removes differences in the mutation rate among
+windows, increased with $4N_{e}r$ at least as much as $\pi_{4}$ did (0.47, 0.33--0.58, in both
+sets of windows).
+Thus, mutagenic recombination does not explain the correlation between diversity
+and recombination in \bgla{}.
+\vspace{0.1cm}
+
 Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
-Thus, this correlation is expected when $N_{e}$ varies along the genome, as it does
+Thus, their correlation is expected when $N_{e}$ varies along the genome, as it does
 under linked selection, even if $r$ is constant.
 In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.46
 (0.87--2.08), which includes the value of 1 expected if only $N_{e}$ varies.
-A second explanation is that recombination is mutagenic, which would increase both
-diversity and divergence where recombination is high.
-Divergence from \textit{B. crenatus} at 4-fold degenerate sites did not increase with
-$4N_{e}r$ (Spearman's $\rho$: $-0.07$, $-0.22$--0.08; 633 normal-diversity windows), while
-4-fold $\pi$ did (0.42, 0.28--0.53).
-Thus, the variation in $\pi$ along the genome is a variation in $N_{e}$, not in the
-mutation rate, as expected under linked selection.
+Together, these results show that the variation in $\pi$ along the genome is a
+variation in $N_{e}$, not in the mutation rate, as expected under linked selection.
 
 \subsection*{\balgla{} exhibits large effective population sizes}
 

@@ -844,6 +844,10 @@ alignments of the McDonald-Kreitman test (see \nameref{sec:methods_mkt}), with t
 Jukes-Cantor correction.
 We summed the differences and comparisons over the exons in each 1\,Mbp window (each exon
 assigned by its midpoint), and kept windows with at least 1{,}000 comparisons.
+In the same exons, we calculated $\pi_{4}$ from the accessible 4-fold degenerate sites
+with \textsc{pg\_gpu}, and the ratio $\pi_{4}/d_{4}$.
+We calculated Spearman's correlations of $d_{4}$, $\pi_{4}$, and $\pi_{4}/d_{4}$ with
+$4N_{e}r$, with confidence intervals as above.
 
 \subsection*{Inference of effective population size}
 
