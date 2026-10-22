@@ -492,9 +492,8 @@ the chromosomes are qualitatively similar to those expected under regimes of
 strong linked selection, in which regions of reduced diversity are the result
 of differences in the recombination landscape (e.g., reduction in recombination
 in centromeric regions).
-Describing recombination in detail this species should thus be a focus of future studies
-in order to characterize how highly efficacious selection and linkage shape genetic
-diversity along the genome in \bgla{}.
+\llabel{recomb_forward}We test this expectation with patterns of linkage disequilibrium
+in the next two sections (see \nameref{sec:results_ld} and \nameref{sec:results_pi_rho}).
 \vspace{0.1cm}
 
 % Genome-wide pi & repeat and gene density
@@ -568,6 +567,102 @@ species with large effective population sizes.
         while the crosses show the mean value.}
     \label{fig:feature_pi}
 \end{figure}
+
+\subsection*{Linkage disequilibrium decays within a few hundred base pairs}\label{sec:results_ld}
+
+\llabel{ld_decay_results}To describe recombination along the genome, we measured how linkage
+disequilibrium (LD) decays with the distance between SNPs.
+With only six unphased diploid individuals, the usual measures of LD are not reliable.
+In 10\,kbp windows, the mean $r^{2}$ between SNPs \citep[$Z_{nS}$;][]{kelly_test_1997},
+calculated from genotypes \citep{rogers_linkage_2009}, was close to its sampling floor
+for six individuals (median: 0.247), and it decreased as the number of SNPs in the
+window increased (Spearman's $\rho$: $-0.52$).
+Thus, windows with different SNP densities could not be compared.
+We therefore used $\sigma_{D}^{2}$, the ratio of the expected $D^{2}$ to the expected
+product of allele-frequency variances at the two sites ($\pi_{2}$)
+\citep{ohta_linkage_1969}.
+We calculated $D^{2}$ and $\pi_{2}$ with the estimators of
+\citet{ragsdale_unbiased_2020}, which are unbiased for the size of the sample and
+use genotypes, so they do not need phased haplotypes.
+Because these estimators are summed over all pairs of SNPs in a distance class,
+$\sigma_{D}^{2}$ does not depend on the number of SNPs, and it can be compared among
+regions with different levels of diversity
+(see \nameref{sec:methods_ld}).
+\vspace{0.1cm}
+
+LD in \bgla{} decays over a short physical distance.
+Over the 107 segments of chromosomes 1--15 (see below), $\sigma_{D}^{2}$ fell to half
+of its value for SNPs 10--20\,bp apart at 161\,bp (95\% CI: 142--186\,bp), and to one
+quarter at 705\,bp (583--890\,bp; Figure~\ref{fig:sup_ld_decay}A).
+A fit of the equilibrium expectation of \citet{ohta_linkage_1971} gave a population
+recombination rate ($4N_{e}r$) of 0.14 per bp (0.11--0.17).
+Divided by the median segment $\pi$ (0.024), this value gives $r/\mu \approx 6$.
+However, the equilibrium model does not fit the shape of the decay well: the observed
+$\sigma_{D}^{2}$ is 0.7 times the expected value at 14\,bp, and it is 15 times the
+expected value at 10\,kbp (Figure~\ref{fig:sup_ld_decay}A).
+We therefore use the fitted $4N_{e}r$ as a summary of the rate of decay, not as an
+exact estimate of the recombination rate.
+\vspace{0.1cm}
+
+The genome contains large regions of reduced diversity (Figure~\ref{fig:genome_pi}D).
+To compare them with the rest of the genome, we divided chromosomes 1--15 into
+segments of constant mean $\pi$ with a changepoint method
+(see \nameref{sec:methods_segments}).
+Of the 107 segments, 32 had $\pi$ lower than 0.75 times the genome-wide value
+(low-diversity segments; 171\,Mbp, median length 4.6\,Mbp), and 75 did not
+(normal-diversity segments; 657\,Mbp, median length 6.9\,Mbp).
+The median $\pi$ was 0.0129 in low-diversity segments and 0.0273 in normal-diversity
+segments.
+LD was higher in the low-diversity segments at all distances
+(Figure~\ref{fig:sup_ld_decay}B).
+In these segments, $\sigma_{D}^{2}$ fell to half of its short-distance value at
+364\,bp (286--461\,bp), against 152\,bp (133--178\,bp) in normal-diversity segments, and the
+fitted $4N_{e}r$ was 0.033 per bp (0.022--0.054), against 0.15 per bp (0.12--0.18).
+A lower $N_{e}$ explains part of this difference.
+When we scaled the distances of the normal-diversity curve by the ratio of $\pi$ between the
+two classes (0.47), the low-diversity segments still had 1.5 to 1.9 times more LD
+(Figure~\ref{fig:sup_ld_decay}C).
+However, per segment, the ratio of $4N_{e}r$ to $\pi$, which estimates $r/\mu$, did not
+differ significantly between the two classes (Mann-Whitney $P=0.15$).
+Thus, the low-diversity segments have a smaller $N_{e}$, and they possibly also have
+less recombination per mutation or additional LD from selection.
+
+\subsection*{Nucleotide diversity increases with the population recombination rate}\label{sec:results_pi_rho}
+
+\llabel{pi_rho_results}Linked selection, either background selection or recurrent
+selective sweeps, removes more neutral diversity where recombination is low
+\citep{kaplan_hitchhiking_1989,begun_levels_1992,charlesworth_effect_1993}.
+To test for this pattern, we fitted $4N_{e}r$ in 1\,Mbp windows inside each segment
+(829 windows) and compared it with $\pi$ in the same windows.
+Because windows in one segment are not independent, all confidence intervals come
+from resampling whole segments.
+In the normal-diversity segments, $\pi$ increased with $4N_{e}r$ (Spearman's $\rho$: 0.54,
+95\% CI: 0.40--0.64; 660 windows).
+The correlation was similar when we included the low-diversity segments
+(Spearman's $\rho$: 0.49, 0.35--0.61; 829 windows).
+Some windows with very low diversity ($\pi < 0.008$) contain a large proportion of
+genotyping errors, which carry no LD and increase the fitted $4N_{e}r$.
+When we removed these 61 windows, the correlation in all segments was 0.58
+(0.47--0.67).
+The same pattern was present among whole segments (normal-diversity: 0.65, 0.46--0.78;
+normal- and low-diversity: 0.63, 0.48--0.75).
+Within the low-diversity segments alone, we found no clear relationship
+(Spearman's $\rho$: $-0.30$, $-0.54$--0.02; 169 windows), and the negative value came
+from the windows with $\pi < 0.008$.
+\vspace{0.1cm}
+
+Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
+Thus, this correlation is expected when $N_{e}$ varies along the genome, as it does
+under linked selection, even if $r$ is constant.
+In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.46
+(0.87--2.08), which includes the value of 1 expected if only $N_{e}$ varies.
+A second explanation is that recombination is mutagenic, which would increase both
+diversity and divergence where recombination is high.
+Divergence from \textit{B. crenatus} at 4-fold degenerate sites did not increase with
+$4N_{e}r$ (Spearman's $\rho$: $-0.07$, $-0.22$--0.08; 633 normal-diversity windows), while
+4-fold $\pi$ did (0.42, 0.28--0.53).
+Thus, the variation in $\pi$ along the genome is a variation in $N_{e}$, not in the
+mutation rate, as expected under linked selection.
 
 \subsection*{\balgla{} exhibits large effective population sizes}
 
