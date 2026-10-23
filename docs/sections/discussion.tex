@@ -15,13 +15,16 @@ coding sequences.
 \vspace{0.1cm}
 
 Similarly, large populations are expected to experience an increase in the efficacy of
-purifying selection, which is expected to reduce the levels of diversity and increase 
-conservation across functional sequences.
+purifying selection, which is expected to reduce diversity at functional sites relative
+to neutral sites and to increase conservation across functional sequences.
 We see these patterns reflected in the \bgla{} genome.
 Putatively functional sites, particularly coding exons and tRNAs, show both increased
 levels of sequence conservation (Figure~\ref{fig:phastcons}) and a reduction in
 population-level genetic diversity (Figure~\ref{fig:feature_pi};
 Table~\ref{tab:sup_feature_pi}) compared to less constrained features of the genome.
+\llabel{disc_direct_purifying}The clearest evidence of this direct effect is the low
+diversity at 0-fold degenerate sites relative to 4-fold degenerate sites in the same
+codons, because linked selection has approximately the same effect on both classes.
 Notably, the rank ordering of the enrichment of conserved elements, with tRNAs and CDSs
 as the most enriched, parallels findings in insects \citep{siepel_evolutionarily_2005},
 suggesting that the targets of purifying selection are broadly conserved across
@@ -205,8 +208,19 @@ has been highlighted for decades, i.e., Lewontin's Paradox \citep{lewontin_genet
 the mechanisms underlying the differences have been long debated
 \citep{gillespie_role_1999,gillespie_genetic_2000,smith_hitch-hiking_1974,
 kimura_neutral_1983} and are still the subjects of study \citep{buffalo_quantifying_2021}.
-Our work on the Pacific acorn barnacle provides a unique opportunity to empirically
-study this disparity and the biological processes that maintain it.
+\llabel{disc_linked_selection}Our results are consistent with the idea that selection at
+linked sites is a major factor that reduces diversity along the \bgla{} genome
+(see \nameref{sec:results_pi_rho}).
+Diversity increases with the population recombination rate, but divergence from
+\textit{B. crenatus} does not, so the variation in diversity is not due to variation in the mutation rate.
+Regions of low diversity cover 21\% of the chromosomes, and their diversity is about
+half that of the rest of the genome.
+With our limited data, we cannot separate background selection from recurrent selective
+sweeps, and a detailed analysis of the relative contributions of these processes will be the subject of future work.
+Linked selection thus contributes to the difference between the long-term \Ne{} and
+the census size of this population, although our data cannot yet measure how much.
+%Our work on the Pacific acorn barnacle provides a unique opportunity to empirically
+%study this disparity and the biological processes that maintain it.
 \vspace{0.1cm}
 
 \subsection*{Barnacles among highly fecund marine invertebrates}
@@ -225,8 +239,10 @@ extreme, genealogies with multiple mergers rather than the Kingman coalescent
 Multiple-merger genealogies give an excess of rare variants and can bias estimates of
 effective size and demographic history made under the Kingman coalescent.
 The negative genome-wide Tajima's $D$ we observe is consistent with population growth,
-with linked selection, and with sweepstakes reproduction, and our sample of six
-individuals cannot separate these processes.
+with linked selection, and with sweepstakes reproduction.
+\llabel{disc_tajima_linked}The correlation between diversity and recombination shows
+that linked selection acts in this genome (see \nameref{sec:results_pi_rho}), but our
+sample of six individuals cannot exclude the other two processes.
 Our estimates of \Ne{} should therefore be read as the effective size of an equivalent
 Kingman population.
 \vspace{0.1cm}

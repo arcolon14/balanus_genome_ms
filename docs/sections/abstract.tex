@@ -18,9 +18,12 @@ This assembly reveals a highly polymorphic genome with over 3\% heterozygosity.
 At a population level, \bgla{} exhibits extreme levels of polymorphism,
 with nucleotide diversity surpassing 5\%\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected genome-wide $\pi$ = 0.024 (\texttt{pg\_gpu\_stats}). Update.]} genome-wide in just a small collection of
 individuals.
-Across the genome, nucleotide diversity predictably decreases at functional elements,
-including both coding and non-coding sequences, likely reflecting strong purifying
-selection along the genome.
+Nucleotide diversity is lower in functional elements, including both coding and
+non-coding sequences.
+In protein-coding sequences, diversity at non-synonymous sites is much lower than at
+synonymous sites in the same codons, which shows strong purifying selection.
+Diversity also increases with the population recombination rate, which shows that
+selection at linked sites reduces diversity along the genome.
 At the same time, McDonald-Kreitman tests reveal that the majority of non-synonymous
 substitutions between barnacle species were driven by positive selection, consistent
 with the expected increase in the efficacy of selection in large populations.

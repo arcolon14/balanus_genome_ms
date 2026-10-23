@@ -513,7 +513,7 @@ The rate between the number non-synonymous (d\textsubscript{N}) and synonymous
 (d\textsubscript{S}) substitutions and sites is then calculated, and corrected for
 multiple substitutions using the Jukes-Cantor correction \citep{JC69}.
 
-\subsection*{McDonald-Kreitman test}
+\subsection*{McDonald-Kreitman test}\label{sec:methods_mkt}
 
 We calculated the deviation from synonymous to non-synonymous polymorphism and
 divergence using the McDonald-Kreitman (MK) test \citep{mcdonald_adaptive_1991},
@@ -737,6 +737,122 @@ For this, we first determined the degeneracy at each coding site in the genome u
 After determining degeneracy we separately calculated $\pi$ for 0-fold and 4-fold
 degenerate sites using \textsc{pixy}, specifying the specific sites of interest using
 \texttt{-{}-sites\_file} and averaging within the span of each exon (using \texttt{-{}-bed\_file}).
+
+\subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
+
+\llabel{segments_methods}To find regions of reduced diversity, we divided each of
+chromosomes 1--15 into segments of constant mean $\pi$.
+We used the \textsc{pixy} $\pi$ values in 10\,kbp windows, and kept the windows with
+more than 1{,}000 called sites in which more than 10\% of the positions were called
+(42{,}459 windows).
+We detected changes in the mean $\pi$ with the Pruned Exact Linear Time (PELT)
+algorithm \citep{killick_optimal_2012} and a Normal mean-change cost, as implemented in
+the \texttt{cpt.mean} function of the \textsc{R} package \textsc{changepoint} version
+\texttt{2.3} \citep{killick_changepoint_2014}.
+Each chromosome was segmented separately, with a minimum segment length of 50 windows
+(500\,kbp).
+The Normal cost assumes independent observations with unit variance, but adjacent
+windows are correlated (lag-1 autocorrelation $\approx0.43$).
+We therefore divided the window values by a long-run standard deviation,
+$\sigma_{LR} = \sigma\sqrt{f}$.
+Here, $\sigma$ is the short-scale standard deviation, estimated as the median absolute
+deviation of the differences between adjacent windows divided by $\sqrt{2}$, and
+$f = 1 + 2\sum_{k=1}^{50} (1 - k/51)\,\rho_{k}$ is a Bartlett-weighted sum of the
+autocorrelations $\rho_{k}$ of the residuals around a running median of 151 windows
+\citep{newey_simple_1987}.
+The genome-wide estimate was $f = 3.83$.
+We used a penalty of $3\log(n)$ per changepoint, where $n$ is the number of windows on
+the chromosome. This is the modified Bayes information criterion penalty of
+\citet{zhang_modified_2007} without its term for segment length.
+The number of changepoints decreased steadily as the penalty increased, with no clear
+optimum, so we use the segments to describe the data, not as tested breakpoints.
+For each segment, we calculated $\pi$ as the sum of pairwise differences divided by the
+sum of pairwise comparisons over its windows.
+Segments with $\pi$ lower than 0.75 times the genome-wide value (calculated in the same
+way) were classified as low-diversity segments, and all other segments as normal-diversity
+segments.
+This classification used the \textsc{pixy} values, which overestimate $\pi$
+(see \nameref{sec:methods_ld}).
+The two classes remain distinct with the corrected values (median segment $\pi$:
+0.0129 in low-diversity and 0.0273 in normal-diversity segments).
+
+\subsubsection*{Linkage disequilibrium and population recombination rate}\label{sec:methods_ld}
+
+\llabel{ld_methods}For the LD analyses, we used the biallelic SNPs that passed the
+filters described above (see \nameref{sec:methods_popgen}), except that we kept sites with
+fewer than half of the genotypes missing (genotypes called in at least four of the six
+individuals).
+We converted the VCF to the VCF Zarr format with \textsc{bio2zarr} version
+\texttt{0.2.1} \citep{czech_analysis-ready_2025}, and calculated all statistics with
+the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24}) \citep{pope_gpu_2026}.
+We used only accessible sites: sites that passed all filters, or invariant sites
+that failed only the quality filter (\textsc{QUAL} $<30$), which is not informative
+for invariant sites.
+We removed indels, and all sites within 3\,bp of the span of an indel.
+With these accessible sites, we also calculated $\pi$ in 10\,kbp windows as the sum of
+pairwise differences divided by the number of accessible sites.
+\textsc{pixy} had excluded the invariant sites with low quality, which made its $\pi$
+values too high.
+\vspace{0.1cm}
+
+To measure LD in 10\,kbp windows, we calculated $Z_{nS}$ \citep{kelly_test_1997}, the
+mean $r^{2}$ over all pairs of SNPs in a window, with the genotype estimator of $r$
+\citep{rogers_linkage_2009}.
+To measure the decay of LD with distance, we used the unbiased estimators of $D^{2}$
+and $\pi_{2}$ from unphased genotype counts \citep{ragsdale_unbiased_2020}.
+For each pair of SNPs, the genotype counts used only the individuals genotyped at both
+sites.
+In each segment, we summed $D^{2}$ and $\pi_{2}$ over all pairs of SNPs in 14 distance
+bins at 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1{,}000,
+2{,}000, 5{,}000, and 20{,}000\,bp.
+For a set of segments, $\sigma_{D}^{2}$ in a distance bin is the sum of $D^{2}$
+divided by the sum of $\pi_{2}$.
+We calculated 95\% confidence intervals from 2{,}000 bootstrap samples of segments,
+drawn within each class.
+The scale of the decay is the distance at which $\sigma_{D}^{2}$ falls to one half and
+to one quarter of its value in the 10--20\,bp class, using a linear interpolation in the
+logarithm of distance.
+We fitted the expectation
+$\sigma_{D}^{2} = (10 + \rho_{d}) / (22 + 13\rho_{d} + \rho_{d}^{2})$
+\citep{ohta_linkage_1971}, with $\rho_{d} = 4N_{e}r\,d$ for SNPs $d$\,bp apart
+and $d$ the geometric midpoint of each distance class.
+We estimated $4N_{e}r$ per bp by least squares on $\sigma_{D}^{2}$ over all distance
+classes.
+To ask whether the higher LD in low-diversity segments comes only from their lower
+$N_{e}$, we compared the low-diversity curve with a scaled normal-diversity curve.
+To make the scaled curve, we read the normal-diversity curve at each distance multiplied
+by the ratio of median segment $\pi$ (low-diversity divided by normal-diversity), with
+interpolation on the logarithm of distance.
+If the two classes differed only in $N_{e}$, the two curves would be equal.
+We also estimated $r/\mu$ in each class as the $4N_{e}r$ fitted to the curve of the
+class divided by its median segment $\pi$, with confidence intervals from the same
+bootstrap samples.
+For single segments, we divided the fitted $4N_{e}r$ by the segment $\pi$ and compared
+the two classes with a Mann-Whitney $U$ test.
+\vspace{0.1cm}
+
+To compare $4N_{e}r$ with diversity, we divided each segment into 1\,Mbp windows
+and joined any last window shorter than 500\,kbp to the window before it, so
+that no window crossed a segment boundary.
+In each window, we fitted $4N_{e}r$ as above and calculated $\pi$ from the 10\,kbp
+windows inside it.
+We calculated Spearman's rank correlations between $\pi$ and $4N_{e}r$ for the
+normal-diversity windows and for all windows, with 95\% confidence intervals from 2{,}000
+bootstrap samples of segments drawn within each class, so that each sampled segment
+contributed all of its windows.
+In windows with $\pi < 0.008$, genotyping errors may be a large proportion of the SNPs.
+These errors carry no LD and increase the fitted $4N_{e}r$, so we repeated the
+correlations without these windows.
+To test whether recombination is mutagenic, we calculated divergence between the
+\bgla{} haplotypes and \textit{B. crenatus} at 4-fold degenerate sites in the
+alignments of the McDonald-Kreitman test (see \nameref{sec:methods_mkt}), with the
+Jukes-Cantor correction.
+We summed the differences and comparisons over the exons in each 1\,Mbp window (each exon
+assigned by its midpoint), and kept windows with at least 1{,}000 comparisons.
+In the same exons, we calculated $\pi_{4}$ from the accessible 4-fold degenerate sites
+with \textsc{pg\_gpu}, and the ratio $\pi_{4}/d_{4}$.
+We calculated Spearman's correlations of $d_{4}$, $\pi_{4}$, and $\pi_{4}/d_{4}$ with
+$4N_{e}r$, with confidence intervals as above.
 
 \subsection*{Inference of effective population size}
 
