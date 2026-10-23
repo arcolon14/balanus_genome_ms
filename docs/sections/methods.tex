@@ -824,6 +824,11 @@ To make the scaled curve, we read the normal-diversity curve at each distance mu
 by the ratio of median segment $\pi$ (low-diversity divided by normal-diversity), with
 interpolation on the logarithm of distance.
 If the two classes differed only in $N_{e}$, the two curves would be equal.
+We also estimated $r/\mu$ in each class as the $4N_{e}r$ fitted to the curve of the
+class divided by its median segment $\pi$, with confidence intervals from the same
+bootstrap samples.
+For single segments, we divided the fitted $4N_{e}r$ by the segment $\pi$ and compared
+the two classes with a Mann-Whitney $U$ test.
 \vspace{0.1cm}
 
 To compare $4N_{e}r$ with diversity, we divided each segment into 1\,Mbp windows
