@@ -651,18 +651,18 @@ To test for this pattern, we fitted $4N_{e}r$ in 1\,Mbp windows inside each segm
 Because windows in one segment are not independent, all confidence intervals come
 from resampling whole segments.
 In the normal-diversity segments, $\pi$ increased with $4N_{e}r$ (Spearman's $\rho$:
-0.53, 95\% CI: 0.40--0.63; 631 windows).
+0.53, 95\% CI: 0.40--0.63; 631 windows; Figure~\ref{fig:sup_div_rho}A).
 The correlation was similar when we included the low-diversity segments
-(Spearman's $\rho$: 0.48, 0.33--0.60; 827 windows).
+(Spearman's $\rho$: 0.48, 0.33--0.60; 827 windows; Figure~\ref{fig:sup_div_rho}B).
 Some windows with very low diversity ($\pi < 0.008$) likely contain a large proportion of
 genotyping errors, which carry no LD and increase the fitted $4N_{e}r$.
 When we removed these 59 windows, the correlation in all segments was 0.57
-(0.46--0.66).
-The same pattern was present among whole segments (normal-diversity: 0.66, 0.52--0.81;
-normal- and low-diversity: 0.59, 0.41--0.73).
+(0.46--0.66; Figure~\ref{fig:sup_div_rho}B).
+The same pattern was present among whole segments (normal-diversity: 0.69, 0.52--0.81;
+all segmennts: 0.59, 0.41--0.73; Figure~\ref{fig:sup_div_rho}C).
 Within the low-diversity segments alone, we found no clear relationship
-(Spearman's $\rho$: $-0.26$, $-0.49$--0.03; 196 windows), and the negative value came
-from the windows with $\pi < 0.008$.
+(Spearman's $\rho$: $-0.26$, $-0.49$--0.03; 196 windows; Figure~\ref{fig:sup_div_rho}A),
+and the negative value came from the windows with $\pi < 0.008$.
 \vspace{0.1cm}
 
 \llabel{div_rho_results}A positive correlation between diversity and recombination
@@ -677,28 +677,34 @@ To separate these causes, we compared $4N_{e}r$ with divergence between \bgla{} 
 1\,Mbp windows.
 In these windows, $\pi$ at 4-fold degenerate sites ($\pi_{4}$) increased with
 $4N_{e}r$ (Spearman's $\rho$: 0.39, 0.27--0.50, in 611 normal-diversity windows; 0.43,
-0.30--0.54, in all 790 windows).
+0.30--0.54, in all 790 windows; Figure~\ref{fig:sup_div_rho}F).
 However, $d_{4}$ did not increase with $4N_{e}r$ (normal-diversity: $-0.05$,
-$-0.21$--0.11; all: $-0.08$, $-0.21$--0.07).
+$-0.21$--0.11; all: $-0.08$, $-0.21$--0.07; Figure~\ref{fig:sup_div_rho}G).
 The upper limits of these confidence intervals are much lower than the correlation of
 $\pi_{4}$ with $4N_{e}r$, so this result is not due to a lack of statistical power.
 Also, $d_{4}$ was not correlated with $\pi$ (normal-diversity: 0.09, $-0.05$--0.24;
-all: 0.11, $-0.03$--0.25).
+all: 0.11, $-0.03$--0.25; Figure~\ref{fig:sup_div_rho}E).
 The ratio $\pi_{4}/d_{4}$, which removes differences in the mutation rate among
 windows, increased with $4N_{e}r$ at least as much as $\pi_{4}$ did (normal-diversity:
-0.44, 0.32--0.55; all: 0.47, 0.32--0.58).
+0.44, 0.32--0.55; all: 0.47, 0.32--0.58; Figure~\ref{fig:sup_div_rho}H).
 Thus, mutagenic recombination does not explain the correlation between diversity
 and recombination in \bgla{}.
 \vspace{0.1cm}
 
 
-% Note, update this. The new panel in the main figure covers this so we
-% need to make sure they are in sync.
+\comment{All of this needs to be updated because some of the results slightly
+changes (now one of the CIs does overlap 1). Also the main diversity figure
+has one of these panels as well complimenting \ref{fig:sup_div_rho}C}.
 Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
 Thus, their correlation is expected when $N_{e}$ varies along the genome, as it does
 under linked selection, even if $r$ is constant.
-In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.46
-(0.87--2.08), which includes the value of 1 expected if only $N_{e}$ varies.
+In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.92
+(1.34--2.45).
+This value excludes 1, meaning that $4N_{e}r/\pi$, which estimates $r/\mu$,
+increases with $\pi$.
+Because $d_{4}$ did not increase with $4N_{e}r$, this is not caused by variation in the
+mutation rate, but by a higher recombination rate where diversity is higher.
+
 Together, these results show that the variation in $\pi$ along the genome is a
 variation in $N_{e}$, not in the mutation rate, as expected under linked selection.
 

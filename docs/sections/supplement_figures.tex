@@ -7,7 +7,7 @@
     \includegraphics[width=0.8\textwidth]{figures/sups_kmers.png}
     \supfigurecaption{\textbf{\textsc{GenomeScope} profile of the raw PacBio HiFi
         data.} Distribution of 21-mers shows an estimated genome size of
-        845.01 Mbp and a heterozygosity of 3.3\% in the \bgla{}
+        845.01\,Mbp and a heterozygosity of 3.3\% in the \bgla{}
         reference assembly.}
     \label{fig:sup_kmers}
 \end{figure}
@@ -150,7 +150,7 @@
     \includegraphics[width=0.9\textwidth]{figures/sups_pi_comparisons.pdf}
     \supfigurecaption{\textbf{Comparing nucleotide diversity ($\pi$) between
         barnacles and biological model systems.}
-        Average $\pi$ in 10 kbp windows between the
+        Average $\pi$ in 10\,kbp windows between the
         Oregon Pacific acorn barnacle (\balgla{}; \texttt{BalGla}),
         Sub-Saharan populations of the fruit fly (\textit{Drosophila melanogaster};
             \texttt{DroMel}),
@@ -176,7 +176,7 @@
         Diagonal shows the density histogram of the proportion of the genomics
         elements (e.g., CDS, lncRNA, tRNA, repeats, and introns), proportion of
         variant sites, proportion of callable sites post-filtering, and nucleotide
-        diversity ($\pi$). All values computed across 10 kbp windows. Below
+        diversity ($\pi$). All values computed across 10\,kbp windows. Below
         the diagonal, plots show the correlation across all pairwise comparisons.
         Red and blue lines show the linear and Loess regression, respectively.
         Above the diagonal, panels show the Spearman's rank correlation
@@ -209,6 +209,37 @@
         above 1 after scaling shows LD that the lower \Ne{} of the low-diversity
         segments does not explain. The first and last distance classes are not shown.}
     \label{fig:sup_ld_decay}
+\end{figure}
+
+% Diversity, divergence, and recombination
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=0.95\linewidth}
+    \includegraphics[width=0.95\textwidth]{figures/sups_rho_div.pdf}
+    \supfigurecaption{\textbf{Diversity, divergence, and recombination in Oregon
+        \balgla{}.}
+        Genomic regions of normal (blue) and low (red) diversity are compared for
+        metrics of genetic diversity, divergence, and recombination.
+        \textbf{A.} Fitted recombination rate $\rho$ ($4N_{e}r$) against $\pi$ in
+        normal and low diversity windows 1\,Mbp in length.
+        The solid line is the least-squares fit of $\log 4N_{e}r$ on $\log\pi$ in
+        normal windows; the dashed line is $4N_{e}r \propto \pi$.
+        For all panels, $r_{s}$ denotes the Spearman's correlation coefficient with
+        95\% CIs from resampling whole segments.
+        \textbf{B.} Fitted $4N_{e}r$ against $\pi$ for all window pooled. The open
+        circles show the 59 windows with $\pi < 0.008$.
+        \textbf{C.} Fitted $4N_{e}r$ against $\pi$ for normal and low diversity
+        segments (defined according to the point change analysis). Complimentary
+        plot showing the slopes is shown in Figure~\ref{fig:genome_pi}E.
+        \textbf{D.} \sdsq{} for SNPs 20--30\,bp apart against $\pi$ in 1\,Mbp windows.
+        The partial $r_s$ count and window length constant.
+        \textbf{E.} Divergence at four-fold degenerate sites ($d_4$) against $\pi$
+        in 1\,Mbp windows.
+        \textbf{F.} Nucleotide diversity at four-fold degenerate sites ($\pi_4$)
+        against $4N_{e}r$ in 1\,Mbp windows.
+        \textbf{G.} $d_4$ against $4N_{e}r$ in 1\,Mbp windows.
+        \textbf{H.} $\pi_4/d_4$ against $N_{e}r$ in 1\,Mbp windows.}
+    \label{fig:sup_div_rho}
 \end{figure}
 
 % Theta_W Ne
