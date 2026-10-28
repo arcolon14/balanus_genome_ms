@@ -729,24 +729,29 @@ not explained by variation in the mutation rate.
 
 We estimated the effective population size (\Ne{}) for a central
 Oregon \textit{B. glandula} population sample using the whole-genome genotypes.
-As a simple estimate of the long-term \Ne{} of this population, we first
+As a simple estimate of the long-term effective size of this population, we first
 calculated \Ne{} using Watterson's estimator of genetic diversity ($\theta_\text{W}$),
-observing a mean genome-wide $\theta_\text{W}$ of 0.0617\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled $\theta_W$ = 0.0294, which gives $N_e \approx 2.5\times10^{6}$ with $\mu = 3\times10^{-9}$. Update.]} (median: 0.0635, standard
-deviation: 0.0224; Figure~\ref{fig:sup_theta_ne}). Assuming a per-base,
-per-generation mutation rate ($\mu$) of $3\times10^{-9}$ (as estimated by
-\cite{nunez_footprints_2020} for the northern acorn barnacle \textit{S. balanoides})
-and using the relationship between \Ne{} and $\theta_\text{W}$, this yields a
-mean effective size of 5{,}137{,}172 (median: 5{,}289{,}211, standard deviation:
-1{,}862{,}683), which is consistent with the expectation of large \Ne{} in this species.
+observing a pooled genome-wide $\theta_\text{W}$ of 0.0299 (mean: 0.0282, median:
+0.0280, standard deviation: 0.0156; Figure~\ref{fig:sup_theta_ne}).
+Assuming a per-base, per-generation mutation rate ($\mu$) of $3\times10^{-9}$ (the
+arthropod-averaged estimate used by \cite{nunez_footprints_2020} for the northern 
+acorn barnacle \textit{S. balanoides}) \comment{Add rev point to this} and using the relationship between \Ne{} and
+$\theta_\text{W}$, this yields an \Ne{} of $2.49 \times 10^{6}$ (mean: $2.35 \times 10^{6}$,
+median: $2.34 \times 10^{6}$).
+Estimating using only genotypes in intergenic regions of the genome yielded
+similar estimates (pooled $\theta_\text{W}$: 0.0296, \Ne{}: $2.46 \times 10^{6}$).
+Overall, these results are consistent with the large \Ne{} expected in these
+barnacles populations.
 \vspace{0.1cm}
 
 Additionally, we estimated \Ne{} through time using a coalescent-based
 approach with \textsc{msmc2} \citep{dutheil_msmc_2020}. This estimate also placed
 the historical effective size of the population on the order of $10^{6}$ individuals
 (between $10^{6}$ and $10^{7}$ generations ago) (Figure~\ref{fig:sup_mcmc_ne});
-however, given our small sample size and the use of only within sample pairwise
-comparisons, we were unable to obtain accurate \Ne{} estimates at more recent
-($<10^{5}$ generations) timescales using \textsc{msmc2}.
+however, given our small sample size, the use of only within sample pairwise
+comparisons, and the known difficulty of calculating population sizes for hyper-diverse
+marine invertebrates \comment{add citations and rev point here}, we were unable to obtain accurate \Ne{} estimates at more
+recent ($<10^{5}$ generations) timescales using \textsc{msmc2}.
 Nevertheless, even these conservative estimates place \bgla{} among the
 largest known effective population sizes for any eukaryote, yet orders of
 magnitude below the census sizes observed in the field --- a disparity

@@ -859,11 +859,13 @@ $4N_{e}r$, with confidence intervals as above.
 We used our filtered whole-genome genotypes from central Oregon \bgla{} to estimate the
 population's effective size.
 First, we estimated the long-term average \Ne{} in this population based on the
-estimates of $\theta_\text{W}$ along 10\,kbp windows using \textsc{pixy}, and using the
-relationship $\text{N}_\text{e} = \theta_\text{W}/4\mu$.
-We used the per-base per-generation mutation rate ($\mu$) of $3\times10^{-9}$ estimated
-by~\citet{nunez_footprints_2020} for the northern acorn barnacle
-\textit{Semibalanus balanoides}.
+estimates of $\theta_\text{W}$ along 10\,kbp windows (both spanning and excluding
+genic sites) using \textsc{pg\_gpu}.
+We calculated effective population size using the known relationship of
+$N_{e} = \theta_\text{W}/4\mu$.
+We used a per-base per-generation mutation rate ($\mu$) of $3\times10^{-9}$, the
+arthropod-wide estimate used by~\citet{nunez_footprints_2020} for the northern acorn
+barnacle \textit{Semibalanus balanoides}.
 Using this relationship, we calculated \Ne{} along these 10\,kbp windows, obtaining a
 distribution of effective size along the genome.
 \vspace{0.1cm}
