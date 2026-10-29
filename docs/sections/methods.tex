@@ -719,7 +719,7 @@ The effects of the kept variants was determined using \textsc{snpEff}.
 \comment{Re-read this}
 We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
 to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
-Watterson's $\theta$ ($\theta_\text{W}$), and segregating sites.
+Watterson's $\theta$ ($\theta_\text{W}$), Tajima's $D$, and segregating sites.
 First, we converted the VCF to the VCF Zarr format using \textsc{bio2zarr} version
 \texttt{0.2.1} \citep{czech_analysis-ready_2025}.
 We processed each chromosome separately, loading each as a \textsc{pg\_gpu}
@@ -728,7 +728,7 @@ This matrix was then filtered to include only SNPs located in accessible regions
 without any missing genotypes (\texttt{HaplotypeMatrix.get\_subset};
 see filtering methods above \comment{add reference}).
 We then calculated these three statistics over genomic windows using \textsc{pg\_gpu}'s
-\texttt{windowed\_analysis}, specifiying 10\,kbp windows (\texttt{window\_size=10000}).
+\texttt{windowed\_analysis}, specifying 10\,kbp windows (\texttt{window\_size=10000}).
 To obtain pooled statistics that account for invariant sites, we ran using the
 \texttt{per\_base=False} option, which returns the sum of the per-site statistic over the
 kept SNPs in a window.
@@ -736,12 +736,12 @@ This summed statistic is then divided by the number of accessible sites in a win
 times the number of pairwise comparisons (66 for 12 haplotypes without missing data).
 \vspace{0.1cm}
 
-We performed additional diversity calculations with \textsc{pg\_gpu} on different regions
-of interest in the genome.
-Instead of running on uniform 10\,kbp windows along the genome, we calculated $\pi$ along the
+We performed additional diversity calculations with \textsc{pg\_gpu} on different genomic
+regions of interest.
+Instead of running on uniform 10\,kbp windows, we calculated $\pi$ along the
 span of annotated genomic features (coding sequences, introns, 5' UTRs, 3' UTRs, lncRNAs,
 rRNAs, and intergenic regions).
-We loaded the same Zarr and accesibility mask and, for each feature, specified the interval
+We loaded the same Zarr and accessibility mask and, for each feature, specified the interval
 of interest according to a coordinates BED file.
 These BED coordinates were passed as the \texttt{\_win\_starts} and \texttt{\_win\_stops}
 options of \textsc{pg\_gpu}'s \texttt{windowed\_statistics\_fused} function, exporting
@@ -753,9 +753,9 @@ For this, we first determined the degeneracy at each coding site in the genome u
 \texttt{degenotate} version \texttt{1.3} tool from the \textsc{snpArcher} pipeline
 \citep{mirchandani_snparcher_2023}.
 After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
-degenerate sites using the same \textsc{pg\_gpu} approach described above, expect that we
+degenerate sites using the same \textsc{pg\_gpu} approach described above, except that we
 specified a specific site set based on the corresponding codon class.
-Diversity was pooled at at the exon level for both 0-fold and 4-fold sites.
+Diversity was pooled at the exon level for both 0-fold and 4-fold sites.
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 

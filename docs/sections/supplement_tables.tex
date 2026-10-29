@@ -100,29 +100,43 @@
 % Stats about polymorphism in the reference individual and the popgen samples.
 \begin{table}[ht]
     \centering
-    \suptablecaption{\textbf{Genetic variation in central Oregon \balgla{}.}}
+    \suptablecaption{\textbf{Genetic variation in central Oregon \balgla{}.}
+        \comment{the ref indidivual stats have to be updated}
+        Density of SNPs per accessible kbp is calculated only for windows with more
+        than 100 accessible sites ($1000 \times N_\text{window SNPs} / N_\text{window accessible}$).
+        Density of SNP in coding sequences was calculated only for exons with more than
+        100 accessible sites and adjusting for exon length
+        ($1000 \times N_\text{exon SNPs} / N_\text{exon accessible}$).}
     \begin{tabular}{lrr}
         \toprule
         Metric &
             Reference Individual &
             Cape Perpetua (N=6) \\
         \midrule
-        Reference sequence length (bp)      & \num{904940360} & \num{904940360} \\
-        Genotyped sites post-filtering (bp) & \num{314105136} & \num{111668206} \\
-        Total variant sites (bp)            & \num{9081889}   & \num{21395217} \\
-        Percent variant sites (\%)          & 2.89            & 19.16 \\
-        SNPs (N)                            & \num{8725877}   & \num{20501788} \\
-        Indels (N)                          & \num{356012}    & \num{893429} \\
-        Multiallelic SNPs (N)               & \texttt{NA}     & \num{996103} \\
-        Percent multiallelic SNPs (\%)      & \texttt{NA}     & 4.86 \\
-        Mean variant sites per kbp (N)      & 14.66           & 41.05 \\
-        Median variant sites per kbp (N)    & 6               & 29 \\
-        St Dev variant sites per kbp (N)    & 19.86           & 40.82 \\
-        Variant sites in CDSs (N)           & \num{398773}    & \num{1118874} \\
-        Percent variants in CDS (\%)        & 4.69            & 5.23 \\
-        Mean variants per CDS (N)           & 4.34            & 12.19 \\
-        Median variants per CDS (N)         & 1               & 6 \\
-        St Dev variants per CDS (N)         & 11.75           & 25.84 \\
+        Reference sequence length (bp)        & \num{904940360} & \num{904940360} \\
+        Accessible sites post-filtering (bp)  & \num{314105136} & \num{231589201} \\
+        Total variant sites (N)               & \num{9081889}   & \num{21395217} \\
+        Percent variant sites (\%)            & 2.89            & 9.24 \\
+        SNPs (N)                              & \num{8725877}   & \num{20495291} \\ % 8.85 of sites
+        Indels (N)                            & \num{356012}    & \num{899926} \\
+        Multiallelic SNPs (N)                 & \texttt{NA}     & \num{910949} \\ % 4.6% of var sites
+        Percent multiallelic SNPs (\%)        & \texttt{NA}     & 4.6 \\
+        \midrule
+            SNP density \\
+        \midrule
+        % This is 1000 x N_snps / N_accessible in 1000 bp windows
+        Mean SNPs per accessible kbp          & 14.66           & 83.3 \\
+        Median SNPs per accessible kbp        & 6               & 80.7 \\
+        StDev SNPs per accessible kbp         & 19.86           & 53.9 \\
+        \midrule
+            Coding variation \\
+        \midrule
+        % This is 1000 x N_exon_snps x N_exon_accessible across each exon interval
+        SNPs in CDS (N)                       & \num{398773}    & \num{1061714} \\
+        Percent SNPs in CDS (\%)              & 4.69            & 5.18 \\
+        Mean SNPs per accessible CDS kbp      & 4.34            & 51.0 \\
+        Median SNPs per accessible CDS kbp    & 1               & 46.5 \\
+        StDev SNPs per accessible CDS kbp     & 11.75           & 33.8 \\
         \bottomrule
     \end{tabular}
 \label{tab:sup_popgen_stats}
@@ -132,10 +146,10 @@
 \begin{sidewaystable}[ht]
     \suptablecaption{\textbf{Enchrichment of annotated features among \textsc{phastCons}
         highly conserved elements.}
-        The total feature proportion was determined according to the 841{,}166{,}098
-        bp corresponding to the 16 chromosome-level scaffolds.
+        The total feature proportion was determined according to the 841{,}166{,}098\,bp
+        corresponding to the 16 chromosome-level scaffolds.
         Proportion of highly-conserved elements (HCE) was calculated based on the
-        50{,}849{,}898 bp-span of all HCEs in the genome.
+        50{,}849{,}898\,bp-span of all HCEs in the genome.
         The number of chromosomes denotes the number of chromosome-level scaffolds
         containing annotations of the given feature.}
     \centering
