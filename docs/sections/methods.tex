@@ -586,6 +586,7 @@ Per-term counts and $p$-values were then extracted using the \texttt{GenTable} a
 
 \subsection*{Codon usage biases}
 
+\comment{Update all of this}
 We calculated codon usage biases on the \bgla{} coding sequences using the R package
 \textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026}.
 Before running \textsc{cubar}, we processed the annotation to extract only the longest
@@ -650,6 +651,7 @@ Additionally, we used the \textsc{bcftools} \texttt{norm} command to join adjace
 and indels into single multiallelic sites.
 \vspace{0.1cm}
 
+\comment{Some of this needs to be updated}
 After calling genotypes, we filtered the resulting variants using \textsc{bcftools}.
 Using the \texttt{filter} command, we removed sites (both variant and invariant) with
 low quality (\texttt{-{}-exclude "QUAL < 30"}), with too high coverage (\texttt{-{}-exclude
@@ -697,6 +699,7 @@ reference genome, resulting in a mean genome-wide coverage of 48.83x.
 
 \subsubsection*{Genotyping}
 
+\comment{update filter here}
 These six individuals were genotyped using the same \textsc{bcftools}
 \texttt{mpileup}/\texttt{call} approach used for our reference sample
 (see \nameref{sec:methods_ref_geno}), except allowing for a maximum depth of 1000x when
@@ -713,33 +716,50 @@ The effects of the kept variants was determined using \textsc{snpEff}.
 
 \subsubsection*{Population genetic statistics}
 
-We used the \textsc{pixy} software version \texttt{2.0.0.beta12}
-\citep{korunes_pixy_2021,bailey_pixy2_2025} to obtain genome-wide measures of genetic
-diversity. We calculated both nucleotide diversity ($\pi$) and Watterson's Theta
-($\theta_\text{W}$; \texttt{-{}-stats pi watterson\_theta}) on 10\,kbp windows
-(\texttt{-{}-window\_size 10000}).
-We allowed multiallelic sites to be used in the calculations
-(\texttt{-{}-include\_multiallelic\_snps}), limiting the calculation to sites present in our
-input VCF file (\texttt{-{}-sites\_file}).
+\comment{Re-read this}
+We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
+to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
+Watterson's $\theta$ ($\theta_\text{W}$), and segregating sites.
+First, we converted the VCF to the VCF Zarr format using \textsc{bio2zarr} version
+\texttt{0.2.1} \citep{czech_analysis-ready_2025}.
+We processed each chromosome separately, loading each as a \textsc{pg\_gpu}
+\texttt{HaplotypeMatrix} object.
+This matrix was then filtered to include only SNPs located in accessible regions
+without any missing genotypes (\texttt{HaplotypeMatrix.get\_subset};
+see filtering methods above \comment{add reference}).
+We then calculated these three statistics over genomic windows using \textsc{pg\_gpu}'s
+\texttt{windowed\_analysis}, specifiying 10\,kbp windows (\texttt{window\_size=10000}).
+To obtain pooled statistics that account for invariant sites, we ran using the
+\texttt{per\_base=False} option, which returns the sum of the per-site statistic over the
+kept SNPs in a window.
+This summed statistic is then divided by the number of accessible sites in a window
+times the number of pairwise comparisons (66 for 12 haplotypes without missing data).
 \vspace{0.1cm}
 
-We performed additional diversity calculations with \textsc{pixy} on different regions
+We performed additional diversity calculations with \textsc{pg\_gpu} on different regions
 of interest in the genome.
 Instead of running on uniform 10\,kbp windows along the genome, we calculated $\pi$ along the
 span of annotated genomic features (coding sequences, introns, 5' UTRs, 3' UTRs, lncRNAs,
 rRNAs, and intergenic regions).
-We reran \textsc{pixy} separately for each feature, specifying the genomic coordinates of
-the feature's annotation using the \texttt{-{}-bed\_file} option.
-We also calculated $\pi$ at 0-fold and 4-fold degenerate sites.
+We loaded the same Zarr and accesibility mask and, for each feature, specified the interval
+of interest according to a coordinates BED file.
+These BED coordinates were passed as the \texttt{\_win\_starts} and \texttt{\_win\_stops}
+options of \textsc{pg\_gpu}'s \texttt{windowed\_statistics\_fused} function, exporting
+pooled statistics as described above.
+\vspace{0.1cm}
+
+We also calculated diversity metrics at 0-fold and 4-fold degenerate sites.
 For this, we first determined the degeneracy at each coding site in the genome using the
 \texttt{degenotate} version \texttt{1.3} tool from the \textsc{snpArcher} pipeline
 \citep{mirchandani_snparcher_2023}.
-After determining degeneracy we separately calculated $\pi$ for 0-fold and 4-fold
-degenerate sites using \textsc{pixy}, specifying the specific sites of interest using
-\texttt{-{}-sites\_file} and averaging within the span of each exon (using \texttt{-{}-bed\_file}).
+After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
+degenerate sites using the same \textsc{pg\_gpu} approach described above, expect that we
+specified a specific site set based on the corresponding codon class.
+Diversity was pooled at at the exon level for both 0-fold and 4-fold sites.
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 
+\comment{update this to the pg gpu results}
 \llabel{segments_methods}To find regions of reduced diversity, we divided each of
 chromosomes 1--15 into segments of constant mean $\pi$.
 We used the \textsc{pixy} $\pi$ values in 10\,kbp windows, and kept the windows with
@@ -782,6 +802,7 @@ The two classes remain distinct with the corrected values (median segment $\pi$:
 filters described above (see \nameref{sec:methods_popgen}), except that we kept sites with
 fewer than half of the genotypes missing (genotypes called in at least four of the six
 individuals).
+\comment{Update this. Some of these methods moved above.}
 We converted the VCF to the VCF Zarr format with \textsc{bio2zarr} version
 \texttt{0.2.1} \citep{czech_analysis-ready_2025}, and calculated all statistics with
 the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24}) \citep{pope_gpu_2026}.
