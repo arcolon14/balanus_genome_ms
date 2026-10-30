@@ -755,7 +755,7 @@ For this, we first determined the degeneracy at each coding site in the genome u
 After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
 degenerate sites using the same \textsc{pg\_gpu} approach described above, except that we
 specified a specific site set based on the corresponding codon class.
-Diversity was pooled at the exon level for both 0-fold and 4-fold sites.
+Diversity was pooled at the exon level for both 0-fold and 4-fold sites.\comment{[The new summary (\texttt{BalGla\_features\_pi.summary.tsv}) reports 0-fold and 4-fold sites per gene (\texttt{unit = gene}; 15,647 genes), not per exon. Check which is correct and update.]}
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 

@@ -267,32 +267,35 @@
 % Breakdown of the per-feature Pi
 \begin{sidewaystable}[ht]
     \centering
-    \suptablecaption{\textbf{Nucleotide diversity ($\pi$) across different genomic features.}}
+    \small
+    \setlength{\tabcolsep}{4pt}
+    \suptablecaption{\textbf{Nucleotide diversity ($\pi$) across different genomic features.}
+        \comment{[0-fold and 4-fold rows are now summarized per gene, not per window/exon, so their ``windows'' and ``Window length'' values are genes and gene spans (identical for both rows). Explain this in the caption or relabel the columns.]}}
     \label{tab:sup_feature_pi}
-    \begin{tabular}{lrrrrrrrrrrr}
+    \begin{tabular}{lrrrrrrrrrrrr}
         \toprule
-        & \multicolumn{3}{c}{$\pi$} & &
+        & \multicolumn{4}{c}{$\pi$} & &
             \multicolumn{3}{c}{Window length (bp)} & &
-            \multicolumn{3}{c}{Sites per window} \\
-        \cmidrule(lr){2-4} \cmidrule(lr){6-8} \cmidrule(lr){10-12}
+            \multicolumn{3}{c}{Accessible sites per window} \\
+        \cmidrule(lr){2-5} \cmidrule(lr){7-9} \cmidrule(lr){11-13}
         Feature &
-            Mean & Median & StDev &
+            Pooled & Mean & Median & StDev &
             \shortstack{Number \\ of \\ windows} &
             Mean & Median & StDev &
             \shortstack{Number \\ of \\ sites} &
             Mean & Median & StDev \\
         \midrule
-        % Feature                            meanPi   medianPi               sdPi     nWinds     meanWinLen   MedWinLen   sdWinLen      nBP              meanWinBP     medWinBP  sdWinBP
-        \shortstack[l]{Genome\\wide}       & 0.0506 & 0.0531               & 0.0188 & \num{44599} & \num{9998.570} & \num{10000} & 103.774        & \num{93583599} & \num{2098.334} & \num{1932} & 821.464 \\
-        Intergenic                         & 0.0507 & 0.0526               & 0.0210 & \num{29219} & \num{7688.054} & \num{10000} & \num{3531.991} & \num{45677153} & \num{1563.269} & \num{1431} & 956.166 \\
-        CDS                                & 0.0302 & 0.0270               & 0.0221 & \num{78630} & 270.688        & 161         & 405.314        & \num{9447233}  & 120.148        & 80         & 163.758 \\
-        Intron                             & 0.0646 & 0.0650               & 0.0299 & \num{67638} & \num{2182.716} & 686         & \num{5257.832} & \num{34345262} & 507.781        & 209        & \num{1090.025} \\
-        5' UTR                             & 0.0398 & 0.0338               & 0.0309 & \num{6013}  & 153.063        & 114         & 148.787        & \num{424412}   & 70.582         & 54         & 63.678 \\
-        3' UTR                             & 0.0489 & 0.0468               & 0.0294 & \num{8218}  & 648.360        & 542         & 485.406        & \num{2083933}  & 253.582        & 210        & 194.076 \\
-        lncRNA                             & 0.0341 & 0.0302               & 0.0246 & \num{27168} & 399.958        & 184         & 511.811        & \num{4557588}  & 167.756        & 91         & 200.540 \\
-        tRNA                               & 0.0118 & $5.21\mathrm{e}{-3}$ & 0.0236 & \num{430}   & 66.177         & 72          & 16.982         & \num{13804}    & 32.102         & 32         & 14.305 \\
-        \shortstack[l]{0-fold\\degenerate} & 0.0107 & $2.92\mathrm{e}{-3}$ & 0.0178 & \num{75895} & 269.321        & 162         & 401.035        & \num{5397246}  & 71.115         & 46         & 96.221 \\
-        \shortstack[l]{4-fold\\degenerate} & 0.0790 & 0.0750               & 0.0483 & \num{39170} & 281.364        & 176         & 380.879        & \num{1410361}  & 36.006         & 23         & 46.585 \\
+        % Feature                          pooledPi               meanPi                 medianPi               sdPi                   nWinds        meanWinLen       MedWinLen     sdWinLen         nBP               meanWinBP        medWinBP     sdWinBP
+        \shortstack[l]{Genome\\wide}       & 0.0245               & 0.0232               & 0.0235               & 0.0127               & \num{63098} & \num{9999.176} & \num{10000} & 65.586         & \num{222343515} & \num{3523.781} & \num{3154} & \num{1862.624} \\
+        Intergenic                         & 0.0241               & 0.0228               & 0.0229               & 0.0130               & \num{38889} & \num{9210.389} & \num{10000} & \num{1961.534} & \num{116883842} & \num{3005.576} & \num{2514} & \num{1737.172} \\
+        CDS                                & 0.0161               & 0.0152               & 0.0135               & 0.0112               & \num{77517} & 294.236        & 165         & 451.357        & \num{19880799}  & 256.470        & 158        & 376.958 \\
+        Intron                             & 0.0270               & 0.0327               & 0.0319               & 0.0191               & \num{86036} & \num{3592.945} & \num{1002}  & \num{8494.484} & \num{94754847}  & \num{1101.340} & 407        & \num{2741.384} \\
+        5' UTR                             & 0.0231               & 0.0226               & 0.0192               & 0.0171               & \num{4636}  & 188.612        & 142         & 157.460        & \num{750453}    & 161.875        & 124        & 130.790 \\
+        3' UTR                             & 0.0236               & 0.0241               & 0.0219               & 0.0160               & \num{8111}  & 670.819        & 559         & 485.006        & \num{4457431}   & 549.554        & 455        & 405.146 \\
+        lncRNA                             & 0.0198               & 0.0176               & 0.0152               & 0.0132               & \num{26739} & 414.910        & 189         & 524.890        & \num{9385177}   & 350.992        & 176        & 441.441 \\
+        tRNA                               & $4.70\mathrm{e}{-3}$ & $4.81\mathrm{e}{-3}$ & 0                    & 0.0102               & 435         & 65.607         & 72          & 17.266         & \num{26650}     & 61.264         & 72         & 18.738 \\
+        \shortstack[l]{0-fold\\degenerate} & $6.69\mathrm{e}{-3}$ & $8.25\mathrm{e}{-3}$ & $4.98\mathrm{e}{-3}$ & $9.48\mathrm{e}{-3}$ & \num{15647} & \num{1425.765} & \num{1116}  & \num{1345.175} & \num{12688329}  & 810.911        & 623        & 807.874 \\
+        \shortstack[l]{4-fold\\degenerate} & 0.0431               & 0.0387               & 0.0375               & 0.0249               & \num{15647} & \num{1425.765} & \num{1116}  & \num{1345.175} & \num{3718088}   & 237.623        & 178        & 233.329 \\
     \bottomrule
     \end{tabular}
 \end{sidewaystable}
