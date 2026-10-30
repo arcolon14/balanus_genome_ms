@@ -35,7 +35,18 @@
 % for highlighting text. xcolor is loaded once, with dvipsnames for the named
 % colors (RoyalBlue, PineGreen); a second plain load is an option clash.
 \usepackage{soul}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
+% Alternating grey rows in tables. Put \shadedrows right before \begin{tabular} and
+% \startshading right after the header's \midrule. Header rows stay white; the first
+% data row is white and every second row after it is grey. colortbl counts \cmidrule
+% lines as rows, so instead of counting header rows, shading starts at row 1000 and
+% \startshading jumps the row counter there. colortbl picks each row's colour at the
+% end of the row before it, so the first data row is already set to white by then and
+% the counter is set to 1000 to make the second data row 1001 (odd, grey).
+% Change the grey level here.
+\definecolor{tablerowgrey}{gray}{0.92}
+\newcommand{\shadedrows}{\rowcolors{1000}{tablerowgrey}{}}
+\newcommand{\startshading}{\noalign{\global\rownum=1000\relax}}
 \usepackage{caption}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}

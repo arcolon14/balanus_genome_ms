@@ -13,6 +13,7 @@
         Curated assembly refers to the sequences generated after manual curation of 
             the Hi-C contact map and polishing with \textsc{Inspector}.
         \textsc{BUSCO} results refer to the \texttt{arthropoda\_odb10} dataset.}
+    \shadedrows
     \begin{tabular}{lrrrr}
         \toprule
         Assembly Stage &
@@ -20,7 +21,7 @@
             \shortstack{Optimized \\ contigs} &
             \shortstack{Hi-C \\ scaffolds} &
             \shortstack{Curated \\ assembly} \\
-        \midrule
+        \midrule \startshading
         Sequence length (Mbp)          & 1.64        & 1.05        & 1.05       & 1.04 \\
         Fragments (N)                  & \num{4212}  & \num{1342}  & 650        & 592 \\
         Contig N50 (Mbp)               & 0.734       & 1.35        & 1.18       & 1.18 \\
@@ -43,12 +44,13 @@
         gene annotation.}
         \textsc{BUSCO} completeness was determined by \textsc{compleasm}
         \texttt{protein}.}
+    \shadedrows
     \begin{tabular}{lrr}
         \toprule
         Metric &
             \texttt{arthropoda\_odb10} &
             \texttt{crustacea\_odb12} \\
-        \midrule
+        \midrule \startshading
         \textsc{BUSCO} complete (\%)   & 93.58      & 84.77 \\
         \textsc{BUSCO} single (\%)     & 79.76      & 72.66 \\
         \textsc{BUSCO} duplicates (\%) & 13.82      & 12.11 \\
@@ -72,6 +74,7 @@
             Coverage is the total number of masked sites per class; ``\% Genome''
             is the coverage divided by assembly size (1{,}043{,}519{,}078\,bp).}
     \label{tab:sup_repeat_summary}
+    \shadedrows
     \begin{tabular}{lrrrr}
         \toprule
             Classification &
@@ -79,7 +82,7 @@
                 Count &
                 \% Genome &
                 \shortstack{Distinct \\ elements} \\
-        \midrule
+        \midrule \startshading
             DNA                                        & \num{379178613} & \num{895512}  & 36.34 & 35 \\
             LINE                                       & \num{107103442} & \num{223314}  & 10.26 & 20 \\
             LTR                                        & \num{50161694}  & \num{120887}  &  4.81 &  8 \\
@@ -107,12 +110,13 @@
         Density of SNP in coding sequences was calculated only for exons with more than
         100 accessible sites and adjusting for exon length
         ($1000 \times N_\text{exon SNPs} / N_\text{exon accessible}$).}
+    \shadedrows
     \begin{tabular}{lrr}
         \toprule
         Metric &
             Reference Individual &
             Cape Perpetua (N=6) \\
-        \midrule
+        \midrule \startshading
         Reference sequence length (bp)        & \num{904940360} & \num{904940360} \\
         Accessible sites post-filtering (bp)  & \num{314105136} & \num{231589201} \\
         Total variant sites (N)               & \num{9081889}   & \num{21395217} \\
@@ -122,14 +126,14 @@
         Multiallelic SNPs (N)                 & \texttt{NA}     & \num{910949} \\ % 4.6% of var sites
         Percent multiallelic SNPs (\%)        & \texttt{NA}     & 4.6 \\
         \midrule
-            SNP density \\
+            \rowcolor{white}SNP density \\
         \midrule
         % This is 1000 x N_snps / N_accessible in 1000 bp windows
         Mean SNPs per accessible kbp          & 14.66           & 83.3 \\
         Median SNPs per accessible kbp        & 6               & 80.7 \\
         StDev SNPs per accessible kbp         & 19.86           & 53.9 \\
         \midrule
-            Coding variation \\
+            \rowcolor{white}Coding variation \\
         \midrule
         % This is 1000 x N_exon_snps x N_exon_accessible across each exon interval
         SNPs in CDS (N)                       & \num{398773}    & \num{1061714} \\
@@ -154,6 +158,7 @@
         containing annotations of the given feature.}
     \centering
     \label{tab:sup_phastcons_enrichment}
+    \shadedrows
     \begin{tabular}{lrrrrrrrr}
     \toprule
         Feature &
@@ -165,7 +170,7 @@
             \shortstack{Median $\log_2$ \\ enrichment} &
             \shortstack{St Dev $\log_2$ \\ enrichment} &
             \shortstack{Number of \\ chromosomes} \\
-    \midrule
+    \midrule \startshading
         3' UTR     & \num{2358104}   & $2.80\mathrm{e}{-3}$ & \num{152598}   & $3.00\mathrm{e}{-3}$ & $-0.0861$    & 0.0332       & 0.508        & 16 \\
         5' UTR     & \num{530151}    & $6.30\mathrm{e}{-4}$ & \num{27679}    & $5.44\mathrm{e}{-4}$ & $-0.292$     & $-0.332$     & 0.453        & 16 \\
         CDS        & \num{16273411}  & 0.0193               & \num{2225138}  & 0.0438               & 0.752        & 0.984        & 0.926        & 16 \\
@@ -192,6 +197,7 @@
         The first four rows (\texttt{BalGla}, \texttt{BalCre}, \texttt{AmpAmp}, and
         \texttt{PolPol}) denote the focal barnacle genomes.}
     \label{tab:sup_enc_summary}
+    \shadedrows
     \begin{tabular}{llrrrrrrrrrr}
     \toprule
     & & & \multicolumn{3}{c}{ENC} & \multicolumn{3}{c}{GC} & \multicolumn{3}{c}{GC3s} \\
@@ -202,7 +208,7 @@
         Mean & Median & StDev &
         Mean & Median & StDev &
         Mean & Median & StDev \\
-    \midrule
+    \midrule \startshading
     \texttt{BalGla} & \balgla{}                              & \num{16217} & 43.17 & 42.84 & 5.52 & 0.645 & 0.648 & 0.061 & 0.781 & 0.796 & 0.102 \\
     \texttt{BalCre} & \textit{Balanus crenatus}              & \num{7675}  & 42.23 & 41.40 & 4.78 & 0.645 & 0.649 & 0.055 & 0.815 & 0.837 & 0.093 \\
     \texttt{AmpAmp} & \textit{Amphibalanus amphitrite}       & \num{25242} & 44.33 & 43.93 & 5.05 & 0.632 & 0.636 & 0.054 & 0.775 & 0.792 & 0.099 \\
@@ -237,6 +243,7 @@
         both slope and coefficient of determination ($\text{R}^2$).
         }
     \label{tab:sup_enc_models}
+    \shadedrows
     \begin{tabular}{llrcccccccc}
     \toprule
     & & & \multicolumn{5}{c}{ENC deviation} & \multicolumn{3}{c}{Linear regression} \\
@@ -246,7 +253,7 @@
         \shortstack{Number \\ of Genes} &
         Mean & Median & StDev & Min & Max &
         Slope & Intercept & $\text{R}^2$ \\
-    \midrule
+    \midrule \startshading
     \texttt{BalGla} & \bgla{}                  & \num{16217} & 0.065 & 0.053 & 0.090 & $-0.344$ & 0.571 & 0.580 & 16.18 & 0.492 \\
     \texttt{BalCre} & \textit{B. crenatus}     & \num{7675}  & 0.040 & 0.044 & 0.052 & $-0.235$ & 0.382 & 0.725 & 10.19 & 0.844 \\
     \texttt{AmpAmp} & \textit{A. amphitrite}   & \num{25242} & 0.052 & 0.055 & 0.047 & $-0.225$ & 0.517 & 0.747 & 9.27  & 0.868 \\
@@ -270,8 +277,18 @@
     \small
     \setlength{\tabcolsep}{4pt}
     \suptablecaption{\textbf{Nucleotide diversity ($\pi$) across different genomic features.}
-        \comment{[0-fold and 4-fold rows are now summarized per gene, not per window/exon, so their ``windows'' and ``Window length'' values are genes and gene spans (identical for both rows). Explain this in the caption or relabel the columns.]}}
+        For all features, pooled $\pi$ denotes the total sum of pairwise differences over
+        the sum pairwise comparisons ($\sum\text{differences}/\sum\text{comparisons}$) for all
+        accessible sites.
+        Genome-wide and intergenic statistics are calculated over 10\,kbp windows with at
+        \num{1000} accessible sites.
+        Diversity over smaller genomic intervals (CDS, introns, 5' UTR, 3' UTR, and lncRNA)
+        are calculated on windows with at least 50 accessible sites; $20>$ accessible sites
+        for tRNAs.
+        Diversity at 0-fold and 4-fold degenerate sites are calculated for exons with
+        $\geq50$ accessible sites and pooled over the span of the whole gene.}
     \label{tab:sup_feature_pi}
+    \shadedrows
     \begin{tabular}{lrrrrrrrrrrrr}
         \toprule
         & \multicolumn{4}{c}{$\pi$} & &
@@ -284,7 +301,7 @@
             Mean & Median & StDev &
             \shortstack{Number \\ of \\ sites} &
             Mean & Median & StDev \\
-        \midrule
+        \midrule \startshading
         % Feature                          pooledPi               meanPi                 medianPi               sdPi                   nWinds        meanWinLen       MedWinLen     sdWinLen         nBP               meanWinBP        medWinBP     sdWinBP
         \shortstack[l]{Genome\\wide}       & 0.0245               & 0.0232               & 0.0235               & 0.0127               & \num{63098} & \num{9999.176} & \num{10000} & 65.586         & \num{222343515} & \num{3523.781} & \num{3154} & \num{1862.624} \\
         Intergenic                         & 0.0241               & 0.0228               & 0.0229               & 0.0130               & \num{38889} & \num{9210.389} & \num{10000} & \num{1961.534} & \num{116883842} & \num{3005.576} & \num{2514} & \num{1737.172} \\
@@ -307,10 +324,11 @@
         analyses.} For the NCBI accessions, \texttt{GCF\_*} denotes RefSeq assemblies and
         annotations. \texttt{GCA\_*} accessions denote GenBank assemblies and (when available)
         annotations.}
+    \shadedrows
     \begin{tabular}{lll}
         \toprule
             Genome & Species & NCBI accession \\
-        \midrule
+        \midrule \startshading
             \texttt{AmpAmp} & \textit{Amphibalanus amphitrite}       & \texttt{GCF\_019059575.1} \\
             \texttt{AmpAmp} & \textit{Amphibalanus amphitrite}       & \texttt{GCA\_037642225.1} \\
             \texttt{AmpImp} & \textit{Amphibalanus improvisus}       & \texttt{GCA\_964274985.1} \\
@@ -334,10 +352,11 @@
     \centering
     \suptablecaption{\textbf{Publicly available NCBI short-read archive data used
         for comparative analyses.}}
+    \shadedrows
     \begin{tabular}{lll}
         \toprule
             SRA & BioProject & Species \\
-        \midrule
+        \midrule \startshading
             % SRA                  BioProject             Species
             \texttt{SRR8775109}  & \texttt{PRJNA528777} & \textit{Amphibalanus improvisus} \\
             \texttt{SRR8775110}  & \texttt{PRJNA528777} & \textit{Amphibalanus improvisus} \\
