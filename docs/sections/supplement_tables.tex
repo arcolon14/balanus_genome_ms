@@ -104,7 +104,7 @@
 \begin{table}[ht]
     \centering
     \suptablecaption{\textbf{Genetic variation in central Oregon \balgla{}.}
-        Percentage of variant sites is calculated including single nucleotide
+        Percentage of variant sites is calculated for single nucleotide
         variants ($100 \times N_\text{SNP} / N_\text{accesible}$).
         Density of SNPs per accessible kbp is calculated only for windows with more
         than 100 accessible sites ($1000 \times N_\text{window SNPs} / N_\text{window accessible}$).
@@ -115,7 +115,7 @@
     \begin{tabular}{lrr}
         \toprule
         Metric &
-            Reference Individual &
+            Reference (N=1) &
             Cape Perpetua (N=6) \\
         \midrule \startshading
         Reference sequence length (bp)        & \num{904940360} & \num{904940360} \\
@@ -134,14 +134,28 @@
         Median SNPs per accessible kbp        & 19.0           & 80.7 \\
         StDev SNPs per accessible kbp         & 27.2           & 53.9 \\
         \midrule
-            \rowcolor{white}Coding variation \\
+            \rowcolor{white}Coding variants (all) \\
         \midrule
         % This is 1000 x N_exon_snps x N_exon_accessible across each exon interval
-        SNPs in CDS (N)                       & \num{396681}    & \num{1061714} \\
+        SNPs in CDS                           & \num{396681}    & \num{1061714} \\
         Percent SNPs in CDS (\%)              & 4.48            & 5.18 \\
         Mean SNPs per accessible CDS kbp      & 15.8            & 51.0 \\
         Median SNPs per accessible CDS kbp    & 12.0            & 46.5 \\
         StDev SNPs per accessible CDS kbp     & 17.0            & 33.8 \\
+        \midrule
+            \rowcolor{white}Coding variants (non-synonymous) \\
+        \midrule
+        % Just counting non-synomymous SNPs
+        Non-syn. SNPs in CDS                  & \num{144620}    & \num{337040} \\
+        Percent of coding SNPs (\%)           & 36.5            & 31.7 \\
+        % Just counting per total gene, regardless of size
+        Mean non-syn. SNPs per gene           & 8.2             & 20.0 \\
+        Median non-syn. SNPs per gene         & 3.0             & 12.0 \\
+        StDev non-syn. SNPs per gene          & 15.4            & 27.4 \\
+        % Now adjusting for size. Total Non-syn SNP density
+        Mean non-syn. SNP per accessible CDS kbp    & 7.9  & 21.6 \\
+        Median non-syn. SNP per accessible CDS kbp  & 3.2  & 13.3 \\
+        StDev non-syn. SNP per accessible CDS kbp   & 13.2 & 24.3 \\
         \bottomrule
     \end{tabular}
 \label{tab:sup_popgen_stats}
