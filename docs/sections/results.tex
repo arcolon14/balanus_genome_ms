@@ -504,7 +504,7 @@ which represents a $\approx1.5\times$ reduction in diversity when compared to th
 genome-wide average. A reduction in diversity of similar magnitude is also observed
 lncRNAs ($\approx1.3\times$).
 The largest reduction in diversity was observed in tRNAs, with
-$\pi~\approx5.2\times$ lower than the genome-wide average and consistent with the
+$\pi\approx5.2\times$ lower than the genome-wide average and consistent with the
 strong functional constraint evidenced by their enrichment in highly conserved elements.
 In contrast to coding exons, other genic features show different distributions of $\pi$.
 Both 5' and 3' UTRs show similar levels of diversity to the genome-wide average
@@ -572,23 +572,30 @@ in the next two sections (see \nameref{sec:results_ld} and \nameref{sec:results_
     \centering
     \captionsetup{width=0.95\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/genome_pi.pdf}
-    \caption{\textbf{Nucleotide diversity ($\pi$) and coding and repeat density
-        along the \balgla{} genome.}
-        \comment{update to new pi normal vs low fig}
-        \textbf{A.} Density of coding sequences (CDS) along the genome, defined as the
-        proportion of bases annotated as CDS within 10\,kbp windows. Line reflects the
-        kernel-smoothed values along a 1\,Mbp window. Dashed horizontal line shows
-        the genome-wide average proportion of CDS bases (0.0288). Top and bottom
-        horizontal axes show the chromosome number and genomic position, respectively.
-        \textbf{B.} Density of repeat elements annotated within 10\,kbp windows, smoothed
-        along 1\,Mbp intervals. Dashed horizontal line shows the genome-wide average
-        proportion of repeat bases (0.597).
-        \textbf{C.} Density of segregating sites, calculated as the proportion of SNPs
-        within 10\,kbp windows, smoothed along 1\,Mbp intervals. Dashed horizontal line
-        shows the genome-wide average proportion of segregating SNPs per 10\,kbp
-        (0.0307).
-        \textbf{D.} $\pi$ within 10\,kbp windows, smoothed along 1\,Mbp intervals.
-        Horizontal dashed line shows the mean genome-wide $\pi$ (0.0506).}
+    \caption{\textbf{Landscapes of nucleotide diversity ($\pi$) in the \balgla{} genome.}
+        \textbf{A.} Pooled $\pi$ in 10\,kbp windows is shown as grey dots. Solid black
+        and dark grey lines show $\pi$ kernel-smoothed in 1\,Mbp windows. Dashed horizontal
+        line shows the genome-wide pooled $\pi$ (0.0245). Blue and red blocks show the
+        span of normal and low diversity segments of the genome, respectively, as
+        classified by the point change analysis. Top and bottom horizontal axes show
+        the chromosome number and genomic position, respectively.
+        \textbf{B.} Synonymous substitution rate ($d_\text{S}$) of protein-coding
+        genes between genomic segments of normal and low diversity. Numbers on the
+        x-axis denote the number of protein coding genes within each diversity class.
+        \textbf{C.} Ratio of non-synonymous to synonymous nucleotide diversity
+        ($\pi_0/\pi_4$) in protein-coding sequences between normal and low diversity
+        segments. Higher values show an excess of non-synonymous polymorphism.
+        \textbf{D.} Neutrality Index (NI) of protein coding genes between normal and
+        low diversity segments. On the scaled log axis, high values (NI $<1$) indicate a
+        higher rate of non-synonymous substitutions, while low values (NI $>1$) show an
+        excess of non-synonymous polymorphism.
+        \textbf{E.} Fitted population-scaled recombination rate ($\rho$ or $4N_{e}r$) as
+        a function of diversity ($\pi$) in normal (blue) and low (red) diversity segments.
+        Dashed line shows the one-to-one relationship between diversity and recombination
+        ($\rho \propto \pi$). Solid lines and shaded area show the slope along with its
+        95\% confidence interval. Complimentary plot showing the Spearman's correlation
+        coefficient is shown in Figure~\ref{fig:sup_div_rho}C.
+        For all panels: n.s. = non-significant ($p > 0.05$), \texttt{***} = $p < 10^{-4}$.}
     \label{fig:genome_pi}
 \end{figure}
 
@@ -738,7 +745,6 @@ $\pi$ under the same control ($-0.57$, $-0.74$ to $-0.37$).
 Together, these results show that diversity along the \bgla{} genome is lower where
 recombination is lower, as expected under linked selection, and that this pattern is
 not explained by variation in the mutation rate.
-
 
 \subsection*{\balgla{} exhibits large effective population sizes}
 
