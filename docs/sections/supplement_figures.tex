@@ -169,22 +169,24 @@
     \label{fig:sup_pi_comp}
 \end{figure}
 
-% Pairwise correlation among different genomic feature and diversity metrics.
+% Composition of the changepoint segments
 \begin{figure}[ht]
     \centering
     \captionsetup{width=0.95\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/sups_pi_pairplot.png}
-    \supfigurecaption{\textbf{Pairplot of genomic features and genetic variation
-        in Oregon \balgla{}.}
-        Diagonal shows the density histogram of the proportion of the genomics
-        elements (e.g., CDS, lncRNA, tRNA, repeats, and introns), proportion of
-        variant sites, proportion of callable sites post-filtering, and nucleotide
-        diversity ($\pi$). All values computed across 10\,kbp windows. Below
-        the diagonal, plots show the correlation across all pairwise comparisons.
-        Red and blue lines show the linear and Loess regression, respectively.
-        Above the diagonal, panels show the Spearman's rank correlation
-        coefficient ($\rho$) for the given pairwise comparison.}
-    \label{fig:sup_pi_pairplot}
+    \includegraphics[width=1.0\textwidth]{figures/sups_changepoint_composition.pdf}
+    \supfigurecaption{\textbf{Sequence composition and annotation across low and normal
+        diversity genomic segments.}
+    \textbf{A.} GC content across the low (29, in red) and normal (64, in blue) diversity
+    segments. GC proportion is calculated as the proportion of \texttt{G} $+$ \texttt{C}
+    nucleotides divided by the total number of non-\texttt{N} nucleotides in a genomic segment.
+    Significance is calculated by a permutation analysis, shuffling class labels among segments.
+    \textbf{B.} Density of coding (CDS) sites between low and normal diversity segments.
+    CDS proportion is calculated as the number of sites spanning an annotated CDS divided by
+    window length. Density is first calculated for 10\,kbp windows and pooled for the span
+    of a segment.
+    \textbf{C.} Density of repeat bases between low and normal diversity segments. Proportion
+    calculation follows the same convention used for CDS.}
+    \label{fig:sup_chp_comp}
 \end{figure}
 
 % Decay of LD with distance
@@ -192,8 +194,7 @@
     \centering
     \captionsetup{width=0.95\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_ld_decay.pdf}
-    \supfigurecaption{\textbf{Decay of linkage disequilibrium with distance in Oregon
-        \balgla{}.}
+    \supfigurecaption{\textbf{Decay of linkage disequilibrium in Oregon \balgla{}.}
         \sdsq{} is the sum of $D^{2}$ divided by the sum of $\pi_{2}$ over all
         pairs of SNPs in a distance class, calculated with the unbiased genotype
         estimators of \citet{ragsdale_unbiased_2020}. Points are at the geometric
@@ -232,7 +233,7 @@
         \textbf{B.} Fitted $4N_{e}r$ against $\pi$ for all window pooled. The open
         circles show the 59 windows with $\pi < 0.008$.
         \textbf{C.} Fitted $4N_{e}r$ against $\pi$ for normal and low diversity
-        segments (defined according to the point change analysis). Complimentary
+        segments (defined according to the changepoint analysis). Complementary
         plot showing the slopes is shown in Figure~\ref{fig:genome_pi}E.
         \textbf{D.} \sdsq{} for SNPs 20--30\,bp apart against $\pi$ in 1\,Mbp windows.
         The partial $r_s$ count and window length constant.
