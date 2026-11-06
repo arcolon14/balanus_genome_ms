@@ -3,7 +3,7 @@
 % k-mer distribution of the raw hi-fi reads
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.8\textwidth]{figures/sups_kmers.png}
     \supfigurecaption{\textbf{\textsc{GenomeScope} profile of the raw PacBio HiFi
         data.} Distribution of 21-mers shows an estimated genome size of
@@ -15,7 +15,7 @@
 % Hi-C contact map
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_hic.pdf}
     \supfigurecaption{\textbf{Hi-C contact map of the \balgla{} assembly.}
         The contact map shows the assembly following manual curation in
@@ -31,7 +31,7 @@
 % dN/dS
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.7\textwidth]{figures/dnds.pdf}
     \supfigurecaption{\textbf{Distribution of the pairwise rate of non-synonymous
         to synonymous substitutions (\dnds{}).}
@@ -48,7 +48,7 @@
 % Direction of selection.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.7\textwidth]{figures/sups_mkt_dos.pdf}
     \supfigurecaption{\textbf{Distribution of per-gene direction of selection values.}
         The distribution shows Direction of Selection (DoS) calculated across \num{7056}
@@ -66,7 +66,7 @@
 % Extended GO terms.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.925\textwidth]{figures/sups_go_extended.pdf}
     \supfigurecaption{\textbf{Significant GO term enrichment among the candidates
         under positive selection in the McDonald-Kreitman test.}
@@ -83,7 +83,7 @@
 % Coding GC, GC3s, and GC4d
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_coding_gc.pdf}
     \supfigurecaption{\textbf{Distribution of coding GC proportions across metazoan
         genomes.}
@@ -103,7 +103,7 @@
 % ENC vs GC3s
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_enc_gc3s.png}
     \supfigurecaption{\textbf{Relationship between effective codons and GC content.}
         \comment{Update this}
@@ -125,7 +125,7 @@
 % Exp vs Obs ENC
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_enc_regression.png}
     \supfigurecaption{\textbf{Relationship between the expected and observed number of
         effective codons.}
@@ -149,7 +149,7 @@
 % Pi vs other species.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.9\textwidth]{figures/sups_pi_comparisons.pdf}
     \supfigurecaption{\textbf{Comparing nucleotide diversity ($\pi$) between
         barnacles and biological model systems.}
@@ -172,7 +172,7 @@
 % Composition of the changepoint segments
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_changepoint_composition.pdf}
     \supfigurecaption{\textbf{Sequence composition and annotation across low and normal
         diversity genomic segments.}
@@ -180,19 +180,53 @@
     segments. GC proportion is calculated as the proportion of \texttt{G} $+$ \texttt{C}
     nucleotides divided by the total number of non-\texttt{N} nucleotides in a genomic segment.
     Significance is calculated by a permutation analysis, shuffling class labels among segments.
-    \textbf{B.} Density of coding (CDS) sites between low and normal diversity segments.
-    CDS proportion is calculated as the number of sites spanning an annotated CDS divided by
+    \textbf{B-C.} Density of sites annotated as coding (CDS; B) and repeats (C) between low
+    and normal diversity segments.
+    Proportion is calculated as the number of sites spanning an annotated feature divided by
     window length. Density is first calculated for 10\,kbp windows and pooled for the span
-    of a segment.
-    \textbf{C.} Density of repeat bases between low and normal diversity segments. Proportion
-    calculation follows the same convention used for CDS.}
+    of a segment.}
     \label{fig:sup_chp_comp}
+\end{figure}
+
+% Molecular evolution stats on the segments genes
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_segment_genes.pdf}
+    \supfigurecaption{\textbf{Signatures of polymorphism and molecular evolution
+        between protein-coding genes in low and normal diversity segments.}
+        For all panels, genes were assigned to the changepoint segment containing their
+        midpoint position.
+        Violins and boxes show the distribution across genes; diamonds mark the mean.
+        Colored circles denote the pooled estimates with 95\% confidence intervals.
+        The $n$'s under each violin show the number of genes compared for a given
+        statistic.
+        \textbf{A-C.} Pairwise divergence to \textit{Balanus crenatus}:
+            (A) non-synonymous divergence, $d_\text{N}$;
+            (B) synonymous divergence, $d_\text{S}$;
+            (C) non-synonymous to synonymous divergence ratio, \dnds.
+            Genes with $d_\text{S}>2$ were excluded.
+        \textbf{D-F.} Nucleotide diversity at
+            (D) 0-fold ($\pi_0$) and
+            (E) 4-fold ($\pi_4$) degenerate sites, and
+            (F) their ratio ($\pi_0/\pi_4$).
+            Per-gene values are shown for for genes with $\geq20$ sites of each class.
+        \textbf{G.} Per-gene Tajima's $D$ for genes with $\geq3$ segregating sites.
+        \textbf{H-L.} Per-gene McDonald-Kreitman statistics:
+            (H) Direction of Selection, DoS;
+            (I) $-\log_{10}$ of the Neutrality Index, NI;
+            (J) proportion of non-synonymous substitutions fixed by selection, $\alpha$;
+            (K) the weighted Tarone-Greenland $\alpha$ estimator, $\alpha_\text{TG}$;
+            (L) the asymptotic $\alpha$ estimator, $\alpha_\text{asym}$.
+            Both $\alpha_\text{TG}$ and $\alpha_\text{asym}$ are weighted estimators
+            and do not report per-gene values.}
+    \label{fig:sup_chp_genes}
 \end{figure}
 
 % Decay of LD with distance
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_ld_decay.pdf}
     \supfigurecaption{\textbf{Decay of linkage disequilibrium in Oregon \balgla{}.}
         \sdsq{} is the sum of $D^{2}$ divided by the sum of $\pi_{2}$ over all
@@ -218,10 +252,9 @@
 % Diversity, divergence, and recombination
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.95\textwidth]{figures/sups_rho_div.pdf}
-    \supfigurecaption{\textbf{Diversity, divergence, and recombination in Oregon
-        \balgla{}.}
+    \supfigurecaption{\textbf{Diversity, divergence, and recombination in Oregon \balgla{}.}
         Genomic regions of normal (blue) and low (red) diversity are compared for
         metrics of genetic diversity, divergence, and recombination.
         \textbf{A.} Fitted recombination rate $\rho$ ($4N_{e}r$) against $\pi$ in
@@ -249,7 +282,7 @@
 % Theta_W Ne
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.8\textwidth]{figures/sups_theta_ne.pdf}
     \supfigurecaption{\textbf{Effective population (\Ne) size estimation
         of \balgla{} based on the Watterson's estimator ($\theta_\text{W}$).}
@@ -267,7 +300,7 @@
 % msmc2 Ne
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.9\textwidth]{figures/sups_msmc2_ne.pdf}
     \supfigurecaption{\textbf{Coalescent estimation of the effective
     population (\Ne) size estimation of \balgla{}.}
@@ -287,7 +320,7 @@
 % B. glandula against published comparative data (Romiguier 2014, Galtier 2016)
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_comparative.pdf}
     \supfigurecaption{\textbf{\bgla{} in the context of published animal data.}
         Synonymous diversity ($\pi_S$) against (A, F) the ratio of non-synonymous to
