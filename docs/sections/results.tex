@@ -546,7 +546,8 @@ species with large effective population sizes.
     \label{fig:feature_pi}
 \end{figure}
 
-\subsection*{Landscapes of genetic diversity in the \bgla{} genome highlight the effects of linked selection}
+% Some other header?
+\subsection*{The \bgla{} genome shows heterogeneous landscapes of genetic diversity}
 
 Looking at the distributions of $\pi$ along the \bgla{} genome revealed discrete regions
 of low genetic diversity, often located at the center of the chromosomes
@@ -565,27 +566,58 @@ on average (mean) 23.8\% of the assembled chromosome (median: 22.4\%, standard d
 Additionally, we observe a difference in the sequence composition and content between the two
 segment classes.
 Low-diversity segments show a small but significant decrease in GC content when compared
-to normal-diversity segments: 47.0\% vs. 47.6\% in low and normal-diversity segments,
-respectively ($p = 0.0014$; Figure~\ref{fig:sup_chp_comp}A).
+to normal-diversity segments: 47.0\% ($\pm 1.02\%$) vs.\ 47.6\% ($\pm 0.77\%$) in low and
+normal-diversity segments, respectively ($p = 0.0014$; Figure~\ref{fig:sup_chp_comp}A).
 The differences are more pronounced when comparing the density of annotated coding sequences
 and repeats.
 Genomic segments with low diversity are less gene dense, showing a mean proportion of 0.0229
-bases annotated as CDS, compared to the 0.0304 mean observed in normal-diversity segments
-($p < 1 \times 10^{-4}$; Figure~\ref{fig:sup_chp_comp}B).
-Low diversity regions are also more repeat rich, showing a mean proportion of 0.666 bases
-annotated as repeats (normal-segment mean repeat proportion = 0.577; $p < 1 \times 10^{-4}$;
-Figure~\ref{fig:sup_chp_comp}C).
+($\pm 0.0074$) bases annotated as CDS, significantly lower than the 0.0304 ($\pm 0.0068$) mean
+observed in normal-diversity segments ($p < \num{1e-4}$; Figure~\ref{fig:sup_chp_comp}B).
+Low diversity regions are also significantly more repeat rich, showing a mean proportion of
+0.666 ($\pm 0.073$) bases annotated as repeats (normal-segment mean repeat proportion =
+$0.577 \pm 0.054$; $p < \num{1e-4}$; Figure~\ref{fig:sup_chp_comp}C).
+\vspace{0.1cm}
 
-% Now here, build up the recombination section. Mention that the difference is not in
-% substitution rate, so not an effect of the mutation rate (link to the divergence section
-% below). Mention that there is a different in the distribution of polymorphism, reflecting
-% changes in local Ne. Mention the supplemental figure with the set of all the stats.
-% Give a hint that the different appear to be in recombination. This is the expectation
-% of linked selection, and we could be seeing this in the supplements. Would explain why
-% we see more repeats.
-
-\llabel{recomb_forward}We test this expectation with patterns of linkage disequilibrium
-in the next two sections (see \nameref{sec:results_ld} and \nameref{sec:results_pi_rho}).
+We proceeded to explore the possible cause of these regions of low diversity by comparing
+the patterns of divergence and polymorphism in protein-coding genes located in these
+genomic segments.
+Genes located in low and normal diversity regions exhibit no difference in their neutral
+substitution rate (as calculated by synonymous divergence, $d_\text{S}$) when compared to
+\textit{B. crenatus} ($p = 0.6$; Figure~\ref{fig:genome_pi}B).
+No difference is observed for either the rate of non-synonymous divergence ($d_\text{N}$)
+or their ratio, \dnds{} (Figure~\ref{fig:sup_chp_genes}A-C), or to the relationship between
+divergence and recombination, which we discuss below (see: \nameref{sec:results_pi_rho}).
+These substitution rate results suggest that the difference in diversity between the two
+segment classes is not the product of differences in the mutation rate.
+Exploring further, we do observe differences in the distribution of coding polymorphism
+between the two diversity classes.
+Expectedly, both synonymous and non-synonymous polymorphism (in the form of $\pi_4$ and
+$\pi_0$, respectively) are lower in low-diversity segments; however, the reduction in
+diversity is not the same between the two.
+Synonymous polymorphism shows a $\approx60\%$ reduction between low-diversity (pooled
+$\pi_4 = 0.019$) and normal-diversity segments (pooled $\pi_4 = 0.048$;
+Figure~\ref{fig:sup_chp_genes}E).
+In contrast, non-synonymous polymorphism in low-diversity segments (pooled $\pi_0 = 0.0039$)
+only shows a $\approx47\%$ reduction when compared to segments of normal diversity
+(pooled $\pi_0 = 0.0074$; Figure~\ref{fig:sup_chp_genes}D).
+In turn, this results in an excess of non-synonymous polymorphism relative to neutral
+variation in regions of low diversity, as seen by the significantly elevated
+$\pi_0/\pi_4$ ($p < \num{1e-4}$; Figure~\ref{fig:genome_pi}C).
+This excess in non-synonymous polymorphism is also reflected in differences between
+the McDonald-Kreitman statistics between the two segment classes.
+Both metrics of $alpha$ and NI indicate a reduction in the proportion of adaptive
+substitutions fixed by selection in low-diversity segments (Figure~\ref{fig:genome_pi}D;
+Figure~\ref{fig:sup_chp_genes}H-J); however, given the lack of difference in the
+adaptive substitution rate, this reduction just reflect the excess of weakly deleterious
+polymorphism \comment{(reword? I feel like I am saying the same thing twice)}.
+Overall, these patterns reflect the reduced efficacy of purifying selection in 
+low-diversity regions of the \bgla{} genome, which consistent with smaller local \Ne{}
+\comment{(too abrupt?)}.
+Below we propose that this reduction in local \Ne{} is the product of linked
+selection in regions of the genome exhibiting differences in recombination.
+We test this expectation of reduced local \Ne{} against patterns of linkage
+disequilibrium and recombination in the next two sections (see \nameref{sec:results_ld}
+and \nameref{sec:results_pi_rho}).
 \vspace{0.1cm}
 
 % Genome-wide pi & repeat and gene density
@@ -610,8 +642,8 @@ in the next two sections (see \nameref{sec:results_ld} and \nameref{sec:results_
         low diversity segments. On the scaled log axis, high values (NI $<1$) indicate a
         higher rate of non-synonymous substitutions, while low values (NI $>1$) show an
         excess of non-synonymous polymorphism.
-        \textbf{E.} Fitted population-scaled recombination rate ($\rho$ or $4N_{e}r$) as
-        a function of diversity ($\pi$) in normal (blue) and low (red) diversity segments.
+        \textbf{E.} Fitted population-scaled recombination rate ($\rho$, i.e., $4N_{e}r$) as
+        a function of $\pi$ in normal (blue) and low (red) diversity segments.
         Dashed line shows the one-to-one relationship between diversity and recombination
         ($\rho \propto \pi$). Solid lines and shaded area show the slope along with its
         95\% confidence interval. Complementary plot showing the Spearman's correlation
@@ -660,7 +692,7 @@ We therefore use the fitted $4N_{e}r$ as a summary of the rate of decay, not as 
 exact estimate of the recombination rate.
 \vspace{0.1cm}
 
-The genome contains large regions of reduced diversity (Figure~\ref{fig:genome_pi}D).
+The genome contains large regions of reduced diversity (Figure~\ref{fig:genome_pi}A).
 To compare them with the rest of the genome, we divided chromosomes 1--15
 (excluding chromosome 16 due to its smaller size and uniformly low $\pi$)
 into segments of constant mean $\pi$ with a changepoint method
@@ -737,7 +769,6 @@ windows, increased with $4N_{e}r$ at least as much as $\pi_{4}$ did (normal-dive
 Thus, mutagenic recombination does not explain the correlation between diversity
 and recombination in \bgla{}.
 \vspace{0.1cm}
-
 
 \comment{All of this needs to be updated because some of the results slightly
 changes (now one of the CIs does overlap 1). Also the main diversity figure
