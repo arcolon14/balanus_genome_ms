@@ -3,11 +3,11 @@
 % k-mer distribution of the raw hi-fi reads
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.8\textwidth]{figures/sups_kmers.png}
     \supfigurecaption{\textbf{\textsc{GenomeScope} profile of the raw PacBio HiFi
         data.} Distribution of 21-mers shows an estimated genome size of
-        845.01 Mbp and a heterozygosity of 3.3\% in the \bgla{}
+        845.01\,Mbp and a heterozygosity of 3.3\% in the \bgla{}
         reference assembly.}
     \label{fig:sup_kmers}
 \end{figure}
@@ -15,7 +15,7 @@
 % Hi-C contact map
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_hic.pdf}
     \supfigurecaption{\textbf{Hi-C contact map of the \balgla{} assembly.}
         The contact map shows the assembly following manual curation in
@@ -31,11 +31,11 @@
 % dN/dS
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.7\textwidth]{figures/dnds.pdf}
     \supfigurecaption{\textbf{Distribution of the pairwise rate of non-synonymous
         to synonymous substitutions (\dnds{}).}
-        The distribution is calculated across 9{,}082 single-copy orthologs
+        The distribution is calculated across \num{9082} single-copy orthologs
         identified between \balgla{} and \textit{Balanus
         crenatus}. The solid gray line marks the boundary between genes under
         positive selection (\dnds{} $>$ 1) and genes under purifying selection
@@ -48,10 +48,10 @@
 % Direction of selection.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.7\textwidth]{figures/sups_mkt_dos.pdf}
     \supfigurecaption{\textbf{Distribution of per-gene direction of selection values.}
-        The distribution shows Direction of Selection (DoS) calculated across 7{,}056
+        The distribution shows Direction of Selection (DoS) calculated across \num{7056}
         single-copy orthologs identified between \balgla{} and
         \textit{Balanus crenatus}. The solid black line at zero marks the boundary
         between genes evolving under a regime of positive selection (DoS $>0$) and
@@ -66,7 +66,7 @@
 % Extended GO terms.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.925\textwidth]{figures/sups_go_extended.pdf}
     \supfigurecaption{\textbf{Significant GO term enrichment among the candidates
         under positive selection in the McDonald-Kreitman test.}
@@ -83,10 +83,11 @@
 % Coding GC, GC3s, and GC4d
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_coding_gc.pdf}
     \supfigurecaption{\textbf{Distribution of coding GC proportions across metazoan
         genomes.}
+        \comment{Update this}
         Top, middle, and bottom panels show the GC proportions coding sequence-wide,
         at 3rd codon positions (GC3s), and at 4-fold degerate sites (GC4d),
         respectively.
@@ -102,9 +103,10 @@
 % ENC vs GC3s
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_enc_gc3s.png}
     \supfigurecaption{\textbf{Relationship between effective codons and GC content.}
+        \comment{Update this}
         Nc-plots showing the relationship between GC proportion at 3rd codon positions
         (GC3s; X-axis) and the effective number of codons (ENC; Y-axis) for 12
         metazoan genomes.
@@ -123,10 +125,11 @@
 % Exp vs Obs ENC
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_enc_regression.png}
     \supfigurecaption{\textbf{Relationship between the expected and observed number of
         effective codons.}
+        \comment{update this}
         Plots show the observed effective number of codons (ENC; Y-axis) as a function
         of the expected ENC (X-axis), as defined by Wright's curve, for 12 metazoan
         genomes.
@@ -146,95 +149,164 @@
 % Pi vs other species.
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.9\textwidth]{figures/sups_pi_comparisons.pdf}
     \supfigurecaption{\textbf{Comparing nucleotide diversity ($\pi$) between
         barnacles and biological model systems.}
-        Average $\pi$ in 10 kbp windows between the
+        Average $\pi$ in 10\,kbp windows between the
         Oregon Pacific acorn barnacle (\balgla{}; \texttt{BalGla}),
         Sub-Saharan populations of the fruit fly (\textit{Drosophila melanogaster};
             \texttt{DroMel}),
         malaria mosquitoes from the Central African Republic (\textit{Anopheles
             gambiae}; \texttt{AnoGam}),
         and human populations of Yoruba ancestry (\textit{Homo sapiens}; \texttt{HomSap}).
+        Diamond and crosses denote the mean and pooled (sum of ratios) averages, respectively.
         Consistent with the large \Ne{} expected for \bgla{}, this barnacle population
-        exhibits an average nucleotide diversity\protect\comment{[Old pixy values; recompute from the corrected \texttt{pg\_gpu\_stats} 10 kb tables (pooled $\pi$ = 0.0242). Update the figure and the ratios.]} (mean = 0.0506, median = 0.0532, standard
-        deviation = 0.0188) an order of magnitude higher than \textit{Drosophila} (mean = 0.0076,
-        median = 0.0078, standard deviation = 0.0035), $\approx4\times$ higher than
-        \textit{An. gambiae} (mean = 0.0123, median = 0.0130, standard deviation = 0.0047), and
-        $\approx48\times$ larger than diverse human cohorts (mean = 0.0011, median = $9.54\times10^{-4}$,
-        standard deviation = $5.81\times10^{-4}$).}
+        exhibits an average (pooled $\pi$) diversity of 0.0245.
+        This is $\approx3.4\times$ higher than \textit{Drosophila} (pooled $\pi$ = 0.00728),
+        $\approx2\times$ higher than \textit{An. gambiae} (pooled $\pi$ = 0.0125), and
+        $\approx23\times$ higher than diverse human cohorts (pooled $\pi$ = 0.00106).}
     \label{fig:sup_pi_comp}
 \end{figure}
 
-% Pairwise correlation among different genomic feature and diversity metrics.
+% Composition of the changepoint segments
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/sups_pi_pairplot.png}
-    \supfigurecaption{\textbf{Pairplot of genomic features and genetic variation
-        in Oregon \balgla{}.}
-        Diagonal shows the density histogram of the proportion of the genomics
-        elements (e.g., CDS, lncRNA, tRNA, repeats, and introns), proportion of
-        variant sites, proportion of callable sites post-filtering, and nucleotide
-        diversity ($\pi$). All values computed across 10 kbp windows. Below
-        the diagonal, plots show the correlation across all pairwise comparisons.
-        Red and blue lines show the linear and Loess regression, respectively.
-        Above the diagonal, panels show the Spearman's rank correlation
-        coefficient ($\rho$) for the given pairwise comparison.}
-    \label{fig:sup_pi_pairplot}
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_changepoint_composition.pdf}
+    \supfigurecaption{\textbf{Sequence composition and annotation across low and normal
+        diversity genomic segments.}
+    \textbf{A.} GC content across the low (29, in red) and normal (64, in blue) diversity
+    segments. GC proportion is calculated as the proportion of \texttt{G} $+$ \texttt{C}
+    nucleotides divided by the total number of non-\texttt{N} nucleotides in a genomic segment.
+    Significance is calculated by a permutation analysis, shuffling class labels among segments.
+    \textbf{B-C.} Density of sites annotated as coding (CDS; B) and repeats (C) between low
+    and normal diversity segments.
+    Proportion is calculated as the number of sites spanning an annotated feature divided by
+    window length. Density is first calculated for 10\,kbp windows and pooled for the span
+    of a segment.}
+    \label{fig:sup_chp_comp}
+\end{figure}
+
+% Molecular evolution stats on the segments genes
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_segment_genes.pdf}
+    \supfigurecaption{\textbf{Signatures of polymorphism and molecular evolution
+        between protein-coding genes in low and normal diversity segments.}
+        For all panels, genes were assigned to the changepoint segment containing their
+        midpoint position.
+        Violins and boxes show the distribution across genes; diamonds mark the mean.
+        Colored circles denote the pooled estimates with 95\% confidence intervals.
+        The $n$'s under each violin show the number of genes compared for a given
+        statistic.
+        \textbf{A-C.} Pairwise divergence to \textit{Balanus crenatus}:
+            (A) non-synonymous divergence, $d_\text{N}$;
+            (B) synonymous divergence, $d_\text{S}$;
+            (C) non-synonymous to synonymous divergence ratio, \dnds.
+            Genes with $d_\text{S}>2$ were excluded.
+        \textbf{D-F.} Nucleotide diversity at
+            (D) 0-fold ($\pi_0$) and
+            (E) 4-fold ($\pi_4$) degenerate sites, and
+            (F) their ratio ($\pi_0/\pi_4$).
+            Per-gene values are shown for for genes with $\geq20$ sites of each class.
+        \textbf{G.} Per-gene Tajima's $D$ for genes with $\geq3$ segregating sites.
+        \textbf{H-L.} Per-gene McDonald-Kreitman statistics:
+            (H) Direction of Selection, DoS;
+            (I) $-\log_{10}$ of the Neutrality Index, NI;
+            (J) proportion of non-synonymous substitutions fixed by selection, $\alpha$;
+            (K) the weighted Tarone-Greenland $\alpha$ estimator, $\alpha_\text{TG}$;
+            (L) the asymptotic $\alpha$ estimator, $\alpha_\text{asym}$.
+            Both $\alpha_\text{TG}$ and $\alpha_\text{asym}$ are weighted estimators
+            and do not report per-gene values.}
+    \label{fig:sup_chp_genes}
 \end{figure}
 
 % Decay of LD with distance
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_ld_decay.pdf}
-    \supfigurecaption{\textbf{Decay of linkage disequilibrium with distance in Oregon
-        \balgla{}.}
-        $\sigma_{D}^{2}$ is the sum of $D^{2}$ divided by the sum of $\pi_{2}$ over all
+    \supfigurecaption{\textbf{Decay of linkage disequilibrium in Oregon \balgla{}.}
+        \sdsq{} is the sum of $D^{2}$ divided by the sum of $\pi_{2}$ over all
         pairs of SNPs in a distance class, calculated with the unbiased genotype
         estimators of \citet{ragsdale_unbiased_2020}. Points are at the geometric
         midpoint of each distance class. Shaded bands show 95\% confidence intervals
         from resampling segments within each class.
-        \textbf{A.} All 107 segments of chromosomes 1--15. The dashed line shows the
+        \textbf{A.} All 93 segments of chromosomes 1--15. The dashed line shows the
         fitted expectation of \citet{ohta_linkage_1971} ($4N_{e}r$ = 0.14 per bp). Vertical
-        lines show the distances at which $\sigma_{D}^{2}$ falls to one half and to one
+        lines show the distances at which \sdsq{} falls to one half and to one
         quarter of its value for SNPs 10--20\,bp apart.
-        \textbf{B.} Normal-diversity (75) and low-diversity (32) segments.
-        \textbf{C.} Ratio of $\sigma_{D}^{2}$ in low-diversity segments to $\sigma_{D}^{2}$
+        \textbf{B.} Normal-diversity (64) and low-diversity (29) segments. As in panel A,
+        vertical lines show the distance at \sdsq{} falls to one half and to one
+        quarter for each class.
+        \textbf{C.} Ratio of \sdsq{} in low-diversity segments to \sdsq{}
         in normal-diversity segments, at the same distance (grey) and with the normal-diversity
-        distances scaled by the ratio of median segment $\pi$ (0.47; orange). A ratio
-        above 1 after scaling shows LD that the lower $N_{e}$ of the low-diversity
+        distances scaled by the ratio of median segment $\pi$ (0.46; orange). A ratio
+        above 1 after scaling shows LD that the lower \Ne{} of the low-diversity
         segments does not explain. The first and last distance classes are not shown.}
     \label{fig:sup_ld_decay}
+\end{figure}
+
+% Diversity, divergence, and recombination
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=0.95\textwidth]{figures/sups_rho_div.pdf}
+    \supfigurecaption{\textbf{Diversity, divergence, and recombination in Oregon \balgla{}.}
+        Genomic regions of normal (blue) and low (red) diversity are compared for
+        metrics of genetic diversity, divergence, and recombination.
+        \textbf{A.} Fitted recombination rate $\rho$ ($4N_{e}r$) against $\pi$ in
+        normal and low diversity windows 1\,Mbp in length.
+        The solid line is the least-squares fit of $\log 4N_{e}r$ on $\log\pi$ in
+        normal windows; the dashed line is $4N_{e}r \propto \pi$.
+        For all panels, $r_{s}$ denotes the Spearman's correlation coefficient with
+        95\% CIs from resampling whole segments.
+        \textbf{B.} Fitted $4N_{e}r$ against $\pi$ for all window pooled. The open
+        circles show the 59 windows with $\pi < 0.008$.
+        \textbf{C.} Fitted $4N_{e}r$ against $\pi$ for normal and low diversity
+        segments (defined according to the changepoint analysis). Complementary
+        plot showing the slopes is shown in Figure~\ref{fig:genome_pi}E.
+        \textbf{D.} \sdsq{} for SNPs 20--30\,bp apart against $\pi$ in 1\,Mbp windows.
+        The partial $r_s$ count and window length constant.
+        \textbf{E.} Divergence at four-fold degenerate sites ($d_4$) against $\pi$
+        in 1\,Mbp windows.
+        \textbf{F.} Nucleotide diversity at four-fold degenerate sites ($\pi_4$)
+        against $4N_{e}r$ in 1\,Mbp windows.
+        \textbf{G.} $d_4$ against $4N_{e}r$ in 1\,Mbp windows.
+        \textbf{H.} $\pi_4/d_4$ against $N_{e}r$ in 1\,Mbp windows.}
+    \label{fig:sup_div_rho}
 \end{figure}
 
 % Theta_W Ne
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
-    \includegraphics[width=0.7\textwidth]{figures/sups_theta_ne.pdf}
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=0.8\textwidth]{figures/sups_theta_ne.pdf}
     \supfigurecaption{\textbf{Effective population (\Ne) size estimation
         of \balgla{} based on the Watterson's estimator ($\theta_\text{W}$).}
         Effective size of the population was calculated according to the
         relationship $\theta_\text{W}=4N_{e}\mu$, using a mutation rate per-base,
-        per-generation ($\mu$) of $3\times10^{-9}$.
-        This estimate yields a long-term \Ne{} of $\approx5.2\times10^{6}$ for
-        this barnacle population.}
+        per-generation ($\mu$) of \num{3e-9}.
+        Diamond and crosses denote the mean and pooled (sum of ratios) averages,
+        respectively.
+        Estimating pooled $\theta_\text{W}$ across genome-wide and intergenic sites
+        in the barnacle genome yield similar long-term \Ne estimates, \num{2.49e6}
+        and \num{2.46e6}, respectively.}
     \label{fig:sup_theta_ne}
 \end{figure}
 
 % msmc2 Ne
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=0.9\textwidth]{figures/sups_msmc2_ne.pdf}
     \supfigurecaption{\textbf{Coalescent estimation of the effective
     population (\Ne) size estimation of \balgla{}.}
         Estimation of \Ne{} through time was done using the
         \textsc{msmc2} software, using a mutation rate per-base,
-        per-generation ($\mu$) of $3\times10^{-9}$, and fixing the
+        per-generation ($\mu$) of \num{3e-9}, and fixing the
         generation time ($g$) to 1.
         Each line represents the \Ne{} trajectory for each sample.
         Using just six diploid samples, and estimating only between pairs
@@ -248,7 +320,7 @@
 % B. glandula against published comparative data (Romiguier 2014, Galtier 2016)
 \begin{figure}[ht]
     \centering
-    \captionsetup{width=0.95\linewidth}
+    \captionsetup{width=1.0\linewidth}
     \includegraphics[width=1.0\textwidth]{figures/sups_comparative.pdf}
     \supfigurecaption{\textbf{\bgla{} in the context of published animal data.}
         Synonymous diversity ($\pi_S$) against (A, F) the ratio of non-synonymous to

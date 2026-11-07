@@ -108,7 +108,7 @@ We performed taxonomic assignment of each sequence in the assembly by first alig
 our contigs against NCBI's non-redundant (\texttt{nr}) database (downloaded on
 2023/12/13). We aligned each contig against the database using \textsc{blastn} version
 \texttt{2.15.0+}, as implemented in \textsc{BLAST+} \citep{camacho_blast_2009},
-specifying a minimum e-value cutoff (\texttt{-evalue}) of $1\times10^{-10}$, exporting
+specifying a minimum e-value cutoff (\texttt{-evalue}) of \num{1e-10}, exporting
 hits for a maximum of 25 target sequences (\texttt{-max\_target\_seqs 25}), and exporting
 results in tabular format (\texttt{-outfmt 6}). These \textsc{BLAST} alignments
 were then added to the \textsc{blobtools} database using the \texttt{add} command,
@@ -154,7 +154,7 @@ For identifying and correctly phasing haplotype sequences, we set the expected c
 at homozygous sites (\texttt{-{}-hom-cov 68}) and the upper bound of coverage to purging
 duplicates (\texttt{-{}-purge-max 68}) at 68x, along with setting the similarity threshold
 between duplicate haplotigs to 25\% (\texttt{-s 0.25}).
-This assembly was composed of 2{,}218 contigs, with a total length of 1.29\,Gbp, and a contig
+This assembly was composed of \num{2218} contigs, with a total length of 1.29\,Gbp, and a contig
 N50 of 1.16\,Mbp.
 \vspace{0.1cm}
 
@@ -223,8 +223,8 @@ mapping the PacBio HiFi reads against the assembly.
 (87.94\% for larger contigs) and a quality value (QV) of 30.49.
 It additionally identified 742 structural errors larger than 50\,bp, including
 357 haplotype switches, 303 sequence expansions, and 16 inversions.
-Assessing smaller ($<$50\,bp) errors, \textsc{Inspector} identified 1{,}929 small-scale
-expansions, 1{,}756 small-scale collapses, and 15{,}618 base substitutions.
+Assessing smaller ($<$50\,bp) errors, \textsc{Inspector} identified \num{1929} small-scale
+expansions, \num{1756} small-scale collapses, and \num{15618} base substitutions.
 After evaluation, the assembly was then processed using \texttt{inspector-correct.py}
 (Table~\ref{tab:sup_asm_stats}) to export the corrected scaffolds in FASTA format.
 
@@ -432,7 +432,7 @@ in \textsc{OrthoFinder}, inferring gene trees from multiple-sequence alignments
 version \texttt{2.4.1}, and building gene trees using \textsc{fasttree} version
 \texttt{2.1.11}. Additionally, we split paralogous claded below the root into
 separate orthogroups (\texttt{-y}). Across all genomes, we assigned $88.5\%$ of
-genes into 15{,}184 orthogroups, including 2{,}576 containing single-copy orthologs
+genes into \num{15184} orthogroups, including \num{2576} containing single-copy orthologs
 present in all five species.
 
 \subsection*{Conserved synteny analysis}
@@ -498,19 +498,19 @@ The MSAs were then processed using \textsc{ClipKIT} version \texttt{2.7.0}
 Lastly, we filtered all alignments shorter than 100\,bp.
 \vspace{0.1cm}
 
-After generating and processing alignments for the resulting 9{,}082 single-copy
+After generating and processing alignments for the resulting \num{9082} single-copy
 orthologs, we calculated \dnds{} rates using a custom Python script
 (\texttt{pairwise\_dnds.py}).
 The script uses the \texttt{dnds} Python package version \texttt{2.1}
 \citep{qalieh_dnds} to calculate \dnds{} using the codon-by-codon
 counting method described by~\citet{nei1986_dnds}.
 For each alignment, we calculated the total number of non-synonymous and
-synonymous sites (N\textsubscript{C} and S\textsubscript{C}, respectively),
+synonymous sites ($N_\text{C}$ and $S_\text{C}$, respectively),
 accounting for the degenerate codons.
-We then calculated the number of non-synonymous (N\textsubscript{D}) and
-synonymous differences (S\textsubscript{D}) observed between the two sequences.
-The rate between the number non-synonymous (d\textsubscript{N}) and synonymous
-(d\textsubscript{S}) substitutions and sites is then calculated, and corrected for
+We then calculated the number of non-synonymous ($N_\text{D}$) and
+synonymous differences ($S_\text{D}$) observed between the two sequences.
+The rate between the number non-synonymous ($d_\text{N}$) and synonymous
+($d_\text{S}$) substitutions and sites is then calculated, and corrected for
 multiple substitutions using the Jukes-Cantor correction \citep{JC69}.
 
 \subsection*{McDonald-Kreitman test}\label{sec:methods_mkt}
@@ -534,7 +534,7 @@ analysis.
 The resulting alignments were processed with \textsc{ClipKIT}, trimming the
 alignment by codons (\texttt{-{}-codon}), and trimming sites above a gap threshold
 of 25\% (\texttt{-{}-mode gappy}; \texttt{-{}-gaps 0.25}).
-Alignments smaller than 100\,bp were also discarded, retaining sequences for 7{,}374 
+Alignments smaller than 100\,bp were also discarded, retaining sequences for \num{7374}
 orthologs.
 \vspace{0.1cm}
 
@@ -542,12 +542,12 @@ The MK test and associated statistics were calculated using the \textsc{MKado}
 version \texttt{0.2.0} software \citep{mkado_2026}.
 \textsc{MKado} parses the multiple-sequence alignments and computes the 
 non-synonymous and synonymous changes in divergence and polymorphism
-(D\textsubscript{N}, D\textsubscript{S}, P\textsubscript{N}, P\textsubscript{S},
+($D_\text{N}$, $D_\text{S}$, $P_\text{N}$, and $P_\text{S}$,
 respectively), between ingroup and outgroup sequences.
 We ran \textsc{MKado} three times, each time calculating a different variant of
 the MK test.
 First, we calculated the standard MK test \citep{mcdonald_adaptive_1991} for all
-7{,}374 orthologs using the \textsc{MKado} \texttt{batch} command, calculating the
+\num{7374} orthologs using the \textsc{MKado} \texttt{batch} command, calculating the
 per-gene proportion of non-synonymous sites fixed by selection ($\alpha$;
 \citealp{smith_adaptive_2002}), Neutrality Index (NI;~\citealp{rand_excess_1996})
 and Direction of Selection (DoS;~\citealp{stoletzki_estimation_2011}).
@@ -566,16 +566,16 @@ We calculated functional enrichment among our candidate genes under positive sel
 using the \textsc{topGO} R package version \texttt{2.62.0} \citep{alexa_topgo_2017},
 along with the Gene Ontology (GO) annotation available in \textsc{GO.db} version
 \texttt{3.22.0} (\citealp{carlson_godb_2017}; released on 2025/07/22).
-First, we took the 7{,}374 genes analysed with \textsc{MKado}'s MK test and linked
+First, we took the \num{7374} genes analysed with \textsc{MKado}'s MK test and linked
 them to the functional annotation (including GO terms) generated by \textsc{EnTAP}.
-In total, we retained 5{,}101 genes having both MK test results and annotated GO terms.
+In total, we retained \num{5101} genes having both MK test results and annotated GO terms.
 This gene subset included 367 of our candidate genes under positive selection.
 Then, for each of the three GO domains (Biological Process, Cellular Component, and
 Molecular Function), we used the \texttt{annFUN.gene2GO} function to build a
 \texttt{topGOdata} object mapping genes and GO terms, pruning terms with fewer than five
 annotated genes.
 Using the \texttt{runTest} function we tested for GO term enrichment in our 367 candidate
-gene set against the 5{,}101-gene background using a Fisher's exact test.
+gene set against the \num{5101}-gene background using a Fisher's exact test.
 In addition to the default parameters, we ran this test with the \texttt{elim} topology-aware
 algorithm, which accounts for the hierarchical nature of GO terms to prevent the inflation
 in a term's enrichment originating from parent-child relationships in the GO graph
@@ -586,6 +586,7 @@ Per-term counts and $p$-values were then extracted using the \texttt{GenTable} a
 
 \subsection*{Codon usage biases}
 
+\comment{Update all of this}
 We calculated codon usage biases on the \bgla{} coding sequences using the R package
 \textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026}.
 Before running \textsc{cubar}, we processed the annotation to extract only the longest
@@ -596,7 +597,7 @@ function, ensuring the presence of canonical start and stop codons.
 To prevent known biases in small coding sequences, we then removed transcripts smaller
 than 300\,bp and those above and below two standard deviations of the mean transcript
 length.
-This process retained 16{,}217 sequences in \bgla{}.
+This process retained \num{16217} sequences in \bgla{}.
 After obtaining the empirical codon distribution using the \texttt{count\_codons} function,
 we then used \texttt{get\_enc} to calculate codon usage biases using the effective number
 of codons (ENC) metric, which captures the deviation from equal codon usage across
@@ -650,6 +651,7 @@ Additionally, we used the \textsc{bcftools} \texttt{norm} command to join adjace
 and indels into single multiallelic sites.
 \vspace{0.1cm}
 
+\comment{Some of this needs to be updated}
 After calling genotypes, we filtered the resulting variants using \textsc{bcftools}.
 Using the \texttt{filter} command, we removed sites (both variant and invariant) with
 low quality (\texttt{-{}-exclude "QUAL < 30"}), with too high coverage (\texttt{-{}-exclude
@@ -697,6 +699,7 @@ reference genome, resulting in a mean genome-wide coverage of 48.83x.
 
 \subsubsection*{Genotyping}
 
+\comment{update filter here}
 These six individuals were genotyped using the same \textsc{bcftools}
 \texttt{mpileup}/\texttt{call} approach used for our reference sample
 (see \nameref{sec:methods_ref_geno}), except allowing for a maximum depth of 1000x when
@@ -713,38 +716,55 @@ The effects of the kept variants was determined using \textsc{snpEff}.
 
 \subsubsection*{Population genetic statistics}
 
-We used the \textsc{pixy} software version \texttt{2.0.0.beta12}
-\citep{korunes_pixy_2021,bailey_pixy2_2025} to obtain genome-wide measures of genetic
-diversity. We calculated both nucleotide diversity ($\pi$) and Watterson's Theta
-($\theta_\text{W}$; \texttt{-{}-stats pi watterson\_theta}) on 10\,kbp windows
-(\texttt{-{}-window\_size 10000}).
-We allowed multiallelic sites to be used in the calculations
-(\texttt{-{}-include\_multiallelic\_snps}), limiting the calculation to sites present in our
-input VCF file (\texttt{-{}-sites\_file}).
+\comment{Re-read this}
+We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
+to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
+Watterson's $\theta$ ($\theta_\text{W}$), Tajima's $D$, and segregating sites.
+First, we converted the VCF to the VCF Zarr format using \textsc{bio2zarr} version
+\texttt{0.2.1} \citep{czech_analysis-ready_2025}.
+We processed each chromosome separately, loading each as a \textsc{pg\_gpu}
+\texttt{HaplotypeMatrix} object.
+This matrix was then filtered to include only SNPs located in accessible regions
+without any missing genotypes (\texttt{HaplotypeMatrix.get\_subset};
+see filtering methods above \comment{add reference}).
+We then calculated these three statistics over genomic windows using \textsc{pg\_gpu}'s
+\texttt{windowed\_analysis}, specifying 10\,kbp windows (\texttt{window\_size=10000}).
+To obtain pooled statistics that account for invariant sites, we ran using the
+\texttt{per\_base=False} option, which returns the sum of the per-site statistic over the
+kept SNPs in a window.
+This summed statistic is then divided by the number of accessible sites in a window
+times the number of pairwise comparisons (66 for 12 haplotypes without missing data).
 \vspace{0.1cm}
 
-We performed additional diversity calculations with \textsc{pixy} on different regions
-of interest in the genome.
-Instead of running on uniform 10\,kbp windows along the genome, we calculated $\pi$ along the
+We performed additional diversity calculations with \textsc{pg\_gpu} on different genomic
+regions of interest.
+Instead of running on uniform 10\,kbp windows, we calculated $\pi$ along the
 span of annotated genomic features (coding sequences, introns, 5' UTRs, 3' UTRs, lncRNAs,
 rRNAs, and intergenic regions).
-We reran \textsc{pixy} separately for each feature, specifying the genomic coordinates of
-the feature's annotation using the \texttt{-{}-bed\_file} option.
-We also calculated $\pi$ at 0-fold and 4-fold degenerate sites.
+We loaded the same Zarr and accessibility mask and, for each feature, specified the interval
+of interest according to a coordinates BED file.
+These BED coordinates were passed as the \texttt{\_win\_starts} and \texttt{\_win\_stops}
+options of \textsc{pg\_gpu}'s \texttt{windowed\_statistics\_fused} function, exporting
+pooled statistics as described above.
+\vspace{0.1cm}
+
+We also calculated diversity metrics at 0-fold and 4-fold degenerate sites.
 For this, we first determined the degeneracy at each coding site in the genome using the
 \texttt{degenotate} version \texttt{1.3} tool from the \textsc{snpArcher} pipeline
 \citep{mirchandani_snparcher_2023}.
-After determining degeneracy we separately calculated $\pi$ for 0-fold and 4-fold
-degenerate sites using \textsc{pixy}, specifying the specific sites of interest using
-\texttt{-{}-sites\_file} and averaging within the span of each exon (using \texttt{-{}-bed\_file}).
+After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
+degenerate sites using the same \textsc{pg\_gpu} approach described above, except that we
+specified a specific site set based on the corresponding codon class.
+Diversity was pooled at the exon level for both 0-fold and 4-fold sites.\comment{[The new summary (\texttt{BalGla\_features\_pi.summary.tsv}) reports 0-fold and 4-fold sites per gene (\texttt{unit = gene}; 15,647 genes), not per exon. Check which is correct and update.]}
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 
+\comment{update this to the pg gpu results}
 \llabel{segments_methods}To find regions of reduced diversity, we divided each of
 chromosomes 1--15 into segments of constant mean $\pi$.
 We used the \textsc{pixy} $\pi$ values in 10\,kbp windows, and kept the windows with
-more than 1{,}000 called sites in which more than 10\% of the positions were called
-(42{,}459 windows).
+more than \num{1000} called sites in which more than 10\% of the positions were called
+(\num{42459} windows).
 We detected changes in the mean $\pi$ with the Pruned Exact Linear Time (PELT)
 algorithm \citep{killick_optimal_2012} and a Normal mean-change cost, as implemented in
 the \texttt{cpt.mean} function of the \textsc{R} package \textsc{changepoint} version
@@ -782,6 +802,7 @@ The two classes remain distinct with the corrected values (median segment $\pi$:
 filters described above (see \nameref{sec:methods_popgen}), except that we kept sites with
 fewer than half of the genotypes missing (genotypes called in at least four of the six
 individuals).
+\comment{Update this. Some of these methods moved above.}
 We converted the VCF to the VCF Zarr format with \textsc{bio2zarr} version
 \texttt{0.2.1} \citep{czech_analysis-ready_2025}, and calculated all statistics with
 the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24}) \citep{pope_gpu_2026}.
@@ -803,11 +824,11 @@ and $\pi_{2}$ from unphased genotype counts \citep{ragsdale_unbiased_2020}.
 For each pair of SNPs, the genotype counts used only the individuals genotyped at both
 sites.
 In each segment, we summed $D^{2}$ and $\pi_{2}$ over all pairs of SNPs in 14 distance
-bins at 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, 1{,}000,
-2{,}000, 5{,}000, and 20{,}000\,bp.
+bins at 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, \num{1000},
+\num{2000}, \num{5000}, and \num{20000}\,bp.
 For a set of segments, $\sigma_{D}^{2}$ in a distance bin is the sum of $D^{2}$
 divided by the sum of $\pi_{2}$.
-We calculated 95\% confidence intervals from 2{,}000 bootstrap samples of segments,
+We calculated 95\% confidence intervals from \num{2000} bootstrap samples of segments,
 drawn within each class.
 The scale of the decay is the distance at which $\sigma_{D}^{2}$ falls to one half and
 to one quarter of its value in the 10--20\,bp class, using a linear interpolation in the
@@ -837,7 +858,7 @@ that no window crossed a segment boundary.
 In each window, we fitted $4N_{e}r$ as above and calculated $\pi$ from the 10\,kbp
 windows inside it.
 We calculated Spearman's rank correlations between $\pi$ and $4N_{e}r$ for the
-normal-diversity windows and for all windows, with 95\% confidence intervals from 2{,}000
+normal-diversity windows and for all windows, with 95\% confidence intervals from \num{2000}
 bootstrap samples of segments drawn within each class, so that each sampled segment
 contributed all of its windows.
 In windows with $\pi < 0.008$, genotyping errors may be a large proportion of the SNPs.
@@ -848,7 +869,7 @@ To test whether recombination is mutagenic, we calculated divergence between the
 alignments of the McDonald-Kreitman test (see \nameref{sec:methods_mkt}), with the
 Jukes-Cantor correction.
 We summed the differences and comparisons over the exons in each 1\,Mbp window (each exon
-assigned by its midpoint), and kept windows with at least 1{,}000 comparisons.
+assigned by its midpoint), and kept windows with at least \num{1000} comparisons.
 In the same exons, we calculated $\pi_{4}$ from the accessible 4-fold degenerate sites
 with \textsc{pg\_gpu}, and the ratio $\pi_{4}/d_{4}$.
 We calculated Spearman's correlations of $d_{4}$, $\pi_{4}$, and $\pi_{4}/d_{4}$ with
@@ -859,11 +880,13 @@ $4N_{e}r$, with confidence intervals as above.
 We used our filtered whole-genome genotypes from central Oregon \bgla{} to estimate the
 population's effective size.
 First, we estimated the long-term average \Ne{} in this population based on the
-estimates of $\theta_\text{W}$ along 10\,kbp windows using \textsc{pixy}, and using the
-relationship $\text{N}_\text{e} = \theta_\text{W}/4\mu$.
-We used the per-base per-generation mutation rate ($\mu$) of $3\times10^{-9}$ estimated
-by~\citet{nunez_footprints_2020} for the northern acorn barnacle
-\textit{Semibalanus balanoides}.
+estimates of $\theta_\text{W}$ along 10\,kbp windows (both spanning and excluding
+genic sites) using \textsc{pg\_gpu}.
+We calculated effective population size using the known relationship of
+$N_{e} = \theta_\text{W}/4\mu$.
+We used a per-base per-generation mutation rate ($\mu$) of \num{3e-9}, the
+arthropod-wide estimate used by~\citet{nunez_footprints_2020} for the northern acorn
+barnacle \textit{Semibalanus balanoides}.
 Using this relationship, we calculated \Ne{} along these 10\,kbp windows, obtaining a
 distribution of effective size along the genome.
 \vspace{0.1cm}
@@ -874,6 +897,6 @@ effective size of the population using the \textsc{msmc2} software version \text
 \texttt{0.1.1} \citep{forest_popsize_2024}.
 We ran \textsc{msmc2} with 25 iterations (\texttt{-i 25}), using the default
 time segments (\texttt{-p 1*2+25*1+1*2+1*3}), a generation time of 1 (to keep the inference
-in generations instead of years), and a $\mu$ of $3\times10^{-9}$.
+in generations instead of years), and a $\mu$ of \num{3e-9}.
 We estimated historical \Ne{} for our six Cape Perpetua individuals; however since
 our genotypes were not phased, we ran \textsc{msmc2} for each individual separately.

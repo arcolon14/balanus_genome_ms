@@ -42,17 +42,17 @@ and 4.81\% of the assembly, respectively.
 
 We annotated protein-coding genes in the \bgla{} assembly using a combination of
 short-read RNAseq and long-read PacBio Iso-Seq data.
-This process resulted in 20{,}234 protein-coding genes annotated, which had a
+This process resulted in \num{20234} protein-coding genes annotated, which had a
 \textsc{BUSCO} completeness of 93.58\% and 84.77\% for the \texttt{arthropoda\_odb10}
 and \texttt{crustacea\_odb12} datasets, respectively (Table~\ref{tab:sup_annot_stats}).
 Comparing this annotation against the proteomes of four other barnacle species assigned
-orthology to 16{,}978 (83.91\%) \bgla{} protein-coding genes, including 2{,}576
+orthology to \num{16978} (83.91\%) \bgla{} protein-coding genes, including \num{2576}
 single-copy orthologs across all five species.
 In addition to protein-coding genes, we also annotated non-coding elements in the
-genome, identifying 7{,}532 long, non-coding RNAs (lncRNA), 1{,}203 transfer RNAs (tRNA),
+genome, identifying \num{7532} long, non-coding RNAs (lncRNA), \num{1203} transfer RNAs (tRNA),
 and 24 ribosomal RNA (rRNA) genes.
 In total, across protein-coding and non-coding transcripts, we were able to annotate
-28{,}993 genes in the \bgla{} reference assembly.
+\num{28993} genes in the \bgla{} reference assembly.
 \vspace{0.1cm}
 
 Together, the high contiguity, gene-completeness, chromosome-level scaffolding,
@@ -102,19 +102,19 @@ rearrangements have not been a major driver of diversification in barnacles.
 \subsection*{High genetic diversity in the \balgla{} reference assembly}
 
 We estimated the genetic diversity present in the \bgla{} genome by identifying
-heterozygous variants in our reference individual. After filtering low-quality sites
-and masking regions with annotated repeats, we obtained genotypes for 314 million
-sites along the genome, equivalent to 34.71\% of the 904.94\,Mbp present in the 58
-scaffolds larger than 1\,Mbp (Table~\ref{tab:sup_popgen_stats}). Among these sites, 
-9.08 million (2.89\%) were heterozygous in the reference individual, including 8.73
-million SNPs and 356 thousand indels.
-In total, this variation represents a mean density of 14.66 heterozygous sites per kbp
-(median: 6 per kbp; standard deviation: 19.86).
-Moreover, we observed nearly 400 thousand variant sites within protein-coding sequences,
-including 144 thousand non-synonymous point mutations.
-Transcripts in the reference individual had a mean of 7.74 (median: 3, standard
-deviation: 14.97) non-synonymous heterozygous variants, indicating considerable coding
-variation segregating within a single individual.
+heterozygous variants in our reference individual. After masking regions with annotated
+repeats and filtering low-quality sites, we retained genotypes for 320 million
+accessible sites along the genome, equivalent to 35.36\% of the 904.94\,Mbp present in
+the 58 scaffolds larger than 1\,Mbp (Table~\ref{tab:sup_popgen_stats}).
+Among these sites, we identified 8.86 million heterozygous SNPs in the reference
+individual, corresponding to 2.77\% of the accessible sites.
+In total, this variation represents a mean density of 26.2 heterozygous sites per
+accessible kbp (median: 19 per kbp; standard deviation: 27.2).
+Moreover, we observed nearly 400 thousand heterozygous SNPs within protein-coding
+sequences, including 144 thousand non-synonymous point mutations.
+Transcripts in the reference individual had a mean of 7.9 (median: 3.2, standard
+deviation: 13.2) non-synonymous heterozygous variants per accessible kbp, indicating
+considerable coding variation segregating within a single individual.
 Even from this single genome, the sheer volume of heterozygosity underscores
 the exceptionally large population sizes of this species and foreshadows
 the extreme diversity observed at the population level.
@@ -126,7 +126,7 @@ We used the \textsc{phastCons} package \citep{siepel_evolutionarily_2005} on the
 six barnacle species to identify highly conserved elements (HCE) in the Pacific
 acorn barnacle genome.
 Across the 16 putative chromosomes in the \textit{B. glandula} assembly, \textsc{phastCons}
-identified 196{,}141 HCEs, spanning 50.85\,Mbp (6.05\%) of the 16 assembled chromosomes.
+identified \num{196141} HCEs, spanning 50.85\,Mbp (6.05\%) of the 16 assembled chromosomes.
 In \textit{B. glandula}, the HCEs had a mean length of 259.25\,bp (median: 42\,bp,
 standard deviation: 990.40\,bp).
 \vspace{0.1cm}
@@ -204,7 +204,7 @@ To examine the rate of molecular evolution in protein-coding sequences, we calcu
 the pairwise ratio of non-synonymous to synonymous substitutions (\dnds) between
 \bgla{} and its congener, the wrinkled barnacle \textit{Balanus crenatus},
 using the codon counting approach described by~\citet{nei1986_dnds}.
-We identified and aligned 9{,}082 single-copy orthologs between the two species.
+We identified and aligned \num{9082} single-copy orthologs between the two species.
 The mean pairwise \dnds{} was 0.206 (median: 0.158, standard deviation: 0.191;
 Figure~\ref{fig:sup_dnds}). This ratio indicates that, on average, coding
 sequences in these barnacle genomes are under purifying selection, reflecting the
@@ -235,7 +235,7 @@ Specifically, we used polymorphism data derived from a population panel of six \
 individuals from the central Oregon coast (see \nameref{sec:results_popgen}), comparing
 those against the orthologous coding sequences in the \textit{B. crenatus} outgroup.
 After removing alignments shorter than 100\,bp and those containing premature stop
-codons and/or frameshift mutations, we calculated the MK test for 7{,}374 orthologous
+codons and/or frameshift mutations, we calculated the MK test for \num{7374} orthologous
 sequences between \bgla{} and \textit{B. crenatus}.
 \vspace{0.1cm}
 
@@ -263,7 +263,7 @@ biases.
 First, we calculated the Tarone-Greenland $\alpha$ estimator ($\alpha_\text{TG}$), a
 weighted estimator that corrects for the effects of averaging over a large number of
 genes \citep{stoletzki_estimation_2011}.
-Across our 7{,}374 genes, we calculated an $\alpha_\text{TG}$ of 0.540 ($95\%$ CI:
+Across our \num{7374} genes, we calculated an $\alpha_\text{TG}$ of 0.540 ($95\%$ CI:
 0.534--0.550), which indicates that $\approx$ 54\% of non-synonymous substitutions in
 this \bgla{} population were fixed as a product of positive selection.
 Secondly, we calculated $\alpha$ using the asymptotic MK test ($\alpha_\text{asym}$),
@@ -336,14 +336,14 @@ in response to osmotic stress in barnacles \citep{chandramouli_transcriptome_201
     \includegraphics[width=0.95\textwidth]{figures/mkTest.pdf}
     \caption{\textbf{Signatures of positive selection in \balgla{}
         protein-coding genes.}
-        \textbf{A.} Selection on 7{,}374 protein-coding genes was assessed using the
+        \textbf{A.} Selection on \num{7374} protein-coding genes was assessed using the
         McDonald-Kreitman test.
         X-axis denotes the $-\log_{10}$ of the Neutrality Index, with values on the
         right (NI $<1$) indicating excess of non-synonymous substitutions indicative of
         positive selection.
         Y-axis denotes the $-\log_{10}$ $p$-value of the McDonald-Kreitman test.
         The dashed and dot-dashed lines show the raw ($p<0.05$) and Bonferroni-corrected
-        ($p<6.20\times10^{-6}$) significance thresholds, respectively.
+        ($p < 6.20 \times 10^{-6}$) significance thresholds, respectively.
         Points in red show the 444 candidates under positive selection, genes with a
         significant excess of fixed non-synonymous substitutions.
         Point in green show the one significant gene with an excess of non-synonymous
@@ -361,6 +361,7 @@ in response to osmotic stress in barnacles \citep{chandramouli_transcriptome_201
 
 \subsection*{Barnacle genes show biases in the use of synonymous codons}
 
+\comment{needs to be updated}
 We compared biases in the usage and composition of synonymous codons in 12 metazoan
 genomes, including four barnacles (Table~\ref{tab:sup_enc_summary}), to study the effects of
 translational selection in the context of large populations.
@@ -369,14 +370,13 @@ of codons (ENC), a measure of the extent of departure from equal usage across sy
 codons \citep{wright_effective_1990,sun_improved_2013}.
 In addition to ENC, we also estimated compositional biases by calculating both the overall
 coding sequence GC proportion, and the proportion of GC bases at third codon positions (GC3s).
-Across 16{,}217 genes in \bgla{}, we find a mean ENC of 43.17 (median: 42.84, standard
+Across \num{16217} genes in \bgla{}, we find a mean ENC of 43.17 (median: 42.84, standard
 deviation: 5.52; Figure~\ref{fig:codon_enc}A;~Table~\ref{tab:sup_enc_summary}).
 This number of effective codons is similar to the one observed across three other barnacle
 genomes (mean ENC ranging from 42.04 to 44.33; Table~\ref{tab:sup_enc_summary}), highlighting a
 substantial reduction in the number of synonymous codon used in barnacles when compared to other
 metazoans (Figure~\ref{fig:codon_enc}A).
-A similar trend is observed when compared nucleotide composition in barnacle coding sequences
-\comment{stop the sentence her to remove the double "metazoans"} when compared to other metazoans.
+A similar trend is observed when compared nucleotide composition in barnacle coding sequences.
 All four barnacle genomes studied showed coding sequence GC content of $\approx64\%$, 10 to 20\%
 higher than the other studied genomes (Figure~\ref{fig:codon_enc}B;~Table~\ref{tab:sup_enc_summary}).
 The higher coding GC proportion in barnacles is also observed when looking at the GC proportion
@@ -394,7 +394,8 @@ After testing this relationship across these 12 genomes, we observe that the red
 the number of effective codons observed in barnacles can in most cases be explained by their
 coding GC proportion (Figure~\ref{fig:sup_enc_gc3s}; Figure~\ref{fig:sup_enc_reg}), suggesting
 a codon usage bias driven by neutral processes.
-In \bgla{} specifically, we observed a moderate deviation when comparing the empirical ENC
+In \bgla{} specifically, we observed a moderate deviation (mean: 0.065, median: 0.053, standard
+deviation: 0.090; Table~\ref{tab:sup_enc_models}) when comparing the empirical ENC
 distribution against Wright's curve (Figure~\ref{fig:codon_enc}C); however, when comparing the
 linear relationship between observed and expected ENC, a better fit for GC biased genomes such
 as \bgla{}, we do observe a reduction in the model's slope and coefficient of determination
@@ -414,7 +415,7 @@ More moderate deviation is observed for other diverse species, e.g, the malaria 
 \textit{Anopheles gambiae} and the tunicate \textit{Ciona intestinalis}.
 In contrast, in three of our studied barnacles (\textit{B. crenatus}, \textit{A. amphitrite},
 and \textit{P. pollicipes}), the observed codon usage biases appear are indistinguishable from
-neutral compositional processes.
+neutral or non-adaptive compositional processes (e.g., \revpoint{1}{3}GC-biased gene conversion).
 In \bgla{}, evidence for non-neutral codon usage biases is moderate to strong depending on the
 method used.
 Overall, while we do not observe a clear relationship between population size and codon usage
@@ -451,98 +452,62 @@ unexplored avenue of study of the efficacy and breadth of selection in highly di
 
 We sequenced the whole genomes of eight \bgla{} individuals from the central Oregon coast
 using Illumina short reads.
-After removal of two samples with poor quality sequences, and the stringent filtering of
-sites with low coverage, low quality, and/or missing genotypes, we recovered a total of
-111.6 million genotyped sites (Table~\ref{tab:sup_popgen_stats}), 21.4 million (19.16\%)
-of which were variant in the six retained samples.
-Among these variant sites, we recovered 20.5 million point mutations, 4.86\% of which 
-were multiallelic in just these six individuals.
-In total, the amount of polymorphism observed in our sampling translates to a mean
-density of 41.1 variant sites per kbp (median: 29, standard deviation: 40.82).
-Moreover, 1.1 million of these variant sites (5.23\%) were located in coding sequences.
-These coding variants included 360 thousand missense (non-synonymous) mutations,
-corresponding to a mean of 18.93 non-synonymous variants per transcript
-(median: 10, standard deviation: 28.50).
+After removal of two samples with poor quality sequences, and filtering for low quality
+and inaccessible sites (e.g., those spanning annotating repeats \comment{add rev point}),
+we recovered a total of 231.6 million accessible sites (Table~\ref{tab:sup_popgen_stats}).
+These sites included 20.5 million single nucleotide polymorphisms (SNPs) segregating in
+this central Oregon population, 4.6\% of which were multiallelic in just these six samples.
+In total, the amount of polymorphism observed in our sampling translates to a mean density
+of 83.3 variants per accessible kbp (median: 80.7, standard deviation: 53.9).
+Moreover, approximately 1.1 million of these single-nucleotide variants (5.18\%) were
+located in coding exons, corresponding to a mean number of 51.0 coding SNP per accessible kbp.
+These coding SNPs included 337 thousand missense (non-synonymous) mutations,
+corresponding to a mean of 20.0 non-synonymous SNPs per gene
+(median: 12.0, standard deviation: 27.4).
 Overall, these represent a substantial proportion of coding variation segregating in
 central Oregon.
-This \bgla{} population displayed a mean genome-wide nucleotide
-diversity ($\pi$) of 0.0506 (median: 0.0531, standard deviation: 0.0188;\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled genome-wide $\pi$ = 0.0242; recompute the window mean, median and SD from the \texttt{pg\_gpu\_stats} 10 kb tables. Update.]}
+\vspace{0.1cm}
+
+This \bgla{} population displayed a pooled average genome-wide nucleotide
+diversity ($\pi$) of 0.0245 (mean: 0.0232, median: 0.0235, standard deviation: 0.0127;
 Figure~\ref{fig:genome_pi}; Table~\ref{tab:sup_feature_pi}).
-For context, this magnitude of $\pi$ is approximately $4\times$ higher than that
+For context, this magnitude of $\pi$ is approximately $2\times$ higher than that
 observed in \textit{Anopheles gambiae} mosquitos, a species known for their high
-levels of polymorphism, $\approx7\times$ higher than the diversity in Sub-Saharan
-populations of \textit{Drosophila melanogaster}, and $\approx48\times$ higher than the
+levels of polymorphism, $\approx3.4\times$ higher than the diversity in Sub-Saharan
+populations of \textit{Drosophila melanogaster}, and $\approx23\times$ higher than the
 diversity observed in large human cohorts~(Figure~\ref{fig:sup_pi_comp}).
 \vspace{0.1cm}
 
-Along each chromosome, we did not observe any strong correlation between the density
-of specific genomic features (e.g., CDSs, lncRNAs, tRNAs, introns, and repeats) and
-$\pi$, particularly not at the scale of 10\,kbp (Figure~\ref{fig:genome_pi};
-Figure~\ref{fig:sup_pi_pairplot}).
-However, stronger relationships are likely present at other genomic intervals given
-the differences in diversity seen across genetic elements (see below).
-The strongest correlation was, expectedly, observed between the density of segregating sites
-within 10\,kbp windows and $\pi$ (Spearman's $\rho$: 0.706; Figure~\ref{fig:sup_pi_pairplot}).
-The proportion of segregating sites in itself was not correlated with the density of
-particular genomic features, except for repeats; however, this is likely an artifact of the
-masking of genotypes located within repetitive intervals in the reference
-(see \nameref{sec:methods_popgen}).
-Despite the lack of clear correlation, the patterns of $\pi$ observed along
-the chromosomes are qualitatively similar to those expected under regimes of
-strong linked selection, which reduces diversity most in regions of low
-recombination (e.g., near centromeres).
-\llabel{recomb_forward}We test this expectation with patterns of linkage disequilibrium
-in the next two sections (see \nameref{sec:results_ld} and \nameref{sec:results_pi_rho}).
-\vspace{0.1cm}
-
-% Genome-wide pi & repeat and gene density
-\begin{figure}[htbp]
-    \centering
-    \captionsetup{width=0.95\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/genome_pi.pdf}
-    \caption{\textbf{Nucleotide diversity ($\pi$) and coding and repeat density
-        along the \balgla{} genome.}
-        \textbf{A.} Density of coding sequences (CDS) along the genome, defined as the
-        proportion of bases annotated as CDS within 10\,kbp windows. Line reflects the
-        kernel-smoothed values along a 1\,Mbp window. Dashed horizontal line shows
-        the genome-wide average proportion of CDS bases (0.0288). Top and bottom
-        horizontal axes show the chromosome number and genomic position, respectively.
-        \textbf{B.} Density of repeat elements annotated within 10\,kbp windows, smoothed
-        along 1\,Mbp intervals. Dashed horizontal line shows the genome-wide average
-        proportion of repeat bases (0.597).
-        \textbf{C.} Density of segregating sites, calculated as the proportion of SNPs
-        within 10\,kbp windows, smoothed along 1\,Mbp intervals. Dashed horizontal line
-        shows the genome-wide average proportion of segregating SNPs per 10\,kbp
-        (0.0307).
-        \textbf{D.} $\pi$ within 10\,kbp windows, smoothed along 1\,Mbp intervals.
-        Horizontal dashed line shows the mean genome-wide $\pi$ (0.0506).}
-    \label{fig:genome_pi}
-\end{figure}
-
 Looking at diversity across the genome, we observed an overall reduction in $\pi$
-at putatively functional sites. For example, the mean $\pi$ in sequences spanning
-annotated CDSs is 0.0302 (median: 0.0270, standard deviation: 0.0221;
+at putatively functional sites. For example, the pooled $\pi$ in sequences spanning
+annotated CDSs is 0.0161 (mean: 0.0152, median: 0.0135, standard deviation: 0.0112;
 Figure~\ref{fig:feature_pi}; Table~\ref{tab:sup_feature_pi}),
-which represents a $\approx1.6\times$ reduction in diversity when compared to the
+which represents a $\approx1.5\times$ reduction in diversity when compared to the
 genome-wide average. A reduction in diversity of similar magnitude is also observed
-in the sequences of lncRNAs ($1.4\times$) and 5' UTRs ($1.3\times$). The largest reduction
-in diversity was observed in tRNAs, with
-$\pi~\approx4.3\times$ lower than the genome-wide average, consistent with the
+in lncRNAs ($\approx1.25\times$).
+The largest reduction in diversity was observed in tRNAs, with
+$\pi\approx5.2\times$ lower than the genome-wide average and consistent with the
 strong functional constraint evidenced by their enrichment in highly conserved elements.
-In contrast to most other elements of the genome, introns display a relative increase in
-diversity, with a mean $\pi$ of 0.0646 (median: 0.0650, standard deviation: 0.0299),
-approximately $1.3\times$ higher than the genome-wide average.
-\llabel{feature_pi_linked}Two effects can reduce $\pi$ in a feature: purifying selection
-on the sites of the feature, and background selection, the loss of neutral diversity
-at sites linked to selected sites nearby \citep{charlesworth_effect_1993}.
-Comparisons among features do not separate these two effects.
-For example, the lower $\pi$ of 5' UTRs could come from their own constraint or from
-selection on the coding sequences next to them.
+In contrast to coding exons, other genic features show different distributions of $\pi$.
+Both 5' and 3' UTRs show similar levels of diversity to the genome-wide average
+(pooled $\pi$ of 0.0231 and 0.0236, respectively).
+Diversity in intronic sequence is also similar, if not slightly elevated, when compared
+to the genome-wide average; pooled $\pi$ at introns is 0.0270 (mean: 0.0327, median: 0.0319,
+standard deviation: 0.0191).
+The discrepancy between mean and pooled $\pi$ in introns is the product of high diversity
+intronic sequences with few accessible sites disproportionately increasing the mean.
+The pooled estimates account for these differences in accessible sites.
+% \llabel{feature_pi_linked}Two effects can reduce $\pi$ in a genomic feature: purifying selection
+% on the sites of the feature, and background selection, the loss of neutral diversity
+% at sites linked to selected sites nearby \citep{charlesworth_effect_1993}.
+% Comparisons among features do not separate these two effects.
+% For example, the lower $\pi$ of 5' UTRs could come from their own constraint or from
+% selection on the coding sequences next to them.
 \vspace{0.1cm}
 
 Zooming in further on coding sequences, we explored the patterns of $\pi$
 at 0-fold degenerate ($\pi_{0}$), in which any mutation produces a non-synonymous
-substitution, and 4-fold degenerate sites ($\pi_{4}$), in which any mutation results
+change, and 4-fold degenerate sites ($\pi_{4}$), in which any mutation results
 in a synonymous change.
 \llabel{pi0_pi4_direct}This comparison separates the direct effect of purifying selection
 from its linked effect.
@@ -551,13 +516,14 @@ the same effect on both classes, and the difference between them comes from dire
 selection at 0-fold sites.
 The 4-fold sites have little or no direct selection, but they are not free of
 linked selection (see \nameref{sec:results_pi_rho}).
-In this central Oregon population of \bgla{}, the mean $\pi_{0}$, was 0.0107\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled 0-fold $\pi$ = 0.0068 (\texttt{pg\_gpu\_stats}, codon tables). Update.]} (median:
-0.00292, standard deviation: 0.0178).
+In this central Oregon population of \bgla{}, the pooled $\pi_{0}$ was \num{6.69e-3}
+(mean: \num{8.25e-3}, median: \num{4.98e-3}, standard deviation: \num{9.48e-3};
+Figure~\ref{fig:feature_pi}; Table~\ref{tab:sup_feature_pi}).
 This is the lowest diversity among the studied categories in the genome, not a
 surprising result given the higher functional constraint expected at these sites.
-In contrast, mean $\pi_{4}$ was 0.0790\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled 4-fold $\pi$ = 0.0428; $\pi_0/\pi_4$ = 0.16, not 0.21. Update.]} (median: 0.0750, standard deviation: 0.0483),
-$\approx1.6\times$ higher than the genome-wide average and the highest in the genome.
-The nearly 8-fold difference between $\pi_{0}$ and $\pi_{4}$ highlights the
+In contrast, pooled $\pi_{4}$ was 0.0431 (mean: 0.0387, median: 0.0375, standard deviation:
+0.0249), $\approx1.8\times$ higher than the genome-wide average and the highest in the genome.
+The over 6-fold difference between $\pi_{0}$ and $\pi_{4}$ highlights the
 strong constraint on non-synonymous sites and suggests that purifying selection is
 highly effective in this population, consistent with theoretical predictions for
 species with large effective population sizes.
@@ -571,10 +537,123 @@ species with large effective population sizes.
         features in Oregon \balgla.}
         The density histogram shows the distribution of windowed
         $\pi$ values across different genomic features annotated
-        in the \bgla{} assembly. The vertical lines show the
-        50\textsuperscript{th} quantile (median) of the distribution,
-        while the crosses show the mean value.}
+        in the \bgla{} assembly.
+        The vertical lines show the 50\textsuperscript{th} quantile
+        (median) of the distribution, while the crosses and diamonds
+        show the pooled and mean values, respectively.
+        Labels on the right show the number of accessible sites
+        included in these $\pi$ estimates.}
     \label{fig:feature_pi}
+\end{figure}
+
+% Some other header?
+\subsection*{The \bgla{} genome shows heterogeneous landscapes of genetic diversity}
+
+Looking at the distributions of $\pi$ along the \bgla{} genome revealed discrete regions
+of low genetic diversity, often located at the center of the chromosomes
+(Figure~\ref{fig:genome_pi}A).
+We implemented a changepoint analysis to explore these regions further, classifying
+distinct segments of the genome as containing ``normal'' and ``low'' $\pi$.
+This analysis subdivided the 15 largest chromosomes into 93 total segments (see
+methods for the exclusion of chromosome 16 \comment{add reference}).
+Sixty-four segments, spanning 632.3\,Mbp (76.0\%) of this 15 chromosome subset of the
+assembly, were classified as having normal levels of diversity (pooled $\pi = 0.0278$,
+$1.13 \times$ the genome-wide pooled average).
+In contrast, we classified 29 segments, spanning 199.2\,Mbp (24.0\%) of the assembly,
+as having low diversity (pooled $\pi = 0.0115$, $0.47 \times$ the genome-wide average).
+Each of the 15 analyzed chromosomes contained at least one low diversity segment, covering
+on average (mean) 23.8\% of the assembled chromosome (median: 22.4\%, standard deviation: 8.2\%).
+Additionally, we observed a difference in the sequence composition and content between the two
+segment classes.
+Low-diversity segments show a small but significant decrease in GC content when compared
+to normal-diversity segments: 47.0\% ($\pm 1.02\%$) vs.\ 47.6\% ($\pm 0.77\%$) in low and
+normal-diversity segments, respectively ($p = 0.0014$; Figure~\ref{fig:sup_chp_comp}A).
+The differences are more pronounced when comparing the density of annotated coding sequences
+and repeats.
+Genomic segments with low diversity are less gene dense, showing a mean proportion of 0.0229
+($\pm 0.0074$) bases annotated as CDS, significantly lower than the 0.0304 ($\pm 0.0068$) mean
+observed in normal-diversity segments ($p < \num{1e-4}$; Figure~\ref{fig:sup_chp_comp}B).
+Low diversity regions are also significantly more repeat rich, showing a mean proportion of
+0.666 ($\pm 0.073$) bases annotated as repeats (normal-segment mean repeat proportion =
+$0.577 \pm 0.054$; $p < \num{1e-4}$; Figure~\ref{fig:sup_chp_comp}C).
+\vspace{0.1cm}
+
+We proceeded to explore the possible cause of these regions of low diversity by comparing
+the patterns of divergence and polymorphism in protein-coding genes located in these
+genomic segments.
+Genes located in low and normal diversity regions exhibit no difference in their neutral
+substitution rate (as calculated by synonymous divergence, $d_\text{S}$) when compared to
+\textit{B. crenatus} ($p = 0.6$; Figure~\ref{fig:genome_pi}B).
+No difference is observed for either the rate of non-synonymous divergence ($d_\text{N}$)
+or their ratio, \dnds{} (Figure~\ref{fig:sup_chp_genes}A-C), or in the relationship between
+divergence and recombination, which we discuss below (see: \nameref{sec:results_pi_rho}).
+These substitution rate results suggest that the difference in diversity between the two
+segment classes is not the product of differences in the mutation rate.
+Exploring further, we do observe differences in the distribution of coding polymorphism
+between the two diversity classes.
+As expected, both synonymous and non-synonymous polymorphism (in the form of $\pi_4$ and
+$\pi_0$, respectively) are lower in low-diversity segments; however, the reduction in
+diversity is not the same between the two.
+Synonymous polymorphism shows a $\approx60\%$ reduction between low-diversity (pooled
+$\pi_4 = 0.019$) and normal-diversity segments (pooled $\pi_4 = 0.048$;
+Figure~\ref{fig:sup_chp_genes}E).
+In contrast, non-synonymous polymorphism in low-diversity segments (pooled $\pi_0 = 0.0039$)
+only shows a $\approx47\%$ reduction when compared to segments of normal diversity
+(pooled $\pi_0 = 0.0074$; Figure~\ref{fig:sup_chp_genes}D).
+In turn, this results in an excess of non-synonymous polymorphism relative to neutral
+variation in regions of low diversity, as seen by the significantly elevated
+$\pi_0/\pi_4$ ($p < \num{1e-4}$; Figure~\ref{fig:genome_pi}C).
+This excess in non-synonymous polymorphism is also reflected in differences between
+the McDonald-Kreitman statistics between the two segment classes.
+Both metrics of $\alpha$ and NI indicate a reduction in the proportion of adaptive
+substitutions in low-diversity segments (Figure~\ref{fig:genome_pi}D;
+Figure~\ref{fig:sup_chp_genes}H-J); however, given the lack of difference in the
+adaptive substitution rate, this reduction just reflect the excess of weakly deleterious
+polymorphism \comment{(reword? I feel like I am saying the same thing twice)}.
+Overall, these patterns reflect the reduced efficacy of purifying selection in 
+low-diversity regions of the \bgla{} genome, consistent with smaller local \Ne{}
+\comment{(too abrupt?)}.
+Below we propose that this reduction in local \Ne{} is the product of linked
+selection in regions of the genome exhibiting differences in recombination.
+We test this expectation of reduced local \Ne{} against patterns of linkage
+disequilibrium and recombination in the next two sections (see \nameref{sec:results_ld}
+and \nameref{sec:results_pi_rho}).
+\vspace{0.1cm}
+
+% Genome-wide pi & repeat and gene density
+\begin{figure}[htbp]
+    \centering
+    \captionsetup{width=0.95\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/genome_pi.pdf}
+    \caption{\textbf{Landscapes of nucleotide diversity ($\pi$) in the \balgla{} genome.}
+        \textbf{A.} Pooled $\pi$ in 10\,kbp windows is shown as grey dots. Solid black
+        and dark grey lines show $\pi$ kernel-smoothed in 1\,Mbp windows. Dashed horizontal
+        line shows the genome-wide pooled $\pi$ (0.0245). Blue and red blocks show the
+        span of normal and low diversity segments of the genome, respectively, as
+        classified by the changepoint analysis. Top and bottom horizontal axes show
+        the chromosome number and genomic position, respectively.
+        \textbf{B.} Synonymous substitution rate ($d_\text{S}$) of protein-coding
+        genes between genomic segments of normal and low diversity. Numbers on the
+        x-axis denote the number of protein coding genes within each diversity class.
+        \textbf{C.} Ratio of non-synonymous to synonymous nucleotide diversity
+        ($\pi_0/\pi_4$) in protein-coding sequences between normal and low diversity
+        segments. Higher values show an excess of non-synonymous polymorphism.
+        \textbf{D.} Neutrality Index (NI) of protein coding genes between normal and
+        low diversity segments. On the scaled log axis, high values (NI $<1$) indicate a
+        higher rate of non-synonymous substitutions, while low values (NI $>1$) show an
+        excess of non-synonymous polymorphism.
+        \textbf{E.} Fitted population-scaled recombination rate ($\rho$, i.e., $4N_{e}r$) as
+        a function of $\pi$ in normal (blue) and low (red) diversity segments.
+        Dashed line shows the one-to-one relationship between diversity and recombination
+        ($\rho \propto \pi$). Solid lines and shaded area show the slope along with its
+        95\% confidence interval. Complementary plot showing the Spearman's correlation
+        coefficient is shown in Figure~\ref{fig:sup_div_rho}C.
+        For all panels: n.s. = non-significant ($p > 0.05$), \texttt{***} = $p < 10^{-4}$.}
+        \comment{@Andy: I was thinking a bit more about this figure. Given that panels C
+        and D tells us similar results, should we instead show the LD decay? Right now this
+        is just in the supplements, but given that we have a whole section on it we might
+        want to show it here. Thoughts?}
+    \label{fig:genome_pi}
 \end{figure}
 
 \subsection*{Linkage disequilibrium decays within a few hundred base pairs}\label{sec:results_ld}
@@ -587,58 +666,50 @@ calculated from genotypes \citep{rogers_linkage_2009}, was close to its sampling
 for six individuals (median: 0.247), and it decreased as the number of SNPs in the
 window increased (Spearman's $\rho$: $-0.52$).
 Thus, windows with different SNP densities could not be compared.
-We therefore used $\sigma_{D}^{2}$, the ratio of the expected $D^{2}$ to the expected
+We therefore used \sdsq{}, the ratio of the expected $D^{2}$ to the expected
 product of allele-frequency variances at the two sites ($\pi_{2}$)
 \citep{ohta_linkage_1969}.
 We calculated $D^{2}$ and $\pi_{2}$ with the estimators of
 \citet{ragsdale_unbiased_2020}, which are unbiased for the size of the sample and
 use genotypes, so they do not need phased haplotypes.
 Because these estimators are summed over all pairs of SNPs in a distance class,
-$\sigma_{D}^{2}$ does not depend on the number of SNPs, and it can be compared among
+\sdsq{} does not depend on the number of SNPs, and it can be compared among
 regions with different levels of diversity
 (see \nameref{sec:methods_ld}).
 \vspace{0.1cm}
 
 LD in \bgla{} decays over a short physical distance.
-Over the 107 segments of chromosomes 1--15 (see below), $\sigma_{D}^{2}$ fell to half
-of its value for SNPs 10--20\,bp apart at 161\,bp (95\% CI: 142--186\,bp), and to one
-quarter at 705\,bp (583--890\,bp; Figure~\ref{fig:sup_ld_decay}A).
+Over all regions of the genome, regardless of its diversity class, \sdsq{} fell
+to half of its value for SNPs
+10--20\,bp apart at 162\,bp (95\% CI: 142--185\,bp), and to one
+quarter at 705\,bp (579--880\,bp; Figure~\ref{fig:sup_ld_decay}A).
 A fit of the equilibrium expectation of \citet{ohta_linkage_1971} gave a population
-recombination rate ($4N_{e}r$) of 0.14 per bp (0.11--0.17).
+recombination rate ($4N_{e}r$) of 0.14 (0.12--0.17) per bp.
 Divided by the median segment $\pi$ (0.024), this value gives $r/\mu \approx 6$.
 However, the equilibrium model does not fit the shape of the decay well: the observed
-$\sigma_{D}^{2}$ is 0.7 times the expected value at 14\,bp, and it is 15 times the
+\sdsq{} is 0.7 times the expected value at 14\,bp, and it is 15 times the
 expected value at 10\,kbp (Figure~\ref{fig:sup_ld_decay}A).
 We therefore use the fitted $4N_{e}r$ as a summary of the rate of decay, not as an
 exact estimate of the recombination rate.
 \vspace{0.1cm}
 
-The genome contains large regions of reduced diversity (Figure~\ref{fig:genome_pi}D).
-To compare them with the rest of the genome, we divided chromosomes 1--15 into
-segments of constant mean $\pi$ with a changepoint method
-(see \nameref{sec:methods_segments}).
-Of the 107 segments, 32 had $\pi$ lower than 0.75 times the genome-wide value
-(low-diversity segments; 171\,Mbp, median length 4.6\,Mbp), and 75 did not
-(normal-diversity segments; 657\,Mbp, median length 6.9\,Mbp).
-The median $\pi$ was 0.0129 in low-diversity segments and 0.0273 in normal-diversity
-segments.
-LD was higher in the low-diversity segments at all distances
-(Figure~\ref{fig:sup_ld_decay}B).
-In these segments, $\sigma_{D}^{2}$ fell to half of its short-distance value at
-364\,bp (286--461\,bp), versus 152\,bp (133--178\,bp) in normal-diversity segments, and the
-fitted $4N_{e}r$ was 0.033 per bp (0.022--0.054), against 0.15 per bp (0.12--0.18).
-We then asked if a difference in $N_{e}$ alone explains this difference in LD decay.
-If the two classes differed only in $N_{e}$, the low-diversity curve would equal the
+Comparing LD between the different diversity classes, we observe higher
+LD in the low-diversity segments at all distances (Figure~\ref{fig:sup_ld_decay}B).
+In these segments, \sdsq{} fell to half of its short-distance value at
+373\,bp (316--448\,bp), versus 150\,bp (132--174\,bp) in normal-diversity segments, and the
+fitted $4N_{e}r$ was 0.036 per bp (0.028--0.051), against 0.15 per bp (0.13--0.18).
+We then asked if a difference in local \Ne{} alone explains this difference in LD decay.
+If the two classes differed only in \Ne{}, the low-diversity curve would equal the
 normal-diversity curve with its distances scaled by the ratio of $\pi$ between the
-two classes (0.47).
-It did not: at the scaled distances, the low-diversity segments had 1.5 to 1.9 times
+two classes (0.46).
+It did not: at the scaled distances, the low-diversity segments had 1.4 to 2.2 times
 more LD, and the 95\% confidence intervals did not include 1 at any distance
 (Figure~\ref{fig:sup_ld_decay}C).
 The ratio of $4N_{e}r$ to $\pi$, which estimates $r/\mu$, gives the same result.
-It was 2.6 (1.6--4.2) in the low-diversity segments, against 5.5 (4.7--6.5) in the
-normal-diversity segments (ratio 0.46, 0.28--0.78).
-Thus, our low-diversity segments have less recombination per mutation, additional LD caused by
-linked selection, or both.
+It was 2.7 (2.2--4.3) in the low-diversity segments, against 5.4 (4.6--6.3) in the
+normal-diversity segments (ratio 0.51, 0.38--0.83).
+Thus, our low-diversity segments have less recombination per mutation, additional LD
+caused by linked selection, or both.
 
 \subsection*{Diversity, but not divergence, increases with the population recombination rate}\label{sec:results_pi_rho}
 
@@ -646,27 +717,27 @@ linked selection, or both.
 selective sweeps, removes more neutral diversity where recombination is low
 \citep{kaplan_hitchhiking_1989,begun_levels_1992,charlesworth_effect_1993}.
 To test for this pattern, we fitted $4N_{e}r$ in 1\,Mbp windows inside each segment
-(829 windows) and compared it with $\pi$ in the same windows.
+(827 windows) and compared it with $\pi$ in the same windows.
 Because windows in one segment are not independent, all confidence intervals come
 from resampling whole segments.
-In the normal-diversity segments, $\pi$ increased with $4N_{e}r$ (Spearman's $\rho$: 0.54,
-95\% CI: 0.40--0.64; 660 windows).
+In the normal-diversity segments, $\pi$ increased with $4N_{e}r$ (Spearman's $\rho$:
+0.53, 95\% CI: 0.40--0.63; 631 windows; Figure~\ref{fig:sup_div_rho}A).
 The correlation was similar when we included the low-diversity segments
-(Spearman's $\rho$: 0.49, 0.35--0.61; 829 windows).
-Some windows with very low diversity ($\pi < 0.008$) contain a large proportion of
+(Spearman's $\rho$: 0.48, 0.33--0.60; 827 windows; Figure~\ref{fig:sup_div_rho}B).
+Some windows with very low diversity ($\pi < 0.008$) likely contain a large proportion of
 genotyping errors, which carry no LD and increase the fitted $4N_{e}r$.
-When we removed these 61 windows, the correlation in all segments was 0.58
-(0.47--0.67).
-The same pattern was present among whole segments (normal-diversity: 0.65, 0.46--0.78;
-normal- and low-diversity: 0.63, 0.48--0.75).
+When we removed these 59 windows, the correlation in all segments was 0.57
+(0.46--0.66; Figure~\ref{fig:sup_div_rho}B).
+The same pattern was present among whole segments (normal-diversity: 0.69, 0.52--0.81;
+all segmennts: 0.59, 0.41--0.73; Figure~\ref{fig:sup_div_rho}C).
 Within the low-diversity segments alone, we found no clear relationship
-(Spearman's $\rho$: $-0.30$, $-0.54$--0.02; 169 windows), and the negative value came
-from the windows with $\pi < 0.008$.
+(Spearman's $\rho$: $-0.26$, $-0.49$--0.03; 196 windows; Figure~\ref{fig:sup_div_rho}A),
+and the negative value came from the windows with $\pi < 0.008$.
 \vspace{0.1cm}
 
 \llabel{div_rho_results}A positive correlation between diversity and recombination
 has two possible causes.
-Under linked selection, $N_{e}$ is lower where recombination is low, and this reduces
+Under linked selection, \Ne{} is lower where recombination is low, and this reduces
 diversity but not divergence between species.
 If recombination is mutagenic, the mutation rate is higher where recombination is
 high, and this increases both diversity and divergence
@@ -675,51 +746,72 @@ To separate these causes, we compared $4N_{e}r$ with divergence between \bgla{} 
 \textit{B. crenatus} at 4-fold degenerate sites ($d_{4}$) in the exons of the same
 1\,Mbp windows.
 In these windows, $\pi$ at 4-fold degenerate sites ($\pi_{4}$) increased with
-$4N_{e}r$ (Spearman's $\rho$: 0.42, 0.29--0.52, in 633 normal-diversity windows; 0.43,
-0.30--0.54, in all 795 windows).
-However, $d_{4}$ did not increase with $4N_{e}r$ (normal-diversity: $-0.07$,
-$-0.23$--0.08; all: $-0.06$, $-0.19$--0.07).
+$4N_{e}r$ (Spearman's $\rho$: 0.39, 0.27--0.50, in 611 normal-diversity windows; 0.43,
+0.30--0.54, in all 790 windows; Figure~\ref{fig:sup_div_rho}F).
+However, $d_{4}$ did not increase with $4N_{e}r$ (normal-diversity: $-0.05$,
+$-0.21$--0.11; all: $-0.08$, $-0.21$--0.07; Figure~\ref{fig:sup_div_rho}G).
 The upper limits of these confidence intervals are much lower than the correlation of
 $\pi_{4}$ with $4N_{e}r$, so this result is not due to a lack of statistical power.
-Also, $d_{4}$ was not correlated with $\pi$ (normal-diversity: 0.06, $-0.12$--0.23;
-all: 0.12, $-0.02$--0.26).
+Also, $d_{4}$ was not correlated with $\pi$ (normal-diversity: 0.09, $-0.05$--0.24;
+all: 0.11, $-0.03$--0.25; Figure~\ref{fig:sup_div_rho}E).
 The ratio $\pi_{4}/d_{4}$, which removes differences in the mutation rate among
-windows, increased with $4N_{e}r$ at least as much as $\pi_{4}$ did (0.47, 0.33--0.58, in both
-sets of windows).
+windows, increased with $4N_{e}r$ at least as much as $\pi_{4}$ did (normal-diversity:
+0.44, 0.32--0.55; all: 0.47, 0.32--0.58; Figure~\ref{fig:sup_div_rho}H).
 Thus, mutagenic recombination does not explain the correlation between diversity
 and recombination in \bgla{}.
 \vspace{0.1cm}
 
-Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
-Thus, their correlation is expected when $N_{e}$ varies along the genome, as it does
-under linked selection, even if $r$ is constant.
-In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.46
-(0.87--2.08), which includes the value of 1 expected if only $N_{e}$ varies.
-Together, these results show that the variation in $\pi$ along the genome is a
-variation in $N_{e}$, not in the mutation rate, as expected under linked selection.
+Both $\pi$ and $4N_{e}r$ are proportional to \Ne{}.
+Thus, their correlation is expected when \Ne{} varies along the genome, even if $r$
+is constant; in that case, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ is 1.
+Among normal-diversity segments, the slope was 2.53 (1.94--3.12;
+Figure~\ref{fig:genome_pi}E), and among 1-Mb windows of normal-diversity segments it
+was 1.92 (1.34--2.45). Both confidence intervals exclude 1, so $4N_{e}r/\pi$, which
+estimates $r/\mu$, increases with $\pi$.
+Across segments, the relationship remained when we controlled for the number of SNPs
+and the length of each segment (partial $r_s = 0.55$, 0.35--0.73), and $\sigma_{D}^{2}$
+for SNPs 20--30\,bp apart, which does not depend on the Ohta--Kimura model, decreased
+with $\pi$ under the same control (partial $r_s = -0.57$, $-0.74$ to $-0.37$).
+Synonymous divergence ($d_{4}$) did not increase with $4N_{e}r$ ($r_s = -0.05$,
+$-0.21$ to 0.11), so the relationship is not explained by variation in the mutation
+rate and instead reflects a higher recombination rate where diversity is higher.
+Low-diversity segments do not show this relationship: the slope was 0.27
+($-0.82$ to 1.73), an interval that spans both 1 and negative values.
+In these segments, however, the fitted $4N_{e}r$ decreased with the number of SNPs
+($r_s = -0.63$, $-0.79$ to $-0.32$), which it did not do in normal-diversity segments
+($r_s = 0.11$), indicating that diversity is too low to estimate $4N_{e}r$ precisely
+within individual low-diversity segments.
+Together, these results show that, at least in normal-diversity segments, diversity
+along the \bgla{} genome is lower where the recombination rate is lower, as expected
+under linked selection.
 
 \subsection*{\balgla{} exhibits large effective population sizes}
 
 We estimated the effective population size (\Ne{}) for a central
 Oregon \textit{B. glandula} population sample using the whole-genome genotypes.
-As a simple estimate of the long-term \Ne{} of this population, we first
+As a simple estimate of the long-term effective size of this population, we first
 calculated \Ne{} using Watterson's estimator of genetic diversity ($\theta_\text{W}$),
-observing a mean genome-wide $\theta_\text{W}$ of 0.0617\comment{[Old pixy value; pixy dropped invariant sites with QUAL $<$ 30, so $\pi$ and $\theta_W$ are about 2$\times$ too high. Corrected pooled $\theta_W$ = 0.0294, which gives $N_e \approx 2.5\times10^{6}$ with $\mu = 3\times10^{-9}$. Update.]} (median: 0.0635, standard
-deviation: 0.0224; Figure~\ref{fig:sup_theta_ne}). Assuming a per-base,
-per-generation mutation rate ($\mu$) of $3\times10^{-9}$ (as estimated by
-\cite{nunez_footprints_2020} for the northern acorn barnacle \textit{S. balanoides})
-and using the relationship between \Ne{} and $\theta_\text{W}$, this yields a
-mean effective size of 5{,}137{,}172 (median: 5{,}289{,}211, standard deviation:
-1{,}862{,}683), which is consistent with the expectation of large \Ne{} in this species.
+observing a pooled genome-wide $\theta_\text{W}$ of 0.0299 (mean: 0.0282, median:
+0.0280, standard deviation: 0.0156; Figure~\ref{fig:sup_theta_ne}).
+Assuming a per-base, per-generation mutation rate ($\mu$) of \num{3e-9} (the
+arthropod-averaged estimate used by \cite{nunez_footprints_2020} for the northern 
+acorn barnacle \textit{S. balanoides}) \comment{Add rev point to this} and using the
+relationship between \Ne{} and $\theta_\text{W}$, this yields an \Ne{} of 
+\num{2.49e6} (mean: \num{2.35e6}, median: \num{2.34e6}).
+Estimating using only genotypes in intergenic regions of the genome yielded
+similar estimates (pooled $\theta_\text{W}$: 0.0296, \Ne{}: \num{2.46e6}).
+Overall, these results are consistent with the large \Ne{} expected in these
+barnacles populations.
 \vspace{0.1cm}
 
 Additionally, we estimated \Ne{} through time using a coalescent-based
 approach with \textsc{msmc2} \citep{dutheil_msmc_2020}. This estimate also placed
 the historical effective size of the population on the order of $10^{6}$ individuals
 (between $10^{6}$ and $10^{7}$ generations ago) (Figure~\ref{fig:sup_mcmc_ne});
-however, given our small sample size and the use of only within sample pairwise
-comparisons, we were unable to obtain accurate \Ne{} estimates at more recent
-($<10^{5}$ generations) timescales using \textsc{msmc2}.
+however, given our small sample size, the use of only within sample pairwise
+comparisons, and the known difficulty of calculating population sizes for hyper-diverse
+marine invertebrates \comment{add citations and rev point here}, we were unable to obtain accurate \Ne{} estimates at more
+recent ($<10^{5}$ generations) timescales using \textsc{msmc2}.
 Nevertheless, even these conservative estimates place \bgla{} among the
 largest known effective population sizes for any eukaryote, yet orders of
 magnitude below the census sizes observed in the field --- a disparity
