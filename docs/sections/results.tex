@@ -457,7 +457,7 @@ and inaccessible sites (e.g., those spanning annotating repeats \comment{add rev
 we recovered a total of 231.6 million accessible sites (Table~\ref{tab:sup_popgen_stats}).
 These sites included 20.5 million single nucleotide polymorphisms (SNPs) segregating in
 this central Oregon population, 4.6\% of which were multiallelic in just these six samples.
-In total, the amount of polymorphism observer in our sampling translates to a mean density
+In total, the amount of polymorphism observed in our sampling translates to a mean density
 of 83.3 variants per accessible kbp (median: 80.7, standard deviation: 53.9).
 Moreover, approximately 1.1 million of these single-nucleotide variants (5.18\%) were
 located in coding exons, corresponding to a mean number of 51.0 coding SNP per accessible kbp.
@@ -484,7 +484,7 @@ annotated CDSs is 0.0161 (mean: 0.0152, median: 0.0135, standard deviation: 0.01
 Figure~\ref{fig:feature_pi}; Table~\ref{tab:sup_feature_pi}),
 which represents a $\approx1.5\times$ reduction in diversity when compared to the
 genome-wide average. A reduction in diversity of similar magnitude is also observed
-lncRNAs ($\approx1.3\times$).
+in lncRNAs ($\approx1.25\times$).
 The largest reduction in diversity was observed in tRNAs, with
 $\pi\approx5.2\times$ lower than the genome-wide average and consistent with the
 strong functional constraint evidenced by their enrichment in highly conserved elements.
@@ -507,7 +507,7 @@ The pooled estimates account for these differences in accessible sites.
 
 Zooming in further on coding sequences, we explored the patterns of $\pi$
 at 0-fold degenerate ($\pi_{0}$), in which any mutation produces a non-synonymous
-substitution, and 4-fold degenerate sites ($\pi_{4}$), in which any mutation results
+change, and 4-fold degenerate sites ($\pi_{4}$), in which any mutation results
 in a synonymous change.
 \llabel{pi0_pi4_direct}This comparison separates the direct effect of purifying selection
 from its linked effect.
@@ -516,14 +516,14 @@ the same effect on both classes, and the difference between them comes from dire
 selection at 0-fold sites.
 The 4-fold sites have little or no direct selection, but they are not free of
 linked selection (see \nameref{sec:results_pi_rho}).
-In this central Oregon population of \bgla{}, the pooled $\pi_{0}$, was \num{6.69e-3}
+In this central Oregon population of \bgla{}, the pooled $\pi_{0}$ was \num{6.69e-3}
 (mean: \num{8.25e-3}, median: \num{4.98e-3}, standard deviation: \num{9.48e-3};
 Figure~\ref{fig:feature_pi}; Table~\ref{tab:sup_feature_pi}).
 This is the lowest diversity among the studied categories in the genome, not a
 surprising result given the higher functional constraint expected at these sites.
-In contrast, pooled $\pi_{4}$ was 0.0431 (mean: 0.387, median: 0.375, standard deviation:
-0.249), $\approx1.8\times$ higher than the genome-wide average and the highest in the genome.
-The nearly 5-fold difference between $\pi_{0}$ and $\pi_{4}$ highlights the
+In contrast, pooled $\pi_{4}$ was 0.0431 (mean: 0.0387, median: 0.0375, standard deviation:
+0.0249), $\approx1.8\times$ higher than the genome-wide average and the highest in the genome.
+The over 6-fold difference between $\pi_{0}$ and $\pi_{4}$ highlights the
 strong constraint on non-synonymous sites and suggests that purifying selection is
 highly effective in this population, consistent with theoretical predictions for
 species with large effective population sizes.
@@ -554,16 +554,16 @@ of low genetic diversity, often located at the center of the chromosomes
 (Figure~\ref{fig:genome_pi}A).
 We implemented a changepoint analysis to explore these regions further, classifying
 distinct segments of the genome as containing ``normal'' and ``low'' $\pi$.
-This analysis subdivided the 15 largest chromosomes into 83 total segments (see
+This analysis subdivided the 15 largest chromosomes into 93 total segments (see
 methods for the exclusion of chromosome 16 \comment{add reference}).
 Sixty-four segments, spanning 632.3\,Mbp (76.0\%) of this 15 chromosome subset of the
 assembly, were classified as having normal levels of diversity (pooled $\pi = 0.0278$,
 $1.13 \times$ the genome-wide pooled average).
 In contrast, we classified 29 segments, spanning 199.2\,Mbp (24.0\%) of the assembly,
-as having low diversity (pooled $\pi = 0.0116$, $0.47 \times$ the genome-wide average).
+as having low diversity (pooled $\pi = 0.0115$, $0.47 \times$ the genome-wide average).
 Each of the 15 analyzed chromosomes contained at least one low diversity segment, covering
 on average (mean) 23.8\% of the assembled chromosome (median: 22.4\%, standard deviation: 8.2\%).
-Additionally, we observe a difference in the sequence composition and content between the two
+Additionally, we observed a difference in the sequence composition and content between the two
 segment classes.
 Low-diversity segments show a small but significant decrease in GC content when compared
 to normal-diversity segments: 47.0\% ($\pm 1.02\%$) vs.\ 47.6\% ($\pm 0.77\%$) in low and
@@ -585,13 +585,13 @@ Genes located in low and normal diversity regions exhibit no difference in their
 substitution rate (as calculated by synonymous divergence, $d_\text{S}$) when compared to
 \textit{B. crenatus} ($p = 0.6$; Figure~\ref{fig:genome_pi}B).
 No difference is observed for either the rate of non-synonymous divergence ($d_\text{N}$)
-or their ratio, \dnds{} (Figure~\ref{fig:sup_chp_genes}A-C), or to the relationship between
+or their ratio, \dnds{} (Figure~\ref{fig:sup_chp_genes}A-C), or in the relationship between
 divergence and recombination, which we discuss below (see: \nameref{sec:results_pi_rho}).
 These substitution rate results suggest that the difference in diversity between the two
 segment classes is not the product of differences in the mutation rate.
 Exploring further, we do observe differences in the distribution of coding polymorphism
 between the two diversity classes.
-Expectedly, both synonymous and non-synonymous polymorphism (in the form of $\pi_4$ and
+As expected, both synonymous and non-synonymous polymorphism (in the form of $\pi_4$ and
 $\pi_0$, respectively) are lower in low-diversity segments; however, the reduction in
 diversity is not the same between the two.
 Synonymous polymorphism shows a $\approx60\%$ reduction between low-diversity (pooled
@@ -605,13 +605,13 @@ variation in regions of low diversity, as seen by the significantly elevated
 $\pi_0/\pi_4$ ($p < \num{1e-4}$; Figure~\ref{fig:genome_pi}C).
 This excess in non-synonymous polymorphism is also reflected in differences between
 the McDonald-Kreitman statistics between the two segment classes.
-Both metrics of $alpha$ and NI indicate a reduction in the proportion of adaptive
-substitutions fixed by selection in low-diversity segments (Figure~\ref{fig:genome_pi}D;
+Both metrics of $\alpha$ and NI indicate a reduction in the proportion of adaptive
+substitutions in low-diversity segments (Figure~\ref{fig:genome_pi}D;
 Figure~\ref{fig:sup_chp_genes}H-J); however, given the lack of difference in the
 adaptive substitution rate, this reduction just reflect the excess of weakly deleterious
 polymorphism \comment{(reword? I feel like I am saying the same thing twice)}.
 Overall, these patterns reflect the reduced efficacy of purifying selection in 
-low-diversity regions of the \bgla{} genome, which consistent with smaller local \Ne{}
+low-diversity regions of the \bgla{} genome, consistent with smaller local \Ne{}
 \comment{(too abrupt?)}.
 Below we propose that this reduction in local \Ne{} is the product of linked
 selection in regions of the genome exhibiting differences in recombination.
@@ -679,8 +679,9 @@ regions with different levels of diversity
 \vspace{0.1cm}
 
 LD in \bgla{} decays over a short physical distance.
-Over the 93 segments of chromosomes 1--15 (see below), \sdsq{} fell to half
-of its value for SNPs 10--20\,bp apart at 162\,bp (95\% CI: 142--185\,bp), and to one
+Over all regions of the genome, regardless of its diversity class, \sdsq{} fell
+to half of its value for SNPs
+10--20\,bp apart at 162\,bp (95\% CI: 142--185\,bp), and to one
 quarter at 705\,bp (579--880\,bp; Figure~\ref{fig:sup_ld_decay}A).
 A fit of the equilibrium expectation of \citet{ohta_linkage_1971} gave a population
 recombination rate ($4N_{e}r$) of 0.14 (0.12--0.17) per bp.
@@ -692,23 +693,13 @@ We therefore use the fitted $4N_{e}r$ as a summary of the rate of decay, not as 
 exact estimate of the recombination rate.
 \vspace{0.1cm}
 
-The genome contains large regions of reduced diversity (Figure~\ref{fig:genome_pi}A).
-To compare them with the rest of the genome, we divided chromosomes 1--15
-(excluding chromosome 16 due to its smaller size and uniformly low $\pi$)
-into segments of constant mean $\pi$ with a changepoint method
-(see \nameref{sec:methods_segments}).
-Of the 93 segments, 29 had $\pi$ lower than 0.75 times the genome-wide value
-(low-diversity segments; 199\,Mbp, median length 7.1\,Mbp), and 64 did not
-(normal-diversity segments; 632\,Mbp, median length 8.9\,Mbp).
-The median $\pi$ was 0.0132 in low-diversity segments and 0.0286 in normal-diversity
-segments.
-LD was higher in the low-diversity segments at all distances
-(Figure~\ref{fig:sup_ld_decay}B).
+Comparing LD between the different diversity classes, we observe higher
+LD in the low-diversity segments at all distances (Figure~\ref{fig:sup_ld_decay}B).
 In these segments, \sdsq{} fell to half of its short-distance value at
 373\,bp (316--448\,bp), versus 150\,bp (132--174\,bp) in normal-diversity segments, and the
 fitted $4N_{e}r$ was 0.036 per bp (0.028--0.051), against 0.15 per bp (0.13--0.18).
-We then asked if a difference in $N_{e}$ alone explains this difference in LD decay.
-If the two classes differed only in $N_{e}$, the low-diversity curve would equal the
+We then asked if a difference in local \Ne{} alone explains this difference in LD decay.
+If the two classes differed only in \Ne{}, the low-diversity curve would equal the
 normal-diversity curve with its distances scaled by the ratio of $\pi$ between the
 two classes (0.46).
 It did not: at the scaled distances, the low-diversity segments had 1.4 to 2.2 times
@@ -746,7 +737,7 @@ and the negative value came from the windows with $\pi < 0.008$.
 
 \llabel{div_rho_results}A positive correlation between diversity and recombination
 has two possible causes.
-Under linked selection, $N_{e}$ is lower where recombination is low, and this reduces
+Under linked selection, \Ne{} is lower where recombination is low, and this reduces
 diversity but not divergence between species.
 If recombination is mutagenic, the mutation rate is higher where recombination is
 high, and this increases both diversity and divergence
@@ -770,37 +761,29 @@ Thus, mutagenic recombination does not explain the correlation between diversity
 and recombination in \bgla{}.
 \vspace{0.1cm}
 
-\comment{All of this needs to be updated because some of the results slightly
-changes (now one of the CIs does overlap 1). Also the main diversity figure
-has one of these panels as well complementing \ref{fig:sup_div_rho}C}.
-Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
-Thus, their correlation is expected when $N_{e}$ varies along the genome, as it does
-under linked selection, even if $r$ is constant.
-In normal-diversity windows, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ was 1.92
-(1.34--2.45).
-This value excludes 1, meaning that $4N_{e}r/\pi$, which estimates $r/\mu$,
-increases with $\pi$.
-Because $d_{4}$ did not increase with $4N_{e}r$, this is not caused by variation in the
-mutation rate, but by a higher recombination rate where diversity is higher.
-
-Together, these results show that the variation in $\pi$ along the genome is a
-variation in $N_{e}$, not in the mutation rate, as expected under linked selection.
-
-Both $\pi$ and $4N_{e}r$ are proportional to $N_{e}$.
-Thus, their correlation is expected when $N_{e}$ varies along the genome, even if $r$
+Both $\pi$ and $4N_{e}r$ are proportional to \Ne{}.
+Thus, their correlation is expected when \Ne{} varies along the genome, even if $r$
 is constant; in that case, the slope of $\log(4N_{e}r)$ on $\log(\pi)$ is 1.
 Among normal-diversity segments, the slope was 2.53 (1.94--3.12;
-Figure~\ref{fig:genome_pi}E), and it was 1.92 (1.34--2.45) among normal-diversity
-windows. Both exclude 1, so $4N_{e}r/\pi$, which estimates $r/\mu$, increases with $\pi$.
-Because $d_{4}$ did not increase with $4N_{e}r$, this is not caused by variation in the
-mutation rate, but by a higher recombination rate where diversity is higher.
-The relationship remained when we controlled for the number of SNPs and the length of
-each segment (partial Spearman's $\rho$: 0.55, 0.35--0.73), and $\sigma_{D}^{2}$ for
-SNPs 20--30\,bp apart, which does not depend on the Ohta--Kimura model, decreased with
-$\pi$ under the same control ($-0.57$, $-0.74$ to $-0.37$).
-Together, these results show that diversity along the \bgla{} genome is lower where
-recombination is lower, as expected under linked selection, and that this pattern is
-not explained by variation in the mutation rate.
+Figure~\ref{fig:genome_pi}E), and among 1-Mb windows of normal-diversity segments it
+was 1.92 (1.34--2.45). Both confidence intervals exclude 1, so $4N_{e}r/\pi$, which
+estimates $r/\mu$, increases with $\pi$.
+Across segments, the relationship remained when we controlled for the number of SNPs
+and the length of each segment (partial $r_s = 0.55$, 0.35--0.73), and $\sigma_{D}^{2}$
+for SNPs 20--30\,bp apart, which does not depend on the Ohta--Kimura model, decreased
+with $\pi$ under the same control (partial $r_s = -0.57$, $-0.74$ to $-0.37$).
+Synonymous divergence ($d_{4}$) did not increase with $4N_{e}r$ ($r_s = -0.05$,
+$-0.21$ to 0.11), so the relationship is not explained by variation in the mutation
+rate and instead reflects a higher recombination rate where diversity is higher.
+Low-diversity segments do not show this relationship: the slope was 0.27
+($-0.82$ to 1.73), an interval that spans both 1 and negative values.
+In these segments, however, the fitted $4N_{e}r$ decreased with the number of SNPs
+($r_s = -0.63$, $-0.79$ to $-0.32$), which it did not do in normal-diversity segments
+($r_s = 0.11$), indicating that diversity is too low to estimate $4N_{e}r$ precisely
+within individual low-diversity segments.
+Together, these results show that, at least in normal-diversity segments, diversity
+along the \bgla{} genome is lower where the recombination rate is lower, as expected
+under linked selection.
 
 \subsection*{\balgla{} exhibits large effective population sizes}
 
