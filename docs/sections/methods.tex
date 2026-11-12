@@ -675,21 +675,14 @@ For the \texttt{call} command, we used the updated calling model
 probabilities (\texttt{-{}-annotate "GQ,GP"}).
 Additionally, we used the \textsc{bcftools} \texttt{norm} command to join adjacent SNPs
 and indels into single multiallelic sites.
-\vspace{0.1cm}
-
-\comment{Some of this needs to be updated}
-After calling genotypes, we filtered the resulting variants using \textsc{bcftools}.
-Using the \texttt{filter} command, we removed sites (both variant and invariant) with
-low quality (\texttt{-{}-exclude "QUAL < 30"}), with too high coverage (\texttt{-{}-exclude
-"INFO/DP > 125"}), adjacent to indels (\texttt{-{}-SnpGap 3}; \texttt{-{}-IndelGap 5}), and
-within the span of annotated repeats (\texttt{-{}-mask-file repeats.bed}). We filtered
-individual genotypes with a low genotyping quality (\texttt{-{}-exclude "FORMAT/GQ < 30"}),
-low depth (\texttt{-{}-exclude "FORMAT/DP < 10"}), and a large allelic imbalance
-(\texttt{-{}-exclude "(GT=='het') \& \%MAX(FMT/AD)/(FMT/DP) < 0.3"}).
-We also removed sites with more than two alleles using (\texttt{-{}-max-alleles 2}) from
-the \texttt{view} command.
-Lastly, we merged all the files together in a single genome-wide VCF using
-\textsc{bcftools} \texttt{concat}.
+After calling genotypes, we filtered the resulting variants using \textsc{bcftools}
+\texttt{filter}.
+Genotypes with depth $<10$ or genotype quality (GQ) $<30$ were set to missing.
+A site was retained if its genotype was called, if it was outside annotated repeats,
+it was not an indel, and lay more than 3\,bp from any indel.
+Variant sites with a quality (QUAL) $<30$ were also removed.
+These filters resulted in 320.0\,Mbp of accessible sequence containing 8.86 million
+heterozygous SNPs (Table~\ref{tab:sup_popgen_stats}). 
 \vspace{0.1cm}
 
 We classified the effects of heterozygous variants present in the reference genome using
