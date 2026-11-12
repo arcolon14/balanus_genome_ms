@@ -375,6 +375,32 @@ We considered sequences as contaminant if they had high similarity to bacteria, 
 viridiplantae, archaea, nematoda, cestoda, and trematoda.
 Contaminant sequences were removed from the annotation GFF file.
 
+\subsubsection*{Quantification of gene expression}\label{sec:gene_expression}
+
+We use the short-read RNAseq data to quantify gene expression in the annotated genes.
+First, we built an index of the genome and annotation using the \texttt{-{}-runMode
+genomeGenerate} command in \textsc{STAR} version \texttt{2.7.11b} \citep{dobin_star_2013}.
+The trimmed reads were then aligned to the indexed genome using \textsc{STAR}.
+We used the following parameters to account for stranded differences in the library,
+to project the alignments back into the annotated transcripts, and to obtaib per-gene
+read counts: \texttt{-{}-outSAMtype BAM SortedByCoordinate -{}-outSAMstrandField intronMotif
+-{}-quantMode TranscriptomeSAM GeneCounts}.
+The resulting alignment was processed and quantified using \textsc{samtools}.
+A total of 137.1 million reads pairs were aligned to the transcriptome, 81.0\% of
+which aligned uniquely.
+Approximately 39\% of the read pairs were matched back to rDNA repeats.
+Expression was quantified using \textsc{RSEM} version \texttt{1.3.3} \citep{li_rsem_2011}.
+We first created an \textsc{RSEM} reference using the \texttt{rsem-prepare-reference}
+command.
+Transcript- and gene-level abundances were estimated using the \texttt{rsem-calculate-expression}
+command, taking the paired-end \textsc{STAR} alignments as input (\texttt{-{}-alignments
+-{}-paired-end}), keeping only alignments in the reverse strand (\texttt{-{}-strandedness
+reverse}), and reporting normalized expression counts in transcripts per million (TMP;
+\texttt{-{}-estimate-rspd}).
+\textsc{RSEM} assigned 24.7 million read pairs to \num{20232} \bgla{} genes, \num{15146}
+($\approx75\%$) of which had nonzero expression: \num{10793} at $\geq1$ TPM and \num{4711}
+at $\geq10$ TPM.
+
 \subsubsection*{Annotation of non-coding RNAs}\label{sec:methods_ncrna}
 
 We annotated three classes of non-coding transcripts in the \bgla{} assembly: ribosomal
