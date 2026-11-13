@@ -716,36 +716,52 @@ downstream analysis.
 For the six remaining individuals, an average of 94.13\% of reads aligned to the 
 reference genome, resulting in a mean genome-wide coverage of 48.83x.
 
-\subsubsection*{Genotyping}
+\subsubsection*{Genotyping and filtering}\label{sec:methods_genotypes}
 
-\comment{update filter here}
 These six individuals were genotyped using the same \textsc{bcftools}
 \texttt{mpileup}/\texttt{call} approach used for our reference sample
 (see \nameref{sec:methods_ref_geno}), except allowing for a maximum depth of 1000x when
 genotyping (\texttt{-{}-max-depth 1000}).
-After normalizing indels using \textsc{bcftools} \texttt{norm}, we filtered the called
-variants using \textsc{bcftools} \texttt{filter} and \texttt{view}.
-We removed sites with low quality, adjacent to indels, and within the span of annotated
-repeats.
-Additionally, we removed sites with per-sample coverage lower than 10x, genotype quality
-lower than 30, and allelic imbalance larger than 30\%.
-After merging individual per-chromosome variants into a single genome-wide VCF, we also
-removed any sites containing missing genotypes (\texttt{bcftools view -g \^{}miss}).
+After normalizing indels using \textsc{bcftools} \texttt{norm}, we first applied filters
+as soft labels to each site using \textsc{bcftools} \texttt{filter -{}-soft-filters}.
+With this, both variant and invariant sites were retained in the output VCF with their
+respective filter status.
+Records with QUAL $<30$ were labelled low quality (\texttt{-{}-exclude "QUAL<30"}).
+SNPs within 3\,bp of an indel (\texttt{-{}-SnpGap 3}) and indels within 5\,bp of another
+indels (\texttt{-{}-IndelGap 5}) were also labelled.
+Individual genotypes with read depth $<10$ or genotype quality $<30$ were set to missing
+(\texttt{-{}-set-GTs~.});
+genotype quality is defined only at variant records, so invariant genotypes were filtered
+on depth alone.
+Indels and MNPs, sites with half or more of the genotypes missing (\texttt{F\_MISSING >= 0.5}),
+and sites overlapping annotated repeats (\texttt{-{}-mask-file}) were also labelled.
+Records with no called genotype were removed (\texttt{-{}-exclude-uncalled}), and unused
+alternate alleles were trimmed (\texttt{-{}-trim-alt-alleles}).
+\vspace{0.1cm}
+
+We then built an accessible-site mask from these soft-filtered calls.
+A position was accessible if it met four conditions:
+(i) its record passed all filters (the QUAL $<30$ label was ignored for invariant sites);
+(ii) it was not an indel;
+(iii) all six individuals had a called genotype;
+(iv) it lay outside an indel zone, defined as the reference span of every indel in
+the unfiltered normalized calls extended by 3 bp on each side.
+Adjacent accessible positions were merged into BED intervals, giving a mask of 231.6 million
+accessible sites, which included 20.5 million SNPs.
 The effects of the kept variants was determined using \textsc{snpEff}.
 
 \subsubsection*{Population genetic statistics}
 
-\comment{Re-read this}
 We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
 to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
 Watterson's $\theta$ ($\theta_\text{W}$), Tajima's $D$, and segregating sites.
-First, we converted the VCF to the VCF Zarr format using \textsc{bio2zarr} version
+First, we converted the soft-filtered VCF to the VCF Zarr format using \textsc{bio2zarr} version
 \texttt{0.2.1} \citep{czech_analysis-ready_2025}.
 We processed each chromosome separately, loading each as a \textsc{pg\_gpu}
 \texttt{HaplotypeMatrix} object.
 This matrix was then filtered to include only SNPs located in accessible regions
 without any missing genotypes (\texttt{HaplotypeMatrix.get\_subset};
-see filtering methods above \comment{add reference}).
+see filtering methods above:~\ref{sec:methods_genotypes}).
 We then calculated these three statistics over genomic windows using \textsc{pg\_gpu}'s
 \texttt{windowed\_analysis}, specifying 10\,kbp windows (\texttt{window\_size=10000}).
 To obtain pooled statistics that account for invariant sites, we ran using the
@@ -817,9 +833,10 @@ The two classes remain distinct with the corrected values (median segment $\pi$:
 
 \subsubsection*{Linkage disequilibrium and population recombination rate}\label{sec:methods_ld}
 
+\comment{update the pg\_gpu part here as well}
 \llabel{ld_methods}For the LD analyses, we used the biallelic SNPs that passed the
-filters described above (see \nameref{sec:methods_popgen}), except that we kept sites with
-fewer than half of the genotypes missing (genotypes called in at least four of the six
+filters described above (see \nameref{sec:methods_genotypes}), except that we kept sites
+with fewer than half of the genotypes missing (genotypes called in at least four of the six
 individuals).
 \comment{Update this. Some of these methods moved above.}
 We converted the VCF to the VCF Zarr format with \textsc{bio2zarr} version
