@@ -217,22 +217,20 @@ linked sites is a major factor that reduces diversity along the \bgla{} genome
 Diversity increases with the population recombination rate, but divergence from
 \textit{B. crenatus} does not.
 We can thus conclude that the variation in diversity is not due to variation in the mutation rate.
-Regions of low diversity cover \comment{verify this number} 21\% of the chromosomes, and their diversity is about
-half that of the rest of the genome.
+Regions of low diversity cover 24\% of the chromosomes, and their diversity is about
+$\approx40\%$ of the rest of the genome.
 With our limited data, we cannot separate background selection from recurrent selective
 sweeps, and a detailed analysis of the relative contributions of these processes will
 be the subject of future work.
 Linked selection thus contributes to the difference between the long-term \Ne{} and
 the census size of this population, although our data cannot yet measure how much.
-%Our work on the Pacific acorn barnacle provides a unique opportunity to empirically
-%study this disparity and the biological processes that maintain it.
 \vspace{0.1cm}
 
 \subsection*{Barnacles among highly fecund marine invertebrates}
 
-\llabel{marine_sweepstakes}\revpoint{2}{5}With census sizes in the billions and high fecundity,
-\bgla{} belongs to the group of marine invertebrates in which the relationship between
-census size, effective size, and diversity has been debated for decades.
+\llabel{marine_sweepstakes}\revpoint{2}{5}With (conservative) census sizes in the billions
+and high fecundity, \bgla{} belongs to the group of marine invertebrates in which the
+relationship between census size, effective size, and diversity has been debated for decades.
 High fecundity combined with high early mortality can produce a very large variance in
 reproductive success, such that a small fraction of adults produces most of the recruits
 in each generation.
@@ -242,7 +240,7 @@ below one and genetic differences among cohorts and sites at small spatial scale
 extreme, genealogies with multiple mergers rather than the Kingman coalescent
 \citep{eldon_coalescent_2006}.
 Multiple-merger genealogies give an excess of rare variants and can bias estimates of
-effective size and demographic history made under the Kingman coalescent.
+effective size and demographic history made under the Kingman coalescent \comment{add rev point}.
 The negative genome-wide Tajima's $D$ we observe is consistent with population growth,
 with linked selection, and with sweepstakes reproduction.
 \llabel{disc_tajima_linked}The correlation between diversity and recombination shows
@@ -252,39 +250,38 @@ Our estimates of \Ne{} should therefore be read as the effective size of an equi
 Kingman population.
 \vspace{0.1cm}
 
-\llabel{marine_oysters}Bivalves provide the closest precedent for the patterns in coding sequences that we
-report.
-In the Pacific oyster, \citet{sauvage_single_2007} found among the highest densities of
-synonymous polymorphism then known in animals and studied their relation to codon
-usage.
-In the European flat oyster, \citet{harrang_high_2013} found a high load of non-neutral
-amino-acid polymorphisms: the ratio of non-synonymous to silent diversity was 0.38, at
-a synonymous diversity of only 0.006, and the authors related this load to sweepstakes
-reproduction.
+\llabel{marine_oysters}Bivalves provide the closest precedent for the patterns in coding
+sequences that we report.
+In the Pacific oyster (\textit{Magallana gigas}), \citet{sauvage_single_2007} found among
+the highest densities of synonymous polymorphism then known in animals and studied their
+relation to codon usage.
+In the European flat oyster (\textit{Ostera edulis}), \citet{harrang_high_2013} found a
+high load of non-neutral amino-acid polymorphisms: the ratio of non-synonymous to silent
+diversity was 0.38, at a synonymous diversity of only 0.006, and the authors related this
+load to sweepstakes reproduction.
 \bgla{} does not follow this pattern.
 Its synonymous diversity is about seven times higher ($\pi_S = 0.042$) and its
-$\pi_N/\pi_S$ is about one third as high (0.11).\comment{[Corrected values, from the MK
-alignments with all invariant sites counted (revision\_analysis
-\texttt{results/comparative}); they replace the pixy values used elsewhere in the
-manuscript.]}
+$\pi_N/\pi_S$ (0.11) is less than a third of the oyster's non-synonymous to silent ratio.
 This value is inside the range predicted from the synonymous diversity of 86 animal
-species, and inside the range of the marine invertebrates among them
-\citep{romiguier_comparative_2014,galtier_adaptive_2016}
-(Figure~\ref{fig:sup_comparative}).
+species, and within the range of the 33 marine invertebrates among them
+\citep{romiguier_comparative_2014,galtier_adaptive_2016} (Figure~\ref{fig:sup_comparative}).
+We note that in the same dataset, transcriptome-wide estimates for \textit{O.~edulis} itself
+fall close to the prediction for its diversity ($\pi_S = 0.005$, $\pi_N/\pi_S = 0.18$).
 A high load of amino-acid polymorphism is thus not a general property of highly fecund
 marine invertebrates, and in \bgla{} purifying selection on amino-acid variation is as
 efficient as its synonymous diversity predicts.
 \vspace{0.1cm}
 
 \llabel{marine_sv}Marine invertebrate genomes also carry extensive structural variation.
-Gene presence-absence variation is widespread in the Mediterranean mussel
-\citep{gerdol_massive_2020}; duplications cover 16.5\% of the eastern oyster genome
-across 60 individuals \citep{modak_extensive_2021}; sequences present in only one
-haplotype make up about 69\% of each haplotype of a \textit{Crassostrea sikamea}
-genome \citep{liu_bivalves_2025}; inversion polymorphisms segregate in \textit{Ciona}
-\citep{satou_chromosomal_2021}; and copy number variants make up about one fifth of
-sequenced loci in the American lobster, where they, and not SNPs, are associated with
-sea temperature \citep{dorant_copy_2020}.
+Gene presence-absence variation is widespread in the Mediterranean mussel \textit{Mytilus
+galloprovincialis} \citep{gerdol_massive_2020};
+duplications cover 16.5\% of the eastern oyster genome across 60 individuals \citep{modak_extensive_2021};
+sequences present in only one haplotype make up about 69\% of each haplotype of the
+Kumamoto oyster (\textit{Crassostrea sikamea}) genome \citep{liu_bivalves_2025};
+inversion polymorphisms segregate in \textit{Ciona} \citep{satou_chromosomal_2021};
+and copy number variants make up about one fifth of sequenced loci in the American lobster
+(\textit{Homarus americanus}) where they, and not SNPs, are associated with sea
+temperature \citep{dorant_copy_2020}.
 The \bgla{} genome shows signs of the same complexity: a $k$-mer heterozygosity above
 3\% (Figure~\ref{fig:sup_kmers}), about 240\,Mbp of haplotig sequence removed during
 assembly (Table~\ref{tab:sup_asm_stats}), and a repeat content above 60\%.
@@ -294,17 +291,17 @@ genetic variation in \bgla{} and to test whether, as in the lobster, structural
 variants carry a large part of its adaptive variation.
 \vspace{0.1cm}
 
-\llabel{marine_mutation_rate}Direct estimates of the germline mutation rate now exist for highly
-fecund marine invertebrates.
-In the crown-of-thorns sea star, $\mu = 9.13 \times 10^{-9}$ per site per generation
-(95\% CI \num{6.5e-9} to \num{1.2e-8}), from 14 parent-offspring trios
-\citep{popovic_high_2024}, three times the rate we used here.
+\llabel{marine_mutation_rate}Direct estimates of the germline mutation rate now exist
+for highly fecund marine invertebrates.
+In the crown-of-thorns sea star (\textit{Acanthaster} cf. \textit{solaris}),
+$\mu$ was estimated as $9.13 \times 10^{-9}$ per site per generation (95\% CI
+\num{6.5e-9} to \num{1.2e-8}), from 14 parent-offspring trios \citep{popovic_high_2024},
+$\approx 3 \times$ the rate we used here.
 With this rate, our genome-wide diversity gives a long-term \Ne{} of about
-\num{7e5} (about \num{1.2e6} from 4-fold degenerate sites), which makes
-the gap to census size even larger.\comment{[From corrected $\pi$: genome-wide 0.0242,
-4-fold 0.0428.]}
+\num{6.6e5} (about \num{1.2e6} from 4-fold degenerate sites), which makes the gap to
+census size even larger.
 In tunicates, the estimates are indirect, and they suggest a per-generation rate no
 higher than in vertebrates \citep{tsagkogeorga_population_2012}.
-A high mutation rate thus does not appear to explain the high diversity of these
+A high mutation rate can therefore explain only part of the high diversity of these
 species, and the gap between effective and census size must come from other processes,
-such as linked selection or sweepstakes reproduction.
+such as linked selection and/or sweepstakes reproduction.
