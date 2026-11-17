@@ -790,46 +790,57 @@ For this, we first determined the degeneracy at each coding site in the genome u
 After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
 degenerate sites using the same \textsc{pg\_gpu} approach described above, except that we
 specified a specific site set based on the corresponding codon class.
-Diversity was pooled at the exon level for both 0-fold and 4-fold sites.\comment{[The new summary (\texttt{BalGla\_features\_pi.summary.tsv}) reports 0-fold and 4-fold sites per gene (\texttt{unit = gene}; 15,647 genes), not per exon. Check which is correct and update.]}
+Diversity was pooled at the gene level for both 0-fold and 4-fold sites.
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 
-\comment{update this to the pg gpu results}
 \llabel{segments_methods}To find regions of reduced diversity, we divided each of
 chromosomes 1--15 into segments of constant mean $\pi$.
-We used the \textsc{pixy} $\pi$ values in 10\,kbp windows, and kept the windows with
+Chromosome 16 was excluded from the analysis due to its smaller length.
+We used the \textsc{pg\_gpu} $\pi$ values in 10\,kbp windows, and kept the windows with
 more than \num{1000} called sites in which more than 10\% of the positions were called
-(\num{42459} windows).
+(\num{59398} windows).
 We detected changes in the mean $\pi$ with the Pruned Exact Linear Time (PELT)
 algorithm \citep{killick_optimal_2012} and a Normal mean-change cost, as implemented in
 the \texttt{cpt.mean} function of the \textsc{R} package \textsc{changepoint} version
 \texttt{2.3} \citep{killick_changepoint_2014}.
 Each chromosome was segmented separately, with a minimum segment length of 50 windows
 (500\,kbp).
-The Normal cost assumes independent observations with unit variance, but adjacent
-windows are correlated (lag-1 autocorrelation $\approx0.43$).
-We therefore divided the window values by a long-run standard deviation,
-$\sigma_{LR} = \sigma\sqrt{f}$.
-Here, $\sigma$ is the short-scale standard deviation, estimated as the median absolute
-deviation of the differences between adjacent windows divided by $\sqrt{2}$, and
-$f = 1 + 2\sum_{k=1}^{50} (1 - k/51)\,\rho_{k}$ is a Bartlett-weighted sum of the
-autocorrelations $\rho_{k}$ of the residuals around a running median of 151 windows
-\citep{newey_simple_1987}.
-The genome-wide estimate was $f = 3.83$.
-We used a penalty of $3\log(n)$ per changepoint, where $n$ is the number of windows on
-the chromosome. This is the modified Bayes information criterion penalty of
+The penalty for segmentation was $3\log(n)$ per changepoint, where $n$
+is the number of windows in a chromosome.
+This approach is the modified Bayes information criterion penalty of
 \citet{zhang_modified_2007} without its term for segment length.
-The number of changepoints decreased steadily as the penalty increased, with no clear
-optimum, so we use the segments to describe the data, not as tested breakpoints.
-For each segment, we calculated $\pi$ as the sum of pairwise differences divided by the
-sum of pairwise comparisons over its windows.
-Segments with $\pi$ lower than 0.75 times the genome-wide value (calculated in the same
-way) were classified as low-diversity segments, and all other segments as normal-diversity
-segments.
-This classification used the \textsc{pixy} values, which overestimate $\pi$
-(see \nameref{sec:methods_ld}).
-The two classes remain distinct with the corrected values (median segment $\pi$:
-0.0129 in low-diversity and 0.0273 in normal-diversity segments).
+\vspace{0.1cm}
+
+The Normal cost assumes independent observations with unit variance, but adjacent
+windows are correlated (lag-1 autocorrelation = 0.48).
+We therefore scaled $\pi$ values by a long-run standard deviation ($\sigma_\text{LR}$),
+which we calculated with the \texttt{lvar} function in the \textsc{R} package
+\textsc{sandwich} version \texttt{3.1.3} \citep{zeileis_2004_sandwhich}, using
+default parameters.
+To keep shifts in the mean from inflating the estimate, we applied it to the residuals
+around a 151-window running median (\texttt{runmed}, base \textsc{R}), computed within
+each chromosome and pooled across chromosomes.
+This gave $\sigma_\text{LR} = 0.0175$ against a marginal residual standard deviation of
+0.0098, a 3.2-fold inflation of the noise variance.
+This PELT approach placed 78 changepoints, resulting in 93 genomic segments.
+\vspace{0.1cm}
+
+For each defined segment, we calculated its average pooled $\pi$ as the sum of pairwise
+differences divided by the sum of pairwise comparisons over its corresponding 10\,kbp
+windows.
+Segments with $\pi$ lower than $0.75\times$ the genome-wide pooled value were classified
+as low-diversity segments (29 segments, 199.2\,Mbp, 24\% of the segmented length, pooled
+$\pi = 0.0113$).
+The rest of the segments were assigned as normal diversity (64 segments, 632.3\,Mbp,
+76\% of the segmented length, pooled $\pi = 0.0276$).
+For comparison, we also segmented the genome using a two-state Guassian hidden Markov
+model (HMM), fitted to standarized $\pi$ in 1\,Mbp window bins (also calculated from the
+sum of the pairwise differences over the sum of pairwise comparisons of the 10\,kbp
+windows) using the \texttt{MarkovRegression} function in the Python package
+\textsc{statsmodels} version \texttt{3.13.17} \citep{seabold_2010_statsmodels}.
+This HMM assigned 93.0\% of the base 10\,kbp windows to the same diversity class as the
+PELT approach, and identified 229.9\,Mbp as low diversity (Figure~\ref{fig:sup_hmm_pelt}).
 
 \subsubsection*{Linkage disequilibrium and population recombination rate}\label{sec:methods_ld}
 

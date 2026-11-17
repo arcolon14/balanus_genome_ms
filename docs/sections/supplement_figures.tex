@@ -169,6 +169,29 @@
     \label{fig:sup_pi_comp}
 \end{figure}
 
+% PELT vs HMM segment comparison
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_segment_methods.pdf}
+    \supfigurecaption{\textbf{Comparison of the diversity classification methods.}
+    \textbf{A-B.} Nucleotide diversity ($\pi$) along the 16 chromosome-scale scaffolds.
+    The line is $\pi$ in 10\,kbp windows, smoothed with a Gaussian kernel. Dashed line
+    is the genome-wide pooled average ($\pi = 0.0247$). Red and blue bars show the span
+    of low vs normal diversity windows, respectively. Chromosome 16 was excluded from
+    the analysis.
+    \textbf{A.} Pruned Exact Linear Time (PELT) segmentation of the 10\,kbp windows.
+    Segments with $\pi$ under $0.75\times$ the genome-wide pooled average were classified
+    as low diversity (29 segments, 199.2\,Mbp, 24\% of the segmented length).
+    \textbf{B.} A two-state Gaussian hidden Markov model (HMM) fitted to $\pi$ pooled in
+    1\,Mbp bins. Each bin is assigned to the state with the higher smoothed posterior
+    probability. 61 segments total, 25 of them low (229.9\,Mbp).
+    \textbf{C.} Agreement between the two classification methods for each 10\,kbp window.
+    Both methods agree on \num{59398} (93.0\%) windows. Low in both: 19.8\%, normal in
+    both: 73.2\%, low only in HMM: 5.6\%, low only in PELT: 1.4\%.}
+    \label{fig:sup_hmm_pelt}
+\end{figure}
+
 % Composition of the changepoint segments
 \begin{figure}[ht]
     \centering
