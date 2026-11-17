@@ -844,14 +844,10 @@ PELT approach, and identified 229.9\,Mbp as low diversity (Figure~\ref{fig:sup_h
 
 \subsubsection*{Linkage disequilibrium and population recombination rate}\label{sec:methods_ld}
 
-\comment{update the pg\_gpu part here as well}
 \llabel{ld_methods}For the LD analyses, we used the same soft-filtered VCF and
 accessibility mask described above (see \nameref{sec:methods_genotypes}), except that we 
 kept only biallelic SNPs and sites with fewer than half of the genotypes missing (genotypes
 called in at least four of the six individuals).
-% add pg_gpu
-\vspace{0.1cm}
-
 To measure LD in 10\,kbp windows, we calculated $Z_{nS}$ \citep{kelly_test_1997}, the
 mean $r^{2}$ over all pairs of SNPs in a window, with the genotype estimator of $r$
 \citep{rogers_linkage_2009}.
@@ -862,19 +858,20 @@ sites.
 In each segment, we summed $D^{2}$ and $\pi_{2}$ over all pairs of SNPs in 14 distance
 bins at 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, \num{1000},
 \num{2000}, \num{5000}, and \num{20000}\,bp.
-For a set of segments, $\sigma_{D}^{2}$ in a distance bin is the sum of $D^{2}$
+For a set of segments, \sdsq{} in a distance bin is the sum of $D^{2}$
 divided by the sum of $\pi_{2}$.
 We calculated 95\% confidence intervals from \num{2000} bootstrap samples of segments,
 drawn within each class.
-The scale of the decay is the distance at which $\sigma_{D}^{2}$ falls to one half and
+The scale of the decay is the distance at which \sdsq{} falls to one half and
 to one quarter of its value in the 10--20\,bp class, using a linear interpolation in the
 logarithm of distance.
 We fitted the expectation
 $\sigma_{D}^{2} = (10 + \rho_{d}) / (22 + 13\rho_{d} + \rho_{d}^{2})$
 \citep{ohta_linkage_1971}, with $\rho_{d} = 4N_{e}r\,d$ for SNPs $d$\,bp apart
 and $d$ the geometric midpoint of each distance class.
-We estimated $4N_{e}r$ per bp by least squares on $\sigma_{D}^{2}$ over all distance
-classes.
+We estimated $4N_{e}r$ per bp by least squares on \sdsq{} over all distance classes.
+\vspace{0.1cm}
+
 To ask whether the higher LD in low-diversity segments comes only from their lower
 $N_{e}$, we compared the low-diversity curve with a scaled normal-diversity curve.
 To make the scaled curve, we read the normal-diversity curve at each distance multiplied
