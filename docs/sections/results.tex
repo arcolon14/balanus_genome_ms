@@ -428,23 +428,31 @@ unexplored avenue of study of the efficacy and breadth of selection in highly di
     \captionsetup{width=0.95\linewidth}
     \includegraphics[width=0.9\textwidth]{figures/codon_bias.pdf}
     \caption{\textbf{Codon usage biases in \balgla.}
-        \textbf{A.} Genome-wide distribution of the effective number of codons (ENC)
-        in \bgla{} (\texttt{BalGla}) and other metazoan genomes (see Table~\ref{tab:sup_enc_summary}),
-        including the barnacles \textit{B. crenatus} (\texttt{BalCre}), \textit{A. amphitrite}
-        (\texttt{AmpAmp}), and \textit{P. pollicipes} (\texttt{PolPol}).
-        The vertical lines show the 50\textsuperscript{th} quantile (median) of the
-        distribution, while the crosses show the mean value.
-        \textbf{B.} Distribution in the proportion of GC bases in coding sequences
-        of 12 metazoan genomes. Vertical lines and crosses show the mean and median
-        values, respectively.
-        \textbf{C.} Relationship between the GC proportion at the 3rd codon site (GC3s)
-        and ENC in \bgla{}. Each black dot represents a gene, while the red curve shows
-        the expected relationship in accordance with Wright's curve
-        \citep{wright_effective_1990}. Points below the curve show genes with a smaller
-        than expected number of effective codons, candidates for translational selection.
-        \textbf{D.} Relationship between the expected number of effective codons (according
-        to Wright's curve) and the empirical ENC distribution in \bgla{}. Red line shows the
-        linear regression between expected and observed ENC distributions.}
+        \textbf{A.} Distribution of GC content across the genome (in 10\,kbp non-overlapping
+        windows), introns, coding sequences, and 3-rd codon positions (GC3s).
+        Black diamonds show the per-class mean.
+        \textbf{B.} Distribution of the effective number of codons in \bgla{} protein-coding
+        genes as denoted by the effective number of codons prime ($Nc'$) statistic.
+        Dotted and dashed lines show the median (36.0) and mean (36.6) $Nc'$ value, respectively.
+        \textbf{C.} Relationship between per-gene GC proportion in intronic sequences and GC3s.
+        The red line shows the least-squares regression GC3s to intron GC, while the dashed
+        line shows the one-to-one between the two.
+        \textbf{D.} Codon usage relative to intron composition. $\log_2$ ratio of observed to
+        expected use of each codon within its synonymous codon family, with expectations from
+        intron base composition.
+        Over- and under-used codons are those whose 95\% bootstrap interval excludes zero;
+        n.s., not significant. Horizontal bars show median per third base.
+        \textbf{E.} Change in codon preference with expression.
+        For each gene, a given codon's count is modelled against the total count of its
+        synonymous subfamily.
+        The Y-axis shows the logs-odd of using that codon over other in its synonymous
+        subfamily per unit increase of $\log_2(\text{TPM}+1)$.
+        Codons are classified as favored or avoided with expression at $q < 0.001$.
+        \textbf{F.} $Nc'$ as a function of expression for ribosomal protein genes (orange
+        diamonds, n = 71) and all other genes (blue circles).
+        Points denote the median $Nc'$ within expression bins; vertical bars show the
+        interquartile range.
+        Bins with fewer than five genes are not shown.}
     \label{fig:codon_enc}
 \end{figure}
 
