@@ -362,7 +362,7 @@ in response to osmotic stress in barnacles \citep{chandramouli_transcriptome_201
 \subsection*{Barnacle genes show biases in the use of synonymous codons}
 
 We compared biases in the composition and usage of synonymous codons in \bgla{} to study
-the effects of translational selection in context of large populations.
+the effects of translational selection in the context of large populations.
 To test for changes in sequence composition, we first calculated GC content across
 different genomic features in \bgla{} and other metazoan genomes.
 The \bgla{} genome shows GC-rich coding sequences, with a mean GC content in coding exons
@@ -372,9 +372,9 @@ A high coding GC content is also observed when looking at the GC proportion at 3
 positions (GC3s; mean: 80.4\%, median: 82.3\%, standard deviation: 9.02\%).
 Introns, on the other hand, show GC contents similar to that of the genome-wide background:
 intron mean GC = 46.8\% and genome-wide mean GC = 47.3\%.
-Comparing GC content across metazoan genome reveals a trend in \bgla{} as well as for the
+Comparing GC content across metazoan genomes reveals a trend in \bgla{} as well as for the
 other barnacle genomes studied.
-Barnacle genes showed consistently elevated GC content (63.3\%--64.5\%), with mean a
+Barnacle genes showed consistently elevated GC content (63.3\%--64.5\%), with a mean
 coding GC $\approx29\%$ higher than in the genomes of the other studied metazoans
 (mean difference 14.3\%; Figure~\ref{fig:sup_coding_gc}; Table~\ref{tab:sup_gc_content}).
 Intron GC follows a similar trend (46.8\%--53.6\%), also being $\approx29\%$ higher in
@@ -395,34 +395,34 @@ codons when compared to the other studied metazoans
 However, they all displayed relatively small ($\le5.2\%$) deviation from the ENC expectation
 from neutral composition.
 These low deviations are partly expected given the high GC3s in barnacle genomes.
-Because the expected ENC is derived by GC3s itself \citep[i.e., Wright's curve;][]{wright_effective_1990},
+Because the expected ENC is derived from GC3s itself \citep[i.e., Wright's curve;][]{wright_effective_1990},
 selection on GC-ending codons would also increase GC3s and shift ENC along this expectation,
 limiting the capacity to discern between selective and compositional processes.
 This limitation is compounded by the reduced range of possible ENC values at high (or low)
 GC3s.
-To account for this known effects, we additionally calculated the effective number of codons
+To account for this known effect, we additionally calculated the effective number of codons
 prime statistic \citep[Nc$'$;][]{novembre_2002_encprime}, which calculates synonymous codon
 biases while accounting for background nucleotide composition.
-The \bgla{} shows a mean Nc$'$ of 36.6 (median: 36.0, standard deviation: 6.49; Figure
-\ref{fig:codon_enc}B), one of the lowest mean values among the 12 studied genomes.
-Similar to ENC, the low distribution of Nc$'$ is shared all four barnacle genomes (mean Nc$'$
+The Pacific acorn barnacle shows a mean Nc$'$ of 36.6 (median: 36.0, standard deviation: 6.49;
+Figure~\ref{fig:codon_enc}B), one of the lowest mean values among the 12 studied genomes.
+Similar to ENC, the low distribution of Nc$'$ is shared by all four barnacle genomes (mean Nc$'$
 36.2--40.3; Figure~\ref{fig:sup_enc_metazoa}; Table~\ref{tab:sup_enc_summary}), $\approx20\%$
 lower than the other studied metazoans and representing a mean reduction of 9.8 effective codons.
 \vspace{0.1cm}
 
 In \bgla{} and other barnacle genomes, the distribution of Nc$'$ values reflects a substantial bias in
-the usage of synonymous codons, beyond to that explained by just neutral compositional processes;
-however, the measure alone cannot explain if the codon usage is the product of a different
-mechanism, e.g., GC-biased gene conversion (gBGC), or the outcome of an adaptive process such as
-translational selection.
+the usage of synonymous codons, beyond that explained by just background compositional processes;
+however, the measure alone cannot distinguish whether codon usage is the product of a different
+mechanism, e.g., GC-biased gene conversion (gBGC) \comment{(add revpoint 1.3)}, or the outcome of
+an adaptive process such as translational selection.
 To explore these mechanisms we first compared the per-gene relationship of GC3s as a function of
 background gene composition (i.e., intronic GC).
-This relationship is not strong in \bgla{}: a gene's intron GC content is a poor predictor of it's
+This relationship is not strong in \bgla{}: a gene's intron GC content is a poor predictor of its
 GC3s ($r=0.35$, slope $=0.52$; Figure~\ref{fig:codon_enc}C).
-For most genes, its GC content at 3rd codon positions sits well above its intronic GC,
+For most genes, their GC content at 3rd codon positions sits well above its intronic GC,
 indicating a GC excess at synonymous sites relative to the gene's own background composition.
 This offset is not driven by just a few codon families.
-All G-ending codons and all but one C-ending codons are over-used in \bgla{} when compared to
+All G-ending codons and all but one C-ending codon are over-used in \bgla{} when compared to
 expectations from the intronic base composition (Figure~\ref{fig:codon_enc}D); all A- and T-ending
 codons are under-used.
 The magnitude of this departure varies among synonymous families, suggesting codon-specific
@@ -431,77 +431,64 @@ However, a genome-wide preference for GC-ending codons can be expected under bot
 translational selection.
 Thus, we compared the observed relationships in \bgla{} to the ones observed across other
 metazoan genomes.
-In humans and other vertebrates, GC3s tracks intronic GC closely ($r=0.76$, slope $=1.61$;
+In humans and other vertebrates, GC3s tracks intronic GC closely ($r=0.78$, slope $=1.61$;
 Figure~\ref{fig:sup_gc3s_intron}).
-This is classic isochore signature, in which GC at intronic and coding sites co-vary with the
-regional GC content of the genome as a product of gBGC \citep{aissani_1991_isochores,duret_2009_gbgc}.
+This is the classic isochore signature, in which GC at intronic and coding sites co-vary with the
+regional GC content of the genome, thought to be the product of gBGC \citep{aissani_1991_isochores,duret_2009_gbgc}.
 In contrast, intronic GC is a poor predictor of GC3s in \textit{Drosophila} ($r=0.31$,
 slope $=0.59$), and GC3s is also substantially higher.
 This relationship has been used in previous research to argue in favor of selection being a
-key driver of biased synonymous codon in the species \citep{moriyama_1993_codon,kliman_1994_codon}.
-
-
-
-Comparing these relationships of intronic and synonymous site composition in \bgla{} to that
-of other metazoans provides a 
-
-
-
-
-
-In addition to ENC, we also estimated compositional biases by calculating both the overall
-coding sequence GC proportion, and the proportion of GC bases at third codon positions (GC3s).
-Across \num{16217} genes in \bgla{}, we find a mean ENC of 43.17 (median: 42.84, standard
-deviation: 5.52; Figure~\ref{fig:codon_enc}A;~Table~\ref{tab:sup_enc_summary}).
-This number of effective codons is similar to the one observed across three other barnacle
-genomes (mean ENC ranging from 42.04 to 44.33; Table~\ref{tab:sup_enc_summary}), highlighting a
-substantial reduction in the number of synonymous codon used in barnacles when compared to other
-metazoans (Figure~\ref{fig:codon_enc}A).
-A similar trend is observed when compared nucleotide composition in barnacle coding sequences.
-All four barnacle genomes studied showed coding sequence GC content of $\approx64\%$, 10 to 20\%
-higher than the other studied genomes (Figure~\ref{fig:codon_enc}B;~Table~\ref{tab:sup_enc_summary}).
-The higher coding GC proportion in barnacles is also observed when looking at the GC proportion
-at 3rd codon positions and at 4-fold degenerate sites (Figure~\ref{fig:sup_coding_gc}).
+key driver of biased use of synonymous codons in the species \citep{moriyama_1993_codon,kliman_1994_codon}.
+The patterns in \bgla{} and other barnacles do not match the human-like isochore pattern coupling
+local nucleotide composition gene-wide.
+Barnacle genomes instead show trends similar to \textit{Drosophila}, with a partial
+decoupling in composition between synonymous coding and non-coding regions of a gene and a large offset of GC3s above intron GC,
+suggestive of selection on codon usage.
+It is important to note, however, that given the extent of linkage disequilibrium decay
+observed in \bgla{} (see below), decoupling of exons and introns might just be the product
+of the high recombination expected in large \Ne{} populations.
 \vspace{0.1cm}
 
-We explored the selective basis of the increased bias in codon usage in barnacle genomes by
-comparing the empirical ENC distribution against a theoretical expectation.
-In its original definition of the ENC statistic, \citet{wright_effective_1990} devised a
-relationship between GC3s and ENC, resulting in an expected number of effective codons for a
-given GC content.
-Deviations from this expectation, specifically observing a smaller number of effective codons
-than expected, suggest the presence of strong translational selection acting on the genome.
-After testing this relationship across these 12 genomes, we observe that the reduction in
-the number of effective codons observed in barnacles can in most cases be explained by their
-coding GC proportion (Figure~\ref{fig:sup_enc_gc3s}; Figure~\ref{fig:sup_enc_reg}), suggesting
-a codon usage bias driven by neutral processes.
-In \bgla{} specifically, we observed a moderate deviation (mean: 0.065, median: 0.053, standard
-deviation: 0.090; Table~\ref{tab:sup_enc_models}) when comparing the empirical ENC
-distribution against Wright's curve (Figure~\ref{fig:codon_enc}C); however, when comparing the
-linear relationship between observed and expected ENC, a better fit for GC biased genomes such
-as \bgla{}, we do observe a reduction in the model's slope and coefficient of determination
-($\text{R}^2$; Figure~\ref{fig:codon_enc}D).
-This poorer fit of the model indicates a smaller than expected number of effective codons, and
-suggests the presence of strong translational selection acting on the genome and the potential
-non-neutrality of at least some synonymous codons in large \bgla{} populations.
+We also incorporated measures of gene expression to further explore codon usage biases in
+the Pacific acorn barnacle genome.
+Using gene expression, we measured the preference of synonymous codons within a synonymous
+codon subfamily.
+We considered a synonymous codon favored if its usage relative to the other codons in its
+synonymous subfamily increases with gene expression.
+Under translational selection, favored codons are expected to be enriched in highly expressed
+genes \citep{duret_1999_codons}.
+We observe a non-uniform codon preference in \bgla{}.
+Broadly, A- and T-ending synonymous codons tend to be avoided while C- and G-ending ones
+appear to be preferred (Figure~\ref{fig:codon_enc}E), matching the previously described
+usage differences.
+However, if codon preference were just a function of codon usage, we would expect C- and
+G-ending synonymous codons to be evenly preferred; this is not the case.
+We observe that C-ending codons (9 preferred, 1 avoided, 6 undetermined) show higher
+preference than G-ending ones (6 preferred, 4 avoided, 3 undetermined).
+For the eight synonymous codon subfamilies containing both C- and G-ending codons, in
+which a direct C vs. G comparison is possible, C-ending codons also tend to be preferred
+(5 C-preferred, 1 G-preferred, 2 undetermined).
+While the individual effects are small, these observations are indicative of
+non-compositional processes acting on codon usage in this system.
 \vspace{0.1cm}
 
-Comparing the ENC and GC3s distribution in relation to population size highlights some
-interesting patterns.
-Evidence for selection-driven codon usage biases is observed for some hyper-diverse, large
-population species, e.g., the nematode \textit{Caenorhabditis brenneri}, the Pacific oyster
-\textit{Magallana gigas}, and the European lancelet \textit{Branchiostoma lanceolatum}
-(Figure~\ref{fig:sup_enc_gc3s}; Figure~\ref{fig:sup_enc_reg}; Table~\ref{tab:sup_enc_models}).
-More moderate deviation is observed for other diverse species, e.g, the malaria mosquito
-\textit{Anopheles gambiae} and the tunicate \textit{Ciona intestinalis}.
-In contrast, in three of our studied barnacles (\textit{B. crenatus}, \textit{A. amphitrite},
-and \textit{P. pollicipes}), the observed codon usage biases appear are indistinguishable from
-neutral or non-adaptive compositional processes (e.g., \revpoint{1}{3}GC-biased gene conversion).
-In \bgla{}, evidence for non-neutral codon usage biases is moderate to strong depending on the
-method used.
-Overall, while we do not observe a clear relationship between population size and codon usage
-biases in the 12 studied genomes, the lineage-specific patterns described here provide an
-unexplored avenue of study of the efficacy and breadth of selection in highly diverse genomes.
+Lastly, we also looked at the direct relationship between codon usage bias and gene expression.
+As stated previously, codon preference should be more pronounced in highly expressed genes
+given an enrichment of favored codons \citep{duret_1999_codons}, resulting in a higher bias and
+a reduction in the effective number of codons.
+In \bgla{}, Nc$'$ decreased with expression (Spearman $\rho=-0.04$, $p<\num{1e-5}$; Figure~\ref{fig:codon_enc}F);
+however, the decline was mostly confined to highly expressed genes (TPM $>1000$) which showed
+a substantial reduction in the number of effective codons.
+As a comparison, we looked at Nc$'$ in cytosolic ribosomal proteins, which are expected to be
+ubiquitously expressed at high levels.
+Matching this expectation, these ribosomal proteins show high expression in \bgla{}.
+These proteins also showed lower Nc$'$ than other genes at similar expression levels (rank
+regression, $p = 0.016$).
+A similar trend is seen when looking at the fraction of optimal codons statistic \citep[Fop;][]{ikemura_1981_codons}, where we observe an increase in Fop in highly expressed genes (Figure~\ref{fig:sup_fop})~\comment{(add revpoint)}.
+Across all expression levels, the observed Fop is far above the no-preference expectation baseline
+(i.e., Fop if all synonymous codons are used equally).
+Overall, these findings suggest that codon usage in the Pacific acorn barnacle is shaped by
+selection on optimal codon sequences, at least at high expression levels.
 
 % ENC codon bias
 \begin{figure}[htbp]
@@ -510,11 +497,11 @@ unexplored avenue of study of the efficacy and breadth of selection in highly di
     \includegraphics[width=1.0\textwidth]{figures/codon_bias.pdf}
     \caption{\textbf{Codon usage biases in \balgla.}
         \textbf{A.} Distribution of GC content across the genome (in 10\,kbp non-overlapping
-        windows), introns, coding sequences, and 3-rd codon positions (GC3s).
+        windows), introns, coding sequences, and 3rd codon positions (GC3s).
         Black diamonds show the per-class mean.
         \textbf{B.} Distribution of the effective number of codons in \bgla{} protein-coding
         genes as denoted by the effective number of codons prime (Nc$'$) statistic.
-        Dotted and dashed lines show the median (36.0) and mean (36.6) Nc$'$ value, respectively.
+        Solid and dotted lines show the median (36.0) and mean (36.6) Nc$'$ value, respectively.
         \textbf{C.} Relationship between per-gene GC proportion in intronic sequences and GC3s.
         The red line shows the least-squares regression GC3s to intron GC, while the dashed
         line shows the one-to-one between the two.
