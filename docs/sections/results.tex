@@ -364,24 +364,48 @@ in response to osmotic stress in barnacles \citep{chandramouli_transcriptome_201
 We compared biases in the composition and usage of synonymous codons in \bgla{} to study
 the effects of translational selection in context of large populations.
 To test for changes in sequence composition, we first calculated GC content across
-different genomic features.
+different genomic features in \bgla{} and other metazoan genomes.
 The \bgla{} genome shows GC-rich coding sequences, with a mean GC content in coding exons
 of 63.8\% (median: 64.2\%, standard deviation: 5.23\%; Figure~\ref{fig:codon_enc}A;
 Table~\ref{tab:sup_gc_content}).
 A high coding GC content is also observed when looking at the GC proportion at 3rd codon
 positions (GC3s; mean: 80.4\%, median: 82.3\%, standard deviation: 9.02\%).
 Introns, on the other hand, show GC contents similar to that of the genome-wide background:
-intron mean GC = 46.8\% and genome-wide mean GC 47.3\%.
-% Now bring the other species. Mention that balgla has some of the highest observed, but
-% this trend is not balgla specific and is seen in the other barnacles too.
+intron mean GC = 46.8\% and genome-wide mean GC = 47.3\%.
+Comparing GC content across metazoan genome reveals a trend in \bgla{} as well as for the
+other barnacle genomes studied.
+Barnacle genes showed consistently elevated GC content (63.3\%--64.5\%), with mean a
+coding GC $\approx29\%$ higher than in the genomes of the other studied metazoans
+(mean difference 14.3\%; Figure~\ref{fig:sup_coding_gc}; Table~\ref{tab:sup_gc_content}).
+Intron GC follows a similar trend (46.8\%--53.6\%), also being $\approx29\%$ higher in
+barnacles (mean difference 11.0\%).
+The largest gap is observed in 3rd codon positions (77.8\%--83.1\%), in which barnacle
+coding sequences are approximately 52\% higher than 3rd codon positions in other metazoans.
+This GC3s-specific increase suggests an excess in GC at synonymous sites that exceeds
+that expected from local nucleotide composition alone.
+\vspace{0.1cm}
 
-usage and composition of synonymous codons in 12 metazoan
-genomes, including four barnacles, to study the effects of translational selection in the
-context of large populations.
-As an initial comparison, we calculated 
-Using the annotated transcript sequences in these genomes we calculated the effective number
-of codons (ENC), a measure of the extent of departure from equal usage across synonymous
-codons \citep{wright_effective_1990,sun_improved_2013}.
+To explore these codon sequence compositions patterns further, we calculated the effective
+number of codons (ENC), a measure of the extent of departure from equal usage across
+synonymous codons \citep{wright_effective_1990,sun_improved_2013}.
+All barnacle genomes, including \bgla{}, display substantial reductions in synonymous codon
+usage (mean ENC 41.9--44.2), $\approx16\%$ lower than other metazoans.
+However, they all displayed relatively small deviation from the ENC expectation from neutral
+composition
+
+
+and Nc$'$
+(mean 36.2--40.3, $\approx20\%$ lower) statistics (Figure~\ref{fig:sup_enc_metazoa};
+Table~\ref{tab:sup_enc_summary}).
+
+Given ENC's sensitivity to GC content, we additionally also the effective number of codons
+prime statistic \citep[Nc$'$;][]{novembre_2002_encprime}, which calculates synonymous codon
+biases while accounting for background nucleotide composition.
+
+
+
+
+
 In addition to ENC, we also estimated compositional biases by calculating both the overall
 coding sequence GC proportion, and the proportion of GC bases at third codon positions (GC3s).
 Across \num{16217} genes in \bgla{}, we find a mean ENC of 43.17 (median: 42.84, standard
