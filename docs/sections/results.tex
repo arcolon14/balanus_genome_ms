@@ -361,10 +361,24 @@ in response to osmotic stress in barnacles \citep{chandramouli_transcriptome_201
 
 \subsection*{Barnacle genes show biases in the use of synonymous codons}
 
-\comment{needs to be updated}
-We compared biases in the usage and composition of synonymous codons in 12 metazoan
-genomes, including four barnacles (Table~\ref{tab:sup_enc_summary}), to study the effects of
-translational selection in the context of large populations.
+We compared biases in the composition and usage of synonymous codons in \bgla{} to study
+the effects of translational selection in context of large populations.
+To test for changes in sequence composition, we first calculated GC content across
+different genomic features.
+The \bgla{} genome shows GC-rich coding sequences, with a mean GC content in coding exons
+of 63.8\% (median: 64.2\%, standard deviation: 5.23\%; Figure~\ref{fig:codon_enc}A;
+Table~\ref{tab:sup_gc_content}).
+A high coding GC content is also observed when looking at the GC proportion at 3rd codon
+positions (GC3s; mean: 80.4\%, median: 82.3\%, standard deviation: 9.02\%).
+Introns, on the other hand, show GC contents similar to that of the genome-wide background:
+intron mean GC = 46.8\% and genome-wide mean GC 47.3\%.
+% Now bring the other species. Mention that balgla has some of the highest observed, but
+% this trend is not balgla specific and is seen in the other barnacles too.
+
+usage and composition of synonymous codons in 12 metazoan
+genomes, including four barnacles, to study the effects of translational selection in the
+context of large populations.
+As an initial comparison, we calculated 
 Using the annotated transcript sequences in these genomes we calculated the effective number
 of codons (ENC), a measure of the extent of departure from equal usage across synonymous
 codons \citep{wright_effective_1990,sun_improved_2013}.
@@ -426,14 +440,14 @@ unexplored avenue of study of the efficacy and breadth of selection in highly di
 \begin{figure}[htbp]
     \centering
     \captionsetup{width=0.95\linewidth}
-    \includegraphics[width=0.9\textwidth]{figures/codon_bias.pdf}
+    \includegraphics[width=1.0\textwidth]{figures/codon_bias.pdf}
     \caption{\textbf{Codon usage biases in \balgla.}
         \textbf{A.} Distribution of GC content across the genome (in 10\,kbp non-overlapping
         windows), introns, coding sequences, and 3-rd codon positions (GC3s).
         Black diamonds show the per-class mean.
         \textbf{B.} Distribution of the effective number of codons in \bgla{} protein-coding
-        genes as denoted by the effective number of codons prime ($Nc'$) statistic.
-        Dotted and dashed lines show the median (36.0) and mean (36.6) $Nc'$ value, respectively.
+        genes as denoted by the effective number of codons prime (Nc$'$) statistic.
+        Dotted and dashed lines show the median (36.0) and mean (36.6) Nc$'$ value, respectively.
         \textbf{C.} Relationship between per-gene GC proportion in intronic sequences and GC3s.
         The red line shows the least-squares regression GC3s to intron GC, while the dashed
         line shows the one-to-one between the two.
@@ -448,9 +462,9 @@ unexplored avenue of study of the efficacy and breadth of selection in highly di
         The Y-axis shows the logs-odd of using that codon over other in its synonymous
         subfamily per unit increase of $\log_2(\text{TPM}+1)$.
         Codons are classified as favored or avoided with expression at $q < 0.001$.
-        \textbf{F.} $Nc'$ as a function of expression for ribosomal protein genes (orange
+        \textbf{F.} Nc$'$ as a function of expression for ribosomal protein genes (orange
         diamonds, n = 71) and all other genes (blue circles).
-        Points denote the median $Nc'$ within expression bins; vertical bars show the
+        Points denote the median Nc$'$ within expression bins; vertical bars show the
         interquartile range.
         Bins with fewer than five genes are not shown.}
     \label{fig:codon_enc}
