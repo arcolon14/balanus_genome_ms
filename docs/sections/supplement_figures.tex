@@ -80,70 +80,95 @@
     \label{fig:sup_go}
 \end{figure}
 
-% Coding GC, GC3s, and GC4d
+% Intron GC, Coding GC, GC3s, and GC4d
 \begin{figure}[ht]
     \centering
     \captionsetup{width=1.0\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/sups_coding_gc.pdf}
-    \supfigurecaption{\textbf{Distribution of coding GC proportions across metazoan
+    \includegraphics[width=1.0\textwidth]{figures/sups_gc_content.pdf}
+    \supfigurecaption{\textbf{Distribution of genic GC proportions across 12 metazoan
         genomes.}
-        \comment{Update this}
-        Top, middle, and bottom panels show the GC proportions coding sequence-wide,
-        at 3rd codon positions (GC3s), and at 4-fold degerate sites (GC4d),
-        respectively.
+        Top, middle, and bottom panels show the GC proportions of coding sequences,
+        at 3rd codon positions (GC3s), and at intronic sequences, respectively.
         Distribution are shown across 12 metazoan genomes, including four barnacles:
         \bgla{} (\texttt{BalGla}), \textit{B. crenatus} (\texttt{BalCre}),
         \textit{A. amphitrite} (\texttt{AmpAmp}), and \textit{P. pollicipes}
         (\texttt{PolPol}).
-        See Table~\ref{tab:sup_enc_summary} for additional description of the
-        genomes.}
+        See Table~\ref{tab:sup_gc_content} for summary statistics of these
+        distributions.}
     \label{fig:sup_coding_gc}
 \end{figure}
 
-% ENC vs GC3s
+% Distributions of ENC, Nc', and ENC deviation
 \begin{figure}[ht]
     \centering
     \captionsetup{width=1.0\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/sups_enc_gc3s.png}
-    \supfigurecaption{\textbf{Relationship between effective codons and GC content.}
-        \comment{Update this}
-        Nc-plots showing the relationship between GC proportion at 3rd codon positions
-        (GC3s; X-axis) and the effective number of codons (ENC; Y-axis) for 12
-        metazoan genomes.
-        At each panel, each point represents a single gene.
-        The black curve shows the expected relationship between GC3s and ENC, according
-        to Wright's curve: \wrightenc{}, where $s$ denotes GC3s.
-        The ``mean dev'' annotation shows the mean deviation in ENC from the theoretical
-        expectation.
-        Higher values show a larger proportion of genes showing a smaller than expected
-        number of effective codons, a putative signature of translational selection.
-        See Table~\ref{tab:sup_enc_summary} for additional description of the
+    \includegraphics[width=1.0\textwidth]{figures/sups_enc_metazoa.pdf}
+    \supfigurecaption{\textbf{Distribution of codon usage biases across 12 metazoan
         genomes.}
-    \label{fig:sup_enc_gc3s}
+        Top, middle, and bottom panels show the per-gene effective number of codons
+        (ENC), Nc$'$ (ENC accounting for the background nucleotide composition of the
+        gene's own introns), and the deviation of ENC from Wright's expectation given
+        GC3s ($\text{ENC}_{dev}$), respectively.
+        $\text{ENC}_{dev}$ is calculated as
+        $(\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$, where \wrightenc{}
+        and $s$ denotes GC3s.
+        Lower ENC and Nc$'$ values denote stronger codon usage bias.
+        Larger ($\gg0$) ENC deviation values denote fewer effective codons than expected
+        given GC3s, a putative signature of translational selection.
+        Inner boxes and diamonds denote the interquartile range and mean, respectively.
+        Distributions are shown across 12 metazoan genomes, including four barnacles:
+        \bgla{} (\texttt{BalGla}), \textit{B. crenatus} (\texttt{BalCre}),
+        \textit{A. amphitrite} (\texttt{AmpAmp}), and \textit{P. pollicipes}
+        (\texttt{PolPol}).
+        See Table~\ref{tab:sup_enc_summary} for summary statistics of these
+        distributions.}
+    \label{fig:sup_enc_metazoa}
 \end{figure}
 
-% Exp vs Obs ENC
+% Relationship between intron GC and GC3s
 \begin{figure}[ht]
     \centering
     \captionsetup{width=1.0\linewidth}
-    \includegraphics[width=1.0\textwidth]{figures/sups_enc_regression.png}
-    \supfigurecaption{\textbf{Relationship between the expected and observed number of
-        effective codons.}
-        \comment{update this}
-        Plots show the observed effective number of codons (ENC; Y-axis) as a function
-        of the expected ENC (X-axis), as defined by Wright's curve, for 12 metazoan
-        genomes.
-        At each panel, points represents single genes.
-        Dashed line shows the one-to-one relationship, while the solid black line
-        shows the linear regression.
-        Annotations in the plot show the regression's slope and coefficient of
-        determination ($\text{R}^2$).
-        Small ($\ll1$) slopes and low $\text{R}^2$ show a reduction in the observed
-        number of effective codons when compared to the theoretical expectation,
-        a potential signature of translational selection.
-        See Table~\ref{tab:sup_enc_summary} for additional description of the
-        genomes.}
-    \label{fig:sup_enc_reg}
+    \includegraphics[width=1.0\textwidth]{figures/sups_gc3s_intron.png}
+    \supfigurecaption{\textbf{GC3s against intron GC content of the same gene across 12
+    metazoan genomes.}
+        Each point is a gene.
+        The x-axis is the GC content at a gene's own introns, while the y-axis shows
+        the GC at synonymous 3rd codon positions (GC3s).
+        The dashed line shows the one-to-one relationship between the two, while the
+        solid red line shows the least-squares regression of GC3s on intron GC.
+        Each panel shows the Pearson correlation ($r$), the regression slope, and the
+        number of genes used in the comparison ($n$).
+        Intron GC was calculated from all introns of a gene pooled together, after
+        trimming 10\,bp from the 5' end and 30\,bp from the 3' end of each intron to
+        remove splice-site signals.}
+    \label{fig:sup_gc3s_intron}
+\end{figure}
+
+% Frequency of optimal codons in BalGla
+\begin{figure}[ht]
+    \centering
+    \captionsetup{width=1.0\linewidth}
+    \includegraphics[width=1.0\textwidth]{figures/sups_fop.pdf}
+    \supfigurecaption{\textbf{Frequency of optimal codons in \textit{Balanus glandula}.}
+        \textbf{A.} Frequency of optimal codons (Fop) across protein coding genes in
+        \bgla{}.
+        Genes included are \num{10961} multi-exon genes with coding sequences $\geq90$\,bp
+        and at least 200\,bp of trimmed intron sequence.
+        Fop denotes the proportion of a gene's own codons that are considered
+        optimal (excluding Met, Trp, and stop codons). Optimal codons are defined as
+        those whose use significantly increase with expression (see Figure
+        \ref{fig:codon_enc}E and Methods).
+        Solid and dashed lines denote the median (0.306) and mean (0.308) Fop, respectively.
+        Solid line shows a no-preference baseline (Fop = 0.23), i.e., the Fop at each
+        gene if it used all synonymous codons equally, accounting for its amino acid
+        composition.
+        \textbf{B.} Fop as a function of expression for ribosomal proteins (orange diamonds,
+        $n=71$) and all other genes (blue circles).
+        Points denote the median Fop within expression bins; vertical bars show the
+        interquartile range.
+        Bins with fewer than five genes are not shown.}
+    \label{fig:sup_fop}
 \end{figure}
 
 % Pi vs other species.
