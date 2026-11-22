@@ -612,30 +612,21 @@ Per-term counts and $p$-values were then extracted using the \texttt{GenTable} a
 
 \subsection*{Codon usage biases}
 
-\comment{Update all of this}
-
-% This gets to keep cubar.
-% Mention Nc_prime.
-% Mention the filter for intronic sequence and single-exon genes.
-% Keep the ENC deviation stuff.
-% Mention all species.
-% BalGla specific:
-% expression stuff.
-% The cubar::optimal_codon
-% ribosomal proteins
-% Fop
-
 We calculated codon usage biases on the \bgla{} coding sequences using the R package
-\textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026}.
+\textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026} along with other custom
+software.
 Before running \textsc{cubar}, we processed the annotation to extract only the longest
 isoform for each gene using \textsc{agat}'s \texttt{agat\_sp\_keep\_longest\_isoform.pl}
 and \texttt{agat\_sp\_extract\_sequences.pl}.
+We also flagged a subset of single-exons genes with high annotation support (e.g.,
+single-exon \textsc{BUSCO}s, strong \textsc{EnTAP} hits, unspliced Iso-Seq alignments).
+All other genes originating from single-exon models were removed.
 In \textsc{cubar}, we first filtered coding sequences using the \texttt{check\_cds}
-function, ensuring the presence of canonical start and stop codons.
-To prevent known biases in small coding sequences, we then removed transcripts smaller
-than 300\,bp and those above and below two standard deviations of the mean transcript
-length.
-This process retained \num{16217} sequences in \bgla{}.
+function to ensure that the length of the coding sequence was a multiple of three and
+to remove any gene with internal stop codons.
+To prevent known biases in small coding sequences, we additionally removed transcripts
+with fewer than 30 codons (90\,bp) and those above and below two standard deviations of
+the mean transcript length.
 After obtaining the empirical codon distribution using the \texttt{count\_codons} function,
 we then used \texttt{get\_enc} to calculate codon usage biases using the effective number
 of codons (ENC) metric, which captures the deviation from equal codon usage across
@@ -643,18 +634,65 @@ synonymous codons \citep{wright_effective_1990}.
 More specifically, we calculated an improved implementation of ENC, accounting for
 usage differences across different codon subfamilies \citep{sun_improved_2013}.
 In addition to ENC, we calculated GC proportions using the following \textsc{cubar}
-functions: \texttt{get\_gc} for coding sequence-wide GC proportion, \texttt{get\_gc3s}
-for GC proportion at 3rd codon sites (GC3s), and \texttt{get\_gc4d} for GC proportion
-at 4-fold degenerate sites (GC4d).
+functions: \texttt{get\_gc} for coding sequence-wide GC proportion, and \texttt{get\_gc3s}
+for GC proportion at 3rd codon sites (GC3s).
 Lastly, we used Wright's curve (\wrightenc, were $s$ denotes GC3s;
 \citealp{wright_effective_1990}) to determine the expected distribution of the number of
-effective codons given a given GC3s distribution.
+effective codons given GC3s.
 At each gene, we calculated its deviation from this empirical ENC distribution using
-$\text{ENC}_{dev} = (\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$,
-as well as a linear regression of $\text{ENC}_{obs}$ given $\text{ENC}_{exp}$ using
-\texttt{R}'s \texttt{lm} function.
-We compared the ENC results in \bgla{} by calculating empirical and expected ENC
+$\text{ENC}_{dev} = (\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$.
+We compared these results in \bgla{} by calculating empirical and expected ENC
 distributions for 11 other metazoan genomes, as specified in Table~\ref{tab:sup_enc_summary}.
+\vspace{0.1cm}
+
+In addition to ENC with \textsc{cubar}, we used a custom R software (\texttt{run\_ncprime.R})
+to calculate the effective number of codons prime (Nc$'$) statistic \citep{novembre_2002_encprime}.
+This statistics calculates the number of effective codon in a gene while accounting for
+background nucleotide composition, in this case using the gene's own introns.
+This script applies the same filters previously described (sequence length multiple of 3 and
+$>30$ codons, no premature stops) and applies additional filters on the intronic sequences.
+Individual introns are trimmed (10\,bp at the 5' end, 30\,bp at the 3' end) to remove any
+splice-site signals.
+Any gene with under 200\,bp of pooled intron sequence is removed.
+This strict filtering retained \num{10961} genes in \bgla{}.
+All of a gene's trimmed introns are then pooled and used to estimate per-gene background
+nucleotide frequencies.
+These background nucleotide frequencies were used to calculate the expectations in the codon
+usage metrics, e.g., for each codon, its observed count summed over genes was compared against
+its expected count in the background ($\log_2(\text{codon}_{obs}/\text{codon}_{exp})$).
+The Nc$'$ statistic was calculated following an R re-implementation of the \textsc{Ncprime}
+software \citep{novembre_2002_encprime}.
+For each amino acid, the expected frequency of each codon is the product of the background
+frequencies of the bases at the positions that vary among its synonymous codons, rescaled to
+sum to 1.
+Amino acids with five or fewer codons in a gene were excluded from that gene's calculation.
+Like for ENC, we compared observed and expected Nc$'$ in \bgla{} and 11 other metazoan
+genomes (see list in Table~\ref{tab:sup_enc_summary}).
+\vspace{0.1cm}
+
+For \bgla{} specifically, we used our measures of gene expression to find signatures of
+translational selection.
+First, we calculated codon preference relative to expression using \textsc{cubar}'s
+\texttt{est\_optimal\_codons} function.
+For each codon, the function fits a binomial generalized linear model across genes, with
+the number of occurrences of the codon versus synonymous one within the same codon
+subfamily as the response, and expression ($\log_{2}(\text{TPM}+1)$) as the predictor.
+The model's slope gives the change in the log-odds of using that codon per doubling of
+$\text{TPM} + 1$.
+Codons with a positive slope and a Benjamini-Hochberg-adjusted $q < 0.001$ were considered
+as favored, and those with a negative slope and $q < 0.001$ as avoided.
+Genes with $q>0.001$ were classified as ``undetermined''.
+Using these favored codons we calculated the frequency of optimal codons statistic
+\citep[Fop;][]{ikemura_1981_codons} at each gene.
+A higher Fop means stronger use of these expression-linked optimal codons, a signature
+of translational selection.
+Fop was calculated using \textsc{cubar}'s \texttt{get\_fop}.
+We additionally calculated a no-preference baseline, the expected Fop if every synonymous
+codon of a given amino acid is used equally, given a gene's amino acid composition.
+Moreover, we summarized both Fop and Nc$'$ across expression bins (TPM = 0, then bins with
+breaks at 1, 3, 10, 30, 100, 300, \num{1000}, \num{3000}, and \num{10000} TPM).
+These relationships were calculated separately for cytosolic ribosomal proteins, as highly
+expressed controls, and all other genes.
 
 \subsection*{Genetic variation in the \balgla{} reference}\label{sec:methods_ref_geno}
 
@@ -673,7 +711,7 @@ After filtering and processing alignments, the reference individual retained a m
 depth of coverage of 50.88x (median: 47.94x, standard deviation: 100.32x).
 \vspace{0.1cm}
 
-Genotypes were called from these alignments using the standard \textsc{bcftools} version
+Genotypes were called from these processed alignments using the standard \textsc{bcftools} version
 \texttt{1.21} \citep{danecek_bcftools_2021} genotyping pipeline, consisting of the
 \texttt{mpileup} and \texttt{call} commands for generating genotype likelihoods and calling
 genotypes, respectively.
@@ -764,7 +802,7 @@ The effects of the kept variants was determined using \textsc{snpEff}.
 
 \subsubsection*{Population genetic statistics}
 
-We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
+We used the GPU library \textsc{pg\_gpu} \citep[commit \texttt{0fb9a24};][]{pope_gpu_2026}
 to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
 Watterson's $\theta$ ($\theta_\text{W}$), Tajima's $D$, and segregating sites.
 First, we converted the soft-filtered VCF to the VCF Zarr format using \textsc{bio2zarr} version
