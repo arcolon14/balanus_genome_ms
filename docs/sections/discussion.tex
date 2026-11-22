@@ -45,21 +45,26 @@ diverse \textit{Drosophila} populations \citep{haller_asymptoticmk_2017}.
 In large enough populations, selection should be efficacious enough that its effects
 extend to synonymous sites, where substitutions are normally considered neutral.
 This could result in a bias in the usage of synonymous codons, as different codons are
-favored over others due to GC biases, mRNA stability, tRNA abundance, and other factors
-\citep{galtier_codon_2018,presnyak_codon_2015}.
+favored over others by translational selection due to GC biases, mRNA stability, tRNA
+abundance, and other factors \citep{galtier_codon_2018,presnyak_codon_2015}.
 These effects are observed in the \bgla{} assembly in the form of reduction in the
 effective number of codons seen across protein-coding genes.
-On average, \bgla{} uses $\approx$ 43 out of 61 available codons, a greater reduction than
-that observed in other metazoan genomes (Figure~\ref{fig:codon_enc};
-Table~\ref{tab:sup_enc_summary}).
-There is moderate evidence that this bias is not the product of compositional neutral
-processes (Figure~\ref{fig:sup_enc_gc3s};~Figure~\ref{fig:sup_enc_reg}), suggesting an
-increase in the efficacy of natural selection due to the large size of Pacific acorn
+On average, \bgla{} protein-coding genes use $\approx$ 36 out of 61 available codons, a
+larger reduction in effective number of codons than that observed in other metazoan
+genomes (Figure~\ref{fig:sup_enc_metazoa}).
+Given \bgla{}'s high coding GC content, these biases can be partly explained by
+non-adaptive compositional processes.
+For example, given the extent of recombination in this system, the increase in synonymous
+GC content could be the product of GC-biased gene conversion.
+Yet, we do find evidence for non-uniform codon preferences, and thus further reductions in
+the effective number of codons, in highly expressed sequences, indicative of the impacts of
+translational selection acting on synonymous codon usage in the large Pacific acorn
 barnacle populations.
 Moreover, these biases put into question the neutrality of at least some synonymous
 substitutions in this system, which could have important ramifications for the study of
-molecular evolution; however, the extent of these effects remain presently unknown and
-should be the subject of future study.
+molecular evolution.
+The extent of these effects, however, remains presently unknown and should be the subject
+of future study.
 \vspace{0.1cm}
 
 In contrast, the distribution of transposable and repeat elements in the
@@ -81,7 +86,11 @@ known to play roles in adaptive evolution \citep{schrader_impact_2019}.
 For example, repeat elements can act as regulators of gene expression
 \citep{trizzino_transposable_2017,rech_population-scale_2022}, and as such may provide
 the regulatory plasticity required for survival in rapidly changing
-intertidal environments.
+intertidal environments;
+however, these effects are speculative and the mechanisms driving the high repeat
+content in \bgla{} remain unknown \comment{Add revpoint. One reviewer asked about TEs.
+We can't really tell with the current data so I am adding this to tone down the
+language a little}.
 Regardless of their role, disentangling the population-wide repeat landscape and its
 fitness effects is likely impossible with a single haploid reference assembly.
 Thus, this observation drives the need for larger comparative genomic studies across
@@ -91,6 +100,8 @@ and transposable elements in this and other large populations.
 \subsection*{Molecular evolution in large populations: reconciling \dnds{} and the
 McDonald-Kreitman test}\label{sec:discussion_dnds_mkt}
 
+\comment{One reviewer/the editor asked about reducing or removing this section.
+Should we? I think it is good.}
 One of the more striking patterns in our results is the apparent discordance between
 our two measures of selection on protein-coding genes.
 The average pairwise \dnds{} between \bgla{} and \textit{B. crenatus} is 0.206,
@@ -174,7 +185,7 @@ Moreover, as with other marine invertebrates, barnacle life history traits are l
 direct drivers of the elevated polymorphism observed, as factors such as large census
 sizes, small propagule size, large brood size, long larval dispersal, and broad geographic
 distribution have been positively correlated with high genetic diversity in these
-organisms \citep{leffler_revisiting_2012,romiguier_comparative_2014}.
+organisms \citep{leffler_revisiting_2012,romiguier_comparative_2014,toczydlowski_2025_diversity}.
 \vspace{0.1cm}
 
 The magnitude of neutral diversity \comment{add rev point} observed in \bgla{} places
@@ -188,7 +199,7 @@ For example, recent work by~\citet{hart_genomic_2025} suggests that levels
 of polymorphism above 1\% neutral diversity in eukaryotes likely serve as biological limits
 for the definition of species.
 Barnacles and other hyper-diverse natural systems put these putative cutoffs into question.
-We observe levels of neutral diversity of over 4 times this diversity cutoff in
+We observe levels of neutral diversity of over four times this diversity cutoff in
 just a very small portion of the biological range of the Pacific acorn barnacle.
 Given the species' broader geographical and ecological distribution, neutral genetic
 diversity is likely to increase when looking across a larger spatial sampling.
@@ -217,22 +228,20 @@ linked sites is a major factor that reduces diversity along the \bgla{} genome
 Diversity increases with the population recombination rate, but divergence from
 \textit{B. crenatus} does not.
 We can thus conclude that the variation in diversity is not due to variation in the mutation rate.
-Regions of low diversity cover \comment{verify this number} 21\% of the chromosomes, and their diversity is about
-half that of the rest of the genome.
+Regions of low diversity cover 24\% of the chromosomes, and their diversity is about
+$\approx40\%$ of the rest of the genome.
 With our limited data, we cannot separate background selection from recurrent selective
 sweeps, and a detailed analysis of the relative contributions of these processes will
 be the subject of future work.
 Linked selection thus contributes to the difference between the long-term \Ne{} and
 the census size of this population, although our data cannot yet measure how much.
-%Our work on the Pacific acorn barnacle provides a unique opportunity to empirically
-%study this disparity and the biological processes that maintain it.
 \vspace{0.1cm}
 
 \subsection*{Barnacles among highly fecund marine invertebrates}
 
-\llabel{marine_sweepstakes}\revpoint{2}{5}With census sizes in the billions and high fecundity,
-\bgla{} belongs to the group of marine invertebrates in which the relationship between
-census size, effective size, and diversity has been debated for decades.
+\llabel{marine_sweepstakes}\revpoint{2}{5}With (conservative) census sizes in the billions
+and high fecundity, \bgla{} belongs to the group of marine invertebrates in which the
+relationship between census size, effective size, and diversity has been debated for decades.
 High fecundity combined with high early mortality can produce a very large variance in
 reproductive success, such that a small fraction of adults produces most of the recruits
 in each generation.
@@ -242,7 +251,7 @@ below one and genetic differences among cohorts and sites at small spatial scale
 extreme, genealogies with multiple mergers rather than the Kingman coalescent
 \citep{eldon_coalescent_2006}.
 Multiple-merger genealogies give an excess of rare variants and can bias estimates of
-effective size and demographic history made under the Kingman coalescent.
+effective size and demographic history made under the Kingman coalescent \comment{add rev point}.
 The negative genome-wide Tajima's $D$ we observe is consistent with population growth,
 with linked selection, and with sweepstakes reproduction.
 \llabel{disc_tajima_linked}The correlation between diversity and recombination shows
@@ -252,39 +261,38 @@ Our estimates of \Ne{} should therefore be read as the effective size of an equi
 Kingman population.
 \vspace{0.1cm}
 
-\llabel{marine_oysters}Bivalves provide the closest precedent for the patterns in coding sequences that we
-report.
-In the Pacific oyster, \citet{sauvage_single_2007} found among the highest densities of
-synonymous polymorphism then known in animals and studied their relation to codon
-usage.
-In the European flat oyster, \citet{harrang_high_2013} found a high load of non-neutral
-amino-acid polymorphisms: the ratio of non-synonymous to silent diversity was 0.38, at
-a synonymous diversity of only 0.006, and the authors related this load to sweepstakes
-reproduction.
+\llabel{marine_oysters}Bivalves provide the closest precedent for the patterns in coding
+sequences that we report.
+In the Pacific oyster (\textit{Magallana gigas}), \citet{sauvage_single_2007} found among
+the highest densities of synonymous polymorphism then known in animals and studied their
+relation to codon usage.
+In the European flat oyster (\textit{Ostera edulis}), \citet{harrang_high_2013} found a
+high load of non-neutral amino-acid polymorphisms: the ratio of non-synonymous to silent
+diversity was 0.38, at a synonymous diversity of only 0.006, and the authors related this
+load to sweepstakes reproduction.
 \bgla{} does not follow this pattern.
 Its synonymous diversity is about seven times higher ($\pi_S = 0.042$) and its
-$\pi_N/\pi_S$ is about one third as high (0.11).\comment{[Corrected values, from the MK
-alignments with all invariant sites counted (revision\_analysis
-\texttt{results/comparative}); they replace the pixy values used elsewhere in the
-manuscript.]}
+$\pi_N/\pi_S$ (0.11) is less than a third of the oyster's non-synonymous to silent ratio.
 This value is inside the range predicted from the synonymous diversity of 86 animal
-species, and inside the range of the marine invertebrates among them
-\citep{romiguier_comparative_2014,galtier_adaptive_2016}
-(Figure~\ref{fig:sup_comparative}).
+species, and within the range of the 33 marine invertebrates among them
+\citep{romiguier_comparative_2014,galtier_adaptive_2016} (Figure~\ref{fig:sup_comparative}).
+We note that in the same dataset, transcriptome-wide estimates for \textit{O.~edulis} itself
+fall close to the prediction for its diversity ($\pi_S = 0.005$, $\pi_N/\pi_S = 0.18$).
 A high load of amino-acid polymorphism is thus not a general property of highly fecund
 marine invertebrates, and in \bgla{} purifying selection on amino-acid variation is as
 efficient as its synonymous diversity predicts.
 \vspace{0.1cm}
 
 \llabel{marine_sv}Marine invertebrate genomes also carry extensive structural variation.
-Gene presence-absence variation is widespread in the Mediterranean mussel
-\citep{gerdol_massive_2020}; duplications cover 16.5\% of the eastern oyster genome
-across 60 individuals \citep{modak_extensive_2021}; sequences present in only one
-haplotype make up about 69\% of each haplotype of a \textit{Crassostrea sikamea}
-genome \citep{liu_bivalves_2025}; inversion polymorphisms segregate in \textit{Ciona}
-\citep{satou_chromosomal_2021}; and copy number variants make up about one fifth of
-sequenced loci in the American lobster, where they, and not SNPs, are associated with
-sea temperature \citep{dorant_copy_2020}.
+Gene presence-absence variation is widespread in the Mediterranean mussel \textit{Mytilus
+galloprovincialis} \citep{gerdol_massive_2020};
+duplications cover 16.5\% of the eastern oyster genome across 60 individuals \citep{modak_extensive_2021};
+sequences present in only one haplotype make up about 69\% of each haplotype of the
+Kumamoto oyster (\textit{Crassostrea sikamea}) genome \citep{liu_bivalves_2025};
+inversion polymorphisms segregate in \textit{Ciona} \citep{satou_chromosomal_2021};
+and copy number variants make up about one fifth of sequenced loci in the American lobster
+(\textit{Homarus americanus}) where they, and not SNPs, are associated with sea
+temperature \citep{dorant_copy_2020}.
 The \bgla{} genome shows signs of the same complexity: a $k$-mer heterozygosity above
 3\% (Figure~\ref{fig:sup_kmers}), about 240\,Mbp of haplotig sequence removed during
 assembly (Table~\ref{tab:sup_asm_stats}), and a repeat content above 60\%.
@@ -294,17 +302,17 @@ genetic variation in \bgla{} and to test whether, as in the lobster, structural
 variants carry a large part of its adaptive variation.
 \vspace{0.1cm}
 
-\llabel{marine_mutation_rate}Direct estimates of the germline mutation rate now exist for highly
-fecund marine invertebrates.
-In the crown-of-thorns sea star, $\mu = 9.13 \times 10^{-9}$ per site per generation
-(95\% CI \num{6.5e-9} to \num{1.2e-8}), from 14 parent-offspring trios
-\citep{popovic_high_2024}, three times the rate we used here.
+\llabel{marine_mutation_rate}Direct estimates of the germline mutation rate now exist
+for highly fecund marine invertebrates.
+In the crown-of-thorns sea star (\textit{Acanthaster} cf. \textit{solaris}),
+$\mu$ was estimated as $9.13 \times 10^{-9}$ per site per generation (95\% CI
+\num{6.5e-9} to \num{1.2e-8}), from 14 parent-offspring trios \citep{popovic_high_2024},
+$\approx 3 \times$ the rate we used here.
 With this rate, our genome-wide diversity gives a long-term \Ne{} of about
-\num{7e5} (about \num{1.2e6} from 4-fold degenerate sites), which makes
-the gap to census size even larger.\comment{[From corrected $\pi$: genome-wide 0.0242,
-4-fold 0.0428.]}
+\num{6.6e5} (about \num{1.2e6} from 4-fold degenerate sites), which makes the gap to
+census size even larger.
 In tunicates, the estimates are indirect, and they suggest a per-generation rate no
 higher than in vertebrates \citep{tsagkogeorga_population_2012}.
-A high mutation rate thus does not appear to explain the high diversity of these
+A high mutation rate can therefore explain only part of the high diversity of these
 species, and the gap between effective and census size must come from other processes,
-such as linked selection or sweepstakes reproduction.
+such as linked selection and/or sweepstakes reproduction.

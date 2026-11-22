@@ -375,6 +375,32 @@ We considered sequences as contaminant if they had high similarity to bacteria, 
 viridiplantae, archaea, nematoda, cestoda, and trematoda.
 Contaminant sequences were removed from the annotation GFF file.
 
+\subsubsection*{Quantification of gene expression}\label{sec:gene_expression}
+
+We use the short-read RNAseq data to quantify gene expression in the annotated genes.
+First, we built an index of the genome and annotation using the \texttt{-{}-runMode
+genomeGenerate} command in \textsc{STAR} version \texttt{2.7.11b} \citep{dobin_star_2013}.
+The trimmed reads were then aligned to the indexed genome using \textsc{STAR}.
+We used the following parameters to account for stranded differences in the library,
+to project the alignments back into the annotated transcripts, and to obtaib per-gene
+read counts: \texttt{-{}-outSAMtype BAM SortedByCoordinate -{}-outSAMstrandField intronMotif
+-{}-quantMode TranscriptomeSAM GeneCounts}.
+The resulting alignment was processed and quantified using \textsc{samtools}.
+A total of 137.1 million reads pairs were aligned to the transcriptome, 81.0\% of
+which aligned uniquely.
+Approximately 39\% of the read pairs were matched back to rDNA repeats.
+Expression was quantified using \textsc{RSEM} version \texttt{1.3.3} \citep{li_rsem_2011}.
+We first created an \textsc{RSEM} reference using the \texttt{rsem-prepare-reference}
+command.
+Transcript- and gene-level abundances were estimated using the \texttt{rsem-calculate-expression}
+command, taking the paired-end \textsc{STAR} alignments as input (\texttt{-{}-alignments
+-{}-paired-end}), keeping only alignments in the reverse strand (\texttt{-{}-strandedness
+reverse}), and reporting normalized expression counts in transcripts per million (TMP;
+\texttt{-{}-estimate-rspd}).
+\textsc{RSEM} assigned 24.7 million read pairs to \num{20232} \bgla{} genes, \num{15146}
+($\approx75\%$) of which had nonzero expression: \num{10793} at $\geq1$ TPM and \num{4711}
+at $\geq10$ TPM.
+
 \subsubsection*{Annotation of non-coding RNAs}\label{sec:methods_ncrna}
 
 We annotated three classes of non-coding transcripts in the \bgla{} assembly: ribosomal
@@ -586,18 +612,21 @@ Per-term counts and $p$-values were then extracted using the \texttt{GenTable} a
 
 \subsection*{Codon usage biases}
 
-\comment{Update all of this}
 We calculated codon usage biases on the \bgla{} coding sequences using the R package
-\textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026}.
+\textsc{cubar} version \texttt{1.2.0} \citep{liu_cubar_2026} along with other custom
+software.
 Before running \textsc{cubar}, we processed the annotation to extract only the longest
 isoform for each gene using \textsc{agat}'s \texttt{agat\_sp\_keep\_longest\_isoform.pl}
 and \texttt{agat\_sp\_extract\_sequences.pl}.
+We also flagged a subset of single-exon genes with high annotation support (e.g.,
+single-exon \textsc{BUSCO}s, strong \textsc{EnTAP} hits, unspliced Iso-Seq alignments).
+All other genes originating from single-exon models were removed.
 In \textsc{cubar}, we first filtered coding sequences using the \texttt{check\_cds}
-function, ensuring the presence of canonical start and stop codons.
-To prevent known biases in small coding sequences, we then removed transcripts smaller
-than 300\,bp and those above and below two standard deviations of the mean transcript
-length.
-This process retained \num{16217} sequences in \bgla{}.
+function to ensure that the length of the coding sequence was a multiple of three and
+to remove any gene with internal stop codons.
+To prevent known biases in small coding sequences, we additionally removed transcripts
+with fewer than 30 codons (90\,bp) and those more than two standard deviations above or
+below the mean transcript length.
 After obtaining the empirical codon distribution using the \texttt{count\_codons} function,
 we then used \texttt{get\_enc} to calculate codon usage biases using the effective number
 of codons (ENC) metric, which captures the deviation from equal codon usage across
@@ -605,18 +634,66 @@ synonymous codons \citep{wright_effective_1990}.
 More specifically, we calculated an improved implementation of ENC, accounting for
 usage differences across different codon subfamilies \citep{sun_improved_2013}.
 In addition to ENC, we calculated GC proportions using the following \textsc{cubar}
-functions: \texttt{get\_gc} for coding sequence-wide GC proportion, \texttt{get\_gc3s}
-for GC proportion at 3rd codon sites (GC3s), and \texttt{get\_gc4d} for GC proportion
-at 4-fold degenerate sites (GC4d).
-Lastly, we used Wright's curve (\wrightenc, were $s$ denotes GC3s;
+functions: \texttt{get\_gc} for coding sequence-wide GC proportion, and \texttt{get\_gc3s}
+for GC proportion at 3rd codon sites (GC3s).
+Lastly, we used Wright's curve (\wrightenc, where $s$ denotes GC3s;
 \citealp{wright_effective_1990}) to determine the expected distribution of the number of
-effective codons given a given GC3s distribution.
-At each gene, we calculated its deviation from this empirical ENC distribution using
-$\text{ENC}_{dev} = (\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$,
-as well as a linear regression of $\text{ENC}_{obs}$ given $\text{ENC}_{exp}$ using
-\texttt{R}'s \texttt{lm} function.
-We compared the ENC results in \bgla{} by calculating empirical and expected ENC
+effective codons given GC3s.
+At each gene, we calculated its deviation from this expected ENC distribution using
+$\text{ENC}_{dev} = (\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$.
+We compared these results in \bgla{} by calculating empirical and expected ENC
 distributions for 11 other metazoan genomes, as specified in Table~\ref{tab:sup_enc_summary}.
+\vspace{0.1cm}
+
+In addition to ENC with \textsc{cubar}, we used a custom R script (\texttt{run\_ncprime.R})
+to calculate the effective number of codons prime (Nc$'$) statistic \citep{novembre_2002_encprime}.
+This statistic calculates the effective number of codons in a gene while accounting for
+background nucleotide composition, in this case using the gene's own introns.
+This script applied the same filters previously described (sequence length multiple of three,
+at least 30 codons, no internal stop codons) and applied additional filters on the intronic
+sequences.
+Individual introns were trimmed (10\,bp at the 5' end, 30\,bp at the 3' end) to remove any
+splice-site signals.
+All of a gene's trimmed introns were then pooled and used to estimate per-gene background
+nucleotide frequencies.
+Any gene with under 200\,bp of pooled intron sequence was removed.
+This strict filtering retained \num{10961} genes in \bgla{}.
+These background nucleotide frequencies were used to calculate the expectations in the codon
+usage metrics, e.g., for each codon, its observed count summed over genes was compared against
+its expected count in the background ($\log_2(\text{codon}_{obs}/\text{codon}_{exp})$).
+The Nc$'$ statistic was calculated following an R re-implementation of the \textsc{ENCprime}
+software \citep{novembre_2002_encprime}.
+For each amino acid, the expected frequency of each codon is the product of the background
+frequencies of the bases at the positions that vary among its synonymous codons, rescaled to
+sum to 1.
+Amino acids with five or fewer codons in a gene were excluded from that gene's calculation.
+Like for ENC, we compared observed and expected Nc$'$ in \bgla{} and 11 other metazoan
+genomes (see list in Table~\ref{tab:sup_enc_summary}).
+\vspace{0.1cm}
+
+For \bgla{} specifically, we used our measures of gene expression to find signatures of
+translational selection.
+First, we calculated codon preference relative to expression using \textsc{cubar}'s
+\texttt{est\_optimal\_codons} function.
+For each codon, the function fits a binomial generalized linear model across genes, with
+the number of occurrences of the codon versus other synonymous codons within the same codon
+subfamily as the response, and expression ($\log_{2}(\text{TPM}+1)$) as the predictor.
+The model's slope gives the change in the log-odds of using that codon per doubling of
+$\text{TPM} + 1$.
+Codons with a positive slope and a Benjamini--Hochberg-adjusted $q < 0.001$ were considered
+as favored, and those with a negative slope and $q < 0.001$ as avoided.
+Codons with $q \geq 0.001$ were classified as ``undetermined''.
+Using these favored codons we calculated the frequency of optimal codons statistic
+\citep[Fop;][]{ikemura_1981_codons} at each gene.
+A higher Fop means stronger use of these expression-linked optimal codons, a signature
+of translational selection.
+Fop was calculated using \textsc{cubar}'s \texttt{get\_fop}.
+We additionally calculated a no-preference baseline, the expected Fop if every synonymous
+codon of a given amino acid were used equally, given a gene's amino acid composition.
+Moreover, we summarized both Fop and Nc$'$ across expression bins (TPM = 0, then bins with
+breaks at 1, 3, 10, 30, 100, 300, \num{1000}, \num{3000}, and \num{10000} TPM).
+These relationships were calculated separately for cytosolic ribosomal proteins, as highly
+expressed controls, and all other genes.
 
 \subsection*{Genetic variation in the \balgla{} reference}\label{sec:methods_ref_geno}
 
@@ -635,7 +712,7 @@ After filtering and processing alignments, the reference individual retained a m
 depth of coverage of 50.88x (median: 47.94x, standard deviation: 100.32x).
 \vspace{0.1cm}
 
-Genotypes were called from these alignments using the standard \textsc{bcftools} version
+Genotypes were called from these processed alignments using the standard \textsc{bcftools} version
 \texttt{1.21} \citep{danecek_bcftools_2021} genotyping pipeline, consisting of the
 \texttt{mpileup} and \texttt{call} commands for generating genotype likelihoods and calling
 genotypes, respectively.
@@ -649,21 +726,14 @@ For the \texttt{call} command, we used the updated calling model
 probabilities (\texttt{-{}-annotate "GQ,GP"}).
 Additionally, we used the \textsc{bcftools} \texttt{norm} command to join adjacent SNPs
 and indels into single multiallelic sites.
-\vspace{0.1cm}
-
-\comment{Some of this needs to be updated}
-After calling genotypes, we filtered the resulting variants using \textsc{bcftools}.
-Using the \texttt{filter} command, we removed sites (both variant and invariant) with
-low quality (\texttt{-{}-exclude "QUAL < 30"}), with too high coverage (\texttt{-{}-exclude
-"INFO/DP > 125"}), adjacent to indels (\texttt{-{}-SnpGap 3}; \texttt{-{}-IndelGap 5}), and
-within the span of annotated repeats (\texttt{-{}-mask-file repeats.bed}). We filtered
-individual genotypes with a low genotyping quality (\texttt{-{}-exclude "FORMAT/GQ < 30"}),
-low depth (\texttt{-{}-exclude "FORMAT/DP < 10"}), and a large allelic imbalance
-(\texttt{-{}-exclude "(GT=='het') \& \%MAX(FMT/AD)/(FMT/DP) < 0.3"}).
-We also removed sites with more than two alleles using (\texttt{-{}-max-alleles 2}) from
-the \texttt{view} command.
-Lastly, we merged all the files together in a single genome-wide VCF using
-\textsc{bcftools} \texttt{concat}.
+After calling genotypes, we filtered the resulting variants using \textsc{bcftools}
+\texttt{filter}.
+Genotypes with depth $<10$ or genotype quality (GQ) $<30$ were set to missing.
+A site was retained if its genotype was called, if it was outside annotated repeats,
+it was not an indel, and lay more than 3\,bp from any indel.
+Variant sites with a quality (QUAL) $<30$ were also removed.
+These filters resulted in 320.0\,Mbp of accessible sequence containing 8.86 million
+heterozygous SNPs (Table~\ref{tab:sup_popgen_stats}). 
 \vspace{0.1cm}
 
 We classified the effects of heterozygous variants present in the reference genome using
@@ -697,36 +767,52 @@ downstream analysis.
 For the six remaining individuals, an average of 94.13\% of reads aligned to the 
 reference genome, resulting in a mean genome-wide coverage of 48.83x.
 
-\subsubsection*{Genotyping}
+\subsubsection*{Genotyping and filtering}\label{sec:methods_genotypes}
 
-\comment{update filter here}
 These six individuals were genotyped using the same \textsc{bcftools}
 \texttt{mpileup}/\texttt{call} approach used for our reference sample
 (see \nameref{sec:methods_ref_geno}), except allowing for a maximum depth of 1000x when
 genotyping (\texttt{-{}-max-depth 1000}).
-After normalizing indels using \textsc{bcftools} \texttt{norm}, we filtered the called
-variants using \textsc{bcftools} \texttt{filter} and \texttt{view}.
-We removed sites with low quality, adjacent to indels, and within the span of annotated
-repeats.
-Additionally, we removed sites with per-sample coverage lower than 10x, genotype quality
-lower than 30, and allelic imbalance larger than 30\%.
-After merging individual per-chromosome variants into a single genome-wide VCF, we also
-removed any sites containing missing genotypes (\texttt{bcftools view -g \^{}miss}).
+After normalizing indels using \textsc{bcftools} \texttt{norm}, we first applied filters
+as soft labels to each site using \textsc{bcftools} \texttt{filter -{}-soft-filters}.
+With this, both variant and invariant sites were retained in the output VCF with their
+respective filter status.
+Records with QUAL $<30$ were labelled low quality (\texttt{-{}-exclude "QUAL<30"}).
+SNPs within 3\,bp of an indel (\texttt{-{}-SnpGap 3}) and indels within 5\,bp of another
+indels (\texttt{-{}-IndelGap 5}) were also labelled.
+Individual genotypes with read depth $<10$ or genotype quality $<30$ were set to missing
+(\texttt{-{}-set-GTs~.});
+genotype quality is defined only at variant records, so invariant genotypes were filtered
+on depth alone.
+Indels and MNPs, sites with half or more of the genotypes missing (\texttt{F\_MISSING >= 0.5}),
+and sites overlapping annotated repeats (\texttt{-{}-mask-file}) were also labelled.
+Records with no called genotype were removed (\texttt{-{}-exclude-uncalled}), and unused
+alternate alleles were trimmed (\texttt{-{}-trim-alt-alleles}).
+\vspace{0.1cm}
+
+We then built an accessible-site mask from these soft-filtered calls.
+A position was accessible if it met four conditions:
+(i) its record passed all filters (the QUAL $<30$ label was ignored for invariant sites);
+(ii) it was not an indel;
+(iii) all six individuals had a called genotype;
+(iv) it lay outside an indel zone, defined as the reference span of every indel in
+the unfiltered normalized calls extended by 3 bp on each side.
+Adjacent accessible positions were merged into BED intervals, giving a mask of 231.6 million
+accessible sites, which included 20.5 million SNPs.
 The effects of the kept variants was determined using \textsc{snpEff}.
 
 \subsubsection*{Population genetic statistics}
 
-\comment{Re-read this}
-We used the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24};~\citet{pope_gpu_2026})
+We used the GPU library \textsc{pg\_gpu} \citep[commit \texttt{0fb9a24};][]{pope_gpu_2026}
 to obtain genome-wide measures of genetic diversity, including nucleotide diversity ($\pi$),
 Watterson's $\theta$ ($\theta_\text{W}$), Tajima's $D$, and segregating sites.
-First, we converted the VCF to the VCF Zarr format using \textsc{bio2zarr} version
+First, we converted the soft-filtered VCF to the VCF Zarr format using \textsc{bio2zarr} version
 \texttt{0.2.1} \citep{czech_analysis-ready_2025}.
 We processed each chromosome separately, loading each as a \textsc{pg\_gpu}
 \texttt{HaplotypeMatrix} object.
 This matrix was then filtered to include only SNPs located in accessible regions
 without any missing genotypes (\texttt{HaplotypeMatrix.get\_subset};
-see filtering methods above \comment{add reference}).
+see filtering methods above:~\ref{sec:methods_genotypes}).
 We then calculated these three statistics over genomic windows using \textsc{pg\_gpu}'s
 \texttt{windowed\_analysis}, specifying 10\,kbp windows (\texttt{window\_size=10000}).
 To obtain pooled statistics that account for invariant sites, we ran using the
@@ -755,67 +841,64 @@ For this, we first determined the degeneracy at each coding site in the genome u
 After determining degeneracy we separately calculated diversity for 0-fold and 4-fold
 degenerate sites using the same \textsc{pg\_gpu} approach described above, except that we
 specified a specific site set based on the corresponding codon class.
-Diversity was pooled at the exon level for both 0-fold and 4-fold sites.\comment{[The new summary (\texttt{BalGla\_features\_pi.summary.tsv}) reports 0-fold and 4-fold sites per gene (\texttt{unit = gene}; 15,647 genes), not per exon. Check which is correct and update.]}
+Diversity was pooled at the gene level for both 0-fold and 4-fold sites.
 
 \subsubsection*{Segmentation of diversity along chromosomes}\label{sec:methods_segments}
 
-\comment{update this to the pg gpu results}
 \llabel{segments_methods}To find regions of reduced diversity, we divided each of
 chromosomes 1--15 into segments of constant mean $\pi$.
-We used the \textsc{pixy} $\pi$ values in 10\,kbp windows, and kept the windows with
+Chromosome 16 was excluded from the analysis due to its smaller length.
+We used the \textsc{pg\_gpu} $\pi$ values in 10\,kbp windows, and kept the windows with
 more than \num{1000} called sites in which more than 10\% of the positions were called
-(\num{42459} windows).
+(\num{59398} windows).
 We detected changes in the mean $\pi$ with the Pruned Exact Linear Time (PELT)
 algorithm \citep{killick_optimal_2012} and a Normal mean-change cost, as implemented in
 the \texttt{cpt.mean} function of the \textsc{R} package \textsc{changepoint} version
 \texttt{2.3} \citep{killick_changepoint_2014}.
 Each chromosome was segmented separately, with a minimum segment length of 50 windows
 (500\,kbp).
-The Normal cost assumes independent observations with unit variance, but adjacent
-windows are correlated (lag-1 autocorrelation $\approx0.43$).
-We therefore divided the window values by a long-run standard deviation,
-$\sigma_{LR} = \sigma\sqrt{f}$.
-Here, $\sigma$ is the short-scale standard deviation, estimated as the median absolute
-deviation of the differences between adjacent windows divided by $\sqrt{2}$, and
-$f = 1 + 2\sum_{k=1}^{50} (1 - k/51)\,\rho_{k}$ is a Bartlett-weighted sum of the
-autocorrelations $\rho_{k}$ of the residuals around a running median of 151 windows
-\citep{newey_simple_1987}.
-The genome-wide estimate was $f = 3.83$.
-We used a penalty of $3\log(n)$ per changepoint, where $n$ is the number of windows on
-the chromosome. This is the modified Bayes information criterion penalty of
+The penalty for segmentation was $3\log(n)$ per changepoint, where $n$
+is the number of windows in a chromosome.
+This approach is the modified Bayes information criterion penalty of
 \citet{zhang_modified_2007} without its term for segment length.
-The number of changepoints decreased steadily as the penalty increased, with no clear
-optimum, so we use the segments to describe the data, not as tested breakpoints.
-For each segment, we calculated $\pi$ as the sum of pairwise differences divided by the
-sum of pairwise comparisons over its windows.
-Segments with $\pi$ lower than 0.75 times the genome-wide value (calculated in the same
-way) were classified as low-diversity segments, and all other segments as normal-diversity
-segments.
-This classification used the \textsc{pixy} values, which overestimate $\pi$
-(see \nameref{sec:methods_ld}).
-The two classes remain distinct with the corrected values (median segment $\pi$:
-0.0129 in low-diversity and 0.0273 in normal-diversity segments).
+\vspace{0.1cm}
+
+The Normal cost assumes independent observations with unit variance, but adjacent
+windows are correlated (lag-1 autocorrelation = 0.48).
+We therefore scaled $\pi$ values by a long-run standard deviation ($\sigma_\text{LR}$),
+which we calculated with the \texttt{lvar} function in the \textsc{R} package
+\textsc{sandwich} version \texttt{3.1.3} \citep{zeileis_2004_sandwhich}, using
+default parameters.
+To keep shifts in the mean from inflating the estimate, we applied it to the residuals
+around a 151-window running median (\texttt{runmed}, base \textsc{R}), computed within
+each chromosome and pooled across chromosomes.
+This gave $\sigma_\text{LR} = 0.0175$ against a marginal residual standard deviation of
+0.0098, a 3.2-fold inflation of the noise variance.
+This PELT approach placed 78 changepoints, resulting in 93 genomic segments.
+\vspace{0.1cm}
+
+For each defined segment, we calculated its average pooled $\pi$ as the sum of pairwise
+differences divided by the sum of pairwise comparisons over its corresponding 10\,kbp
+windows.
+Segments with $\pi$ lower than $0.75\times$ the genome-wide pooled value were classified
+as low-diversity segments (29 segments, 199.2\,Mbp, 24\% of the segmented length, pooled
+$\pi = 0.0113$).
+The rest of the segments were assigned as normal diversity (64 segments, 632.3\,Mbp,
+76\% of the segmented length, pooled $\pi = 0.0276$).
+For comparison, we also segmented the genome using a two-state Guassian hidden Markov
+model (HMM), fitted to standarized $\pi$ in 1\,Mbp window bins (also calculated from the
+sum of the pairwise differences over the sum of pairwise comparisons of the 10\,kbp
+windows) using the \texttt{MarkovRegression} function in the Python package
+\textsc{statsmodels} version \texttt{3.13.17} \citep{seabold_2010_statsmodels}.
+This HMM assigned 93.0\% of the base 10\,kbp windows to the same diversity class as the
+PELT approach, and identified 229.9\,Mbp as low diversity (Figure~\ref{fig:sup_hmm_pelt}).
 
 \subsubsection*{Linkage disequilibrium and population recombination rate}\label{sec:methods_ld}
 
-\llabel{ld_methods}For the LD analyses, we used the biallelic SNPs that passed the
-filters described above (see \nameref{sec:methods_popgen}), except that we kept sites with
-fewer than half of the genotypes missing (genotypes called in at least four of the six
-individuals).
-\comment{Update this. Some of these methods moved above.}
-We converted the VCF to the VCF Zarr format with \textsc{bio2zarr} version
-\texttt{0.2.1} \citep{czech_analysis-ready_2025}, and calculated all statistics with
-the GPU library \textsc{pg\_gpu} (commit \texttt{0fb9a24}) \citep{pope_gpu_2026}.
-We used only accessible sites: sites that passed all filters, or invariant sites
-that failed only the quality filter (\textsc{QUAL} $<30$), which is not informative
-for invariant sites.
-We removed indels, and all sites within 3\,bp of the span of an indel.
-With these accessible sites, we also calculated $\pi$ in 10\,kbp windows as the sum of
-pairwise differences divided by the number of accessible sites.
-\textsc{pixy} had excluded the invariant sites with low quality, which made its $\pi$
-values too high.
-\vspace{0.1cm}
-
+\llabel{ld_methods}For the LD analyses, we used the same soft-filtered VCF and
+accessibility mask described above (see \nameref{sec:methods_genotypes}), except that we 
+kept only biallelic SNPs and sites with fewer than half of the genotypes missing (genotypes
+called in at least four of the six individuals).
 To measure LD in 10\,kbp windows, we calculated $Z_{nS}$ \citep{kelly_test_1997}, the
 mean $r^{2}$ over all pairs of SNPs in a window, with the genotype estimator of $r$
 \citep{rogers_linkage_2009}.
@@ -826,19 +909,20 @@ sites.
 In each segment, we summed $D^{2}$ and $\pi_{2}$ over all pairs of SNPs in 14 distance
 bins at 10, 20, 30, 50, 75, 100, 150, 200, 300, 500, 750, \num{1000},
 \num{2000}, \num{5000}, and \num{20000}\,bp.
-For a set of segments, $\sigma_{D}^{2}$ in a distance bin is the sum of $D^{2}$
+For a set of segments, \sdsq{} in a distance bin is the sum of $D^{2}$
 divided by the sum of $\pi_{2}$.
 We calculated 95\% confidence intervals from \num{2000} bootstrap samples of segments,
 drawn within each class.
-The scale of the decay is the distance at which $\sigma_{D}^{2}$ falls to one half and
+The scale of the decay is the distance at which \sdsq{} falls to one half and
 to one quarter of its value in the 10--20\,bp class, using a linear interpolation in the
 logarithm of distance.
 We fitted the expectation
 $\sigma_{D}^{2} = (10 + \rho_{d}) / (22 + 13\rho_{d} + \rho_{d}^{2})$
 \citep{ohta_linkage_1971}, with $\rho_{d} = 4N_{e}r\,d$ for SNPs $d$\,bp apart
 and $d$ the geometric midpoint of each distance class.
-We estimated $4N_{e}r$ per bp by least squares on $\sigma_{D}^{2}$ over all distance
-classes.
+We estimated $4N_{e}r$ per bp by least squares on \sdsq{} over all distance classes.
+\vspace{0.1cm}
+
 To ask whether the higher LD in low-diversity segments comes only from their lower
 $N_{e}$, we compared the low-diversity curve with a scaled normal-diversity curve.
 To make the scaled curve, we read the normal-diversity curve at each distance multiplied
