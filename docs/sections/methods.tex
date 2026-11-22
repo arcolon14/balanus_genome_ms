@@ -618,15 +618,15 @@ software.
 Before running \textsc{cubar}, we processed the annotation to extract only the longest
 isoform for each gene using \textsc{agat}'s \texttt{agat\_sp\_keep\_longest\_isoform.pl}
 and \texttt{agat\_sp\_extract\_sequences.pl}.
-We also flagged a subset of single-exons genes with high annotation support (e.g.,
+We also flagged a subset of single-exon genes with high annotation support (e.g.,
 single-exon \textsc{BUSCO}s, strong \textsc{EnTAP} hits, unspliced Iso-Seq alignments).
 All other genes originating from single-exon models were removed.
 In \textsc{cubar}, we first filtered coding sequences using the \texttt{check\_cds}
 function to ensure that the length of the coding sequence was a multiple of three and
 to remove any gene with internal stop codons.
 To prevent known biases in small coding sequences, we additionally removed transcripts
-with fewer than 30 codons (90\,bp) and those above and below two standard deviations of
-the mean transcript length.
+with fewer than 30 codons (90\,bp) and those more than two standard deviations above or
+below the mean transcript length.
 After obtaining the empirical codon distribution using the \texttt{count\_codons} function,
 we then used \texttt{get\_enc} to calculate codon usage biases using the effective number
 of codons (ENC) metric, which captures the deviation from equal codon usage across
@@ -636,31 +636,32 @@ usage differences across different codon subfamilies \citep{sun_improved_2013}.
 In addition to ENC, we calculated GC proportions using the following \textsc{cubar}
 functions: \texttt{get\_gc} for coding sequence-wide GC proportion, and \texttt{get\_gc3s}
 for GC proportion at 3rd codon sites (GC3s).
-Lastly, we used Wright's curve (\wrightenc, were $s$ denotes GC3s;
+Lastly, we used Wright's curve (\wrightenc, where $s$ denotes GC3s;
 \citealp{wright_effective_1990}) to determine the expected distribution of the number of
 effective codons given GC3s.
-At each gene, we calculated its deviation from this empirical ENC distribution using
+At each gene, we calculated its deviation from this expected ENC distribution using
 $\text{ENC}_{dev} = (\text{ENC}_{exp} - \text{ENC}_{obs}) / \text{ENC}_{exp}$.
 We compared these results in \bgla{} by calculating empirical and expected ENC
 distributions for 11 other metazoan genomes, as specified in Table~\ref{tab:sup_enc_summary}.
 \vspace{0.1cm}
 
-In addition to ENC with \textsc{cubar}, we used a custom R software (\texttt{run\_ncprime.R})
+In addition to ENC with \textsc{cubar}, we used a custom R script (\texttt{run\_ncprime.R})
 to calculate the effective number of codons prime (Nc$'$) statistic \citep{novembre_2002_encprime}.
-This statistics calculates the number of effective codon in a gene while accounting for
+This statistic calculates the effective number of codons in a gene while accounting for
 background nucleotide composition, in this case using the gene's own introns.
-This script applies the same filters previously described (sequence length multiple of 3 and
-$>30$ codons, no premature stops) and applies additional filters on the intronic sequences.
-Individual introns are trimmed (10\,bp at the 5' end, 30\,bp at the 3' end) to remove any
+This script applied the same filters previously described (sequence length multiple of three,
+at least 30 codons, no internal stop codons) and applied additional filters on the intronic
+sequences.
+Individual introns were trimmed (10\,bp at the 5' end, 30\,bp at the 3' end) to remove any
 splice-site signals.
-Any gene with under 200\,bp of pooled intron sequence is removed.
-This strict filtering retained \num{10961} genes in \bgla{}.
-All of a gene's trimmed introns are then pooled and used to estimate per-gene background
+All of a gene's trimmed introns were then pooled and used to estimate per-gene background
 nucleotide frequencies.
+Any gene with under 200\,bp of pooled intron sequence was removed.
+This strict filtering retained \num{10961} genes in \bgla{}.
 These background nucleotide frequencies were used to calculate the expectations in the codon
 usage metrics, e.g., for each codon, its observed count summed over genes was compared against
 its expected count in the background ($\log_2(\text{codon}_{obs}/\text{codon}_{exp})$).
-The Nc$'$ statistic was calculated following an R re-implementation of the \textsc{Ncprime}
+The Nc$'$ statistic was calculated following an R re-implementation of the \textsc{ENCprime}
 software \citep{novembre_2002_encprime}.
 For each amino acid, the expected frequency of each codon is the product of the background
 frequencies of the bases at the positions that vary among its synonymous codons, rescaled to
@@ -675,20 +676,20 @@ translational selection.
 First, we calculated codon preference relative to expression using \textsc{cubar}'s
 \texttt{est\_optimal\_codons} function.
 For each codon, the function fits a binomial generalized linear model across genes, with
-the number of occurrences of the codon versus synonymous one within the same codon
+the number of occurrences of the codon versus other synonymous codons within the same codon
 subfamily as the response, and expression ($\log_{2}(\text{TPM}+1)$) as the predictor.
 The model's slope gives the change in the log-odds of using that codon per doubling of
 $\text{TPM} + 1$.
-Codons with a positive slope and a Benjamini-Hochberg-adjusted $q < 0.001$ were considered
+Codons with a positive slope and a Benjamini--Hochberg-adjusted $q < 0.001$ were considered
 as favored, and those with a negative slope and $q < 0.001$ as avoided.
-Genes with $q>0.001$ were classified as ``undetermined''.
+Codons with $q \geq 0.001$ were classified as ``undetermined''.
 Using these favored codons we calculated the frequency of optimal codons statistic
 \citep[Fop;][]{ikemura_1981_codons} at each gene.
 A higher Fop means stronger use of these expression-linked optimal codons, a signature
 of translational selection.
 Fop was calculated using \textsc{cubar}'s \texttt{get\_fop}.
 We additionally calculated a no-preference baseline, the expected Fop if every synonymous
-codon of a given amino acid is used equally, given a gene's amino acid composition.
+codon of a given amino acid were used equally, given a gene's amino acid composition.
 Moreover, we summarized both Fop and Nc$'$ across expression bins (TPM = 0, then bins with
 breaks at 1, 3, 10, 30, 100, 300, \num{1000}, \num{3000}, and \num{10000} TPM).
 These relationships were calculated separately for cytosolic ribosomal proteins, as highly
